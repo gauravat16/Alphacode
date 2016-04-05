@@ -14,7 +14,7 @@ import io.codesalad.model.DatabaseManager;
 /**
  * Servlet implementation class LoginSignup
  */
-@WebServlet("/LoginSignup")
+//@WebServlet("/LoginSignup")
 public class LoginSignup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -9,4 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+  <servlet>
+  <servlet-name>LoginSignup</servlet-name>
+  <servlet-class>io.codesalad.controller.LoginSignup</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>LoginSignup</servlet-name>
+  <url-pattern>/login</url-pattern>
+  
+  </servlet-mapping>
 </web-app>
