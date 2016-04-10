@@ -29,7 +29,7 @@ public class Scriptinator {
 		Fwriter.flush();
 		Fwriter.close();
 
-		String line = "chmod -R u+x Scripts"; // Changing executable permissions
+		String line = "chmod -R u+x /home/gaurav/CodeSalad/Scripts"; // Changing executable permissions
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
 		status = executor.execute(cmdLine);

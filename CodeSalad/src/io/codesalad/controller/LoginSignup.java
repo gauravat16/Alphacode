@@ -2,53 +2,66 @@ package io.codesalad.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
+import com.mysql.jdbc.DatabaseMetaData;
+import com.mysql.jdbc.ResultSet;
 
 import io.codesalad.model.DatabaseManager;
+import io.codesalad.model.User;
 
 /**
  * Servlet implementation class LoginSignup
  */
-//@WebServlet("/LoginSignup")
+// @WebServlet("/LoginSignup")
 public class LoginSignup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginSignup() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public LoginSignup() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println("dad");
-		
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		System.out.println(password);
 		Boolean result = false;
+
 		DatabaseManager newTask = new DatabaseManager();
+
 		try {
-			if(newTask.checkIfPresent("asd", email,password))
-			{
+			if (newTask.checkIfPresent(email, password).equals("1")) {
 				result = true;
 			}
 		} catch (ClassNotFoundException e) {
@@ -58,19 +71,34 @@ public class LoginSignup extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(result==true)
-		{
-			response.getWriter().println("Welcome"+email);
-			
-		}
-		else
-		{
-			response.getWriter().println("fuck off please dear "+email);
+
+		if (result == true) {
+			DatabaseManager newobj = new DatabaseManager();
+			HashMap<String, String> userValues = new HashMap<>();
+			try {
+				userValues = newobj.getUserDetails(email);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			User newUser = new User();
+			newUser.uname = userValues.get("userName");
+			newUser.email = userValues.get(email);
+			newUser.email = userValues.get("progsFile");
+
+			HttpSession session = request.getSession();
+			session.setAttribute("user", newUser);
+			RequestDispatcher newDispatcher = request.getRequestDispatcher("/Web/index.jsp");
+			newDispatcher.forward(request, response);
+
+		} else {
+			response.getWriter().println("fuck off please dear " + email);
 
 		}
-		
-		
+
 	}
 
 }

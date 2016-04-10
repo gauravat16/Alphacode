@@ -19,7 +19,7 @@ public class DirectoryManager {
 
 		if (mode) {
 			// run fn to create user folder
-			UserFoler(FolderName);
+			UserFolder(FolderName);
 
 		} else {
 			// run fn to create Problem folder
@@ -28,24 +28,20 @@ public class DirectoryManager {
 
 	}
 
-	int UserFoler(String FolderName) throws IOException {
-		int status = 0;
-		String script = "#!/bin/bash  \n" + "mkdir /home/gaurav/CodeSalad/Users/" + FolderName; // Script
-																			// to
-																			// make
-																			// folder
+	public String UserFolder(String FolderName) throws IOException {
+		
+		String user = "gaurav";
+		String script = "#!/bin/bash  \n" + "mkdir /home/" + user + "/CodeSalad/Users/" + FolderName;
 
-		Scriptinator newScript = new Scriptinator(script, "UFolder");
+		File newFolder = new File("/home/" + user + "/CodeSalad/Users/" + FolderName);
+		File newProglist = new File("/home/" + user + "/CodeSalad/Users/" + FolderName+"/proglist.txt");
+		newFolder.mkdirs();
+		newProglist.createNewFile();
 
-		String line = "./Scripts/UFolder.sh "; // run the script
-		CommandLine cmdLine = CommandLine.parse(line);
-		DefaultExecutor executor = new DefaultExecutor();
-		status = executor.execute(cmdLine);
-
-		return status;
+		return "/home/" + user + "/CodeSalad/Users/" + FolderName +"/proglist.txt";
 	}
 
-	int problemFolder(String FolderName) throws IOException {
+	public int problemFolder(String FolderName) throws IOException {
 		int status = 0;
 		String script = "#!/bin/bash  \n" + "mkdir Problems/" + FolderName; // Script
 																			// to
@@ -74,11 +70,12 @@ public class DirectoryManager {
 		return status;
 	}
 
-	int NewProblem(String ProblemText, String ProblemName, String uname, String DateTime, String[] languages) throws IOException {
+	int NewProblem(String ProblemText, String ProblemName, String uname, String DateTime, String[] languages)
+			throws IOException {
 		int status = 0;
-		int pid=0; // get recent pid from database
+		int pid = 0; // get recent pid from database
 
-		File newProblem = new File("/home/gaurav/CodeSalad/Problems/" + pid + "/" +ProblemName  + ".txt");
+		File newProblem = new File("/home/gaurav/CodeSalad/Problems/" + pid + "/" + ProblemName + ".txt");
 
 		newProblem.createNewFile();
 		FileWriter Fwriter = new FileWriter(newProblem);
@@ -89,12 +86,6 @@ public class DirectoryManager {
 		return status;
 	}
 
-	public static void main(String[] args) throws IOException {
-
-		DirectoryManager obj = new DirectoryManager();
-		//obj.problemFolder("hjfhg");
-		obj.HtmlToCode("fgx", "lol", 4, "sf");
-
-	}
+	
 
 }
