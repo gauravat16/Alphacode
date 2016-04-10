@@ -16,19 +16,10 @@
             </div>
         </div>
    </section>
+   
+
     <!--/#page-breadcrumb-->
-    <div class="col-sm-3 col-md-6 col-lg-8" style="padding-left: 90px;">
-    <form action="" method="post">
-    <textarea rows="10" cols="20">Enter Problem text</textarea>
-     </form>
-</div>
- <div class="col-sm-3 col-md-6 col-lg-8" style="padding-left: 90px;">
-    <select>
-    <option name="testcase1">
-    
-    </select>
-</div>
-    
+ <%@ include file="/Web/options.jsp" %>
 
     <footer id="footer">
         <div class="container">
@@ -112,7 +103,7 @@
     <script type="${path}/text/javascript" src="js/lightbox.min.js"></script>
     <script type="${path}/text/javascript" src="js/wow.min.js"></script>
     <script type="${path}/text/javascript" src="js/jquery.countTo.js"></script>
-    <script type="${path}/text/javascript" src="js/main.js"></script>   
+  
    
 </body>
 </html>
