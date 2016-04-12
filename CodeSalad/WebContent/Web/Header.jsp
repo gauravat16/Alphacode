@@ -60,6 +60,7 @@
                         <li class="active"><a href="/CodeSalad/HomeRefresh?user=${user}">Home</a></li>
                         <li class="dropdown"><a href="#">Problems <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
+                            <li><a href="${path}/NewProblem.jsp">Add Problem</a></li>
                                 <li><a href="${path}/aboutus.html">Beginner</a></li>
                                 <li><a href="${path}/aboutus2.html">Easy</a></li>
                                 <li><a href="${path}/service.html">Medium</a></li>

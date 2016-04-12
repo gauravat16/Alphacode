@@ -64,7 +64,8 @@ public class DatabaseManager {
 		return userData;
 
 	}
-
+	
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		String query = " select exists( select * from CodeSalad.Users where email='' and password='' )";

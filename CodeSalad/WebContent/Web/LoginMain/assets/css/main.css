@@ -16,6 +16,7 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -589,6 +590,8 @@
 
 	form {
 		margin: 0 0 2em 0;
+		
+
 	}
 
 		form .message {
@@ -604,6 +607,7 @@
 			height: 2.75em;
 			line-height: 2.75em;
 			opacity: 0;
+			
 		}
 
 			form .message:before {
@@ -613,6 +617,7 @@
 				font-style: normal;
 				font-weight: normal;
 				text-transform: none !important;
+				
 			}
 
 			form .message:before {
@@ -624,6 +629,7 @@
 				-webkit-transform: scale(1);
 				-ms-transform: scale(1);
 				transform: scale(1);
+				
 				opacity: 1;
 			}
 
@@ -649,6 +655,9 @@
 		font-size: 0.9em;
 		font-weight: 700;
 		margin: 0 0 1em 0;
+
+
+
 	}
 
 	@-moz-keyframes focus {
@@ -957,7 +966,7 @@
 		border: 0;
 		color: #ffffff !important;
 		cursor: pointer;
-		display: inline-block;
+		display: inherit;
 		font-weight: 700;
 		height: 2.75em;
 		line-height: 2.75em;
@@ -965,6 +974,7 @@
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
+		float: right;
 	}
 
 		input[type="submit"]:hover,
@@ -1049,8 +1059,9 @@
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
-		display: flex;
+		display: block;
 		position: relative;
+
 	}
 
 		#signup-form input[type="text"],
@@ -1060,7 +1071,7 @@
 		}
 
 		#signup-form > * {
-			margin: 0 0 0 1em;
+			
 		}
 
 		#signup-form > :first-child {
@@ -1074,12 +1085,14 @@
 				-webkit-flex-direction: column;
 				-ms-flex-direction: column;
 				flex-direction: column;
+
 			}
 
 				#signup-form input[type="type"],
 				#signup-form input[type="password"],
 				#signup-form input[type="email"] {
 					width: 100%;
+					flex-direction: column;
 				}
 
 				#signup-form > * {
@@ -1093,10 +1106,12 @@
 					left: 0;
 					line-height: inherit;
 					margin-top: 0;
-					position: absolute;
+					position: relative;
 				}
 
 		}
+
+		
 
 /* Footer */
 
@@ -1184,4 +1199,5 @@
 				position: relative;
 			}
 
-		}
+		
+		

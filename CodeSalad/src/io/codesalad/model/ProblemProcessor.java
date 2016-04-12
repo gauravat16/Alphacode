@@ -14,7 +14,9 @@ public class ProblemProcessor {
 
 	}
 
-	static void saveProblem(String ProblemText, int pid, String Testcases) throws IOException {
+	public void saveProblem(String ProblemText, String pid, String Testcases) throws IOException {
+		File probFolder = new File("/home/gaurav/CodeSalad/Problems/" + pid +"/");
+		probFolder.mkdirs();
 		File newProblem = new File("/home/gaurav/CodeSalad/Problems/" + pid + "/problem.txt");
 		newProblem.createNewFile();
 		FileWriter fWriter = new FileWriter(newProblem);
@@ -33,8 +35,7 @@ public class ProblemProcessor {
 	}
 
 	public static void main(String[] args) throws IOException {
-		saveProblem("dfdsfsdfsdf", 44, "fyrfhtgh");
-
+		
 	}
 
 }
