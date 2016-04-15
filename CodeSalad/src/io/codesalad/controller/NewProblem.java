@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import io.codesalad.model.DatabaseManager;
+import io.codesalad.model.Problem;
 import io.codesalad.model.ProblemProcessor;
 import io.codesalad.model.User;
 
@@ -113,6 +115,24 @@ public class NewProblem extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//Sending a new page to view the problem
+		ProblemProcessor newProbProc = new ProblemProcessor();
+		Problem newProb = new Problem();
+		try {
+			newProb = newProbProc.getProblemData(pid);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("problem", newProb);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/problem.jsp");
+		rd.forward(request, response);
+		
+		
 	}
 
 }

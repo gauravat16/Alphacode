@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<div id="wysiwyg" style="margin: 20px;">
+  <input type="button" value="B" onclick="document.execCommand('bold', false, '');" style="font-weight: bold;" />
+   
+  <input type="button" value="I" onclick="document.execCommand('italic', false, '');" style="font-style: italic;" />
+   
+  <input type="button" value="U" onclick="document.execCommand('underline', false, '');" style="text-decoration: underline;"/>
+   
+  <input type="button" value="delete" onclick="document.execCommand('delete', false, '');" />
+   
+  <input type="button" value="link" onclick="document.execCommand('createLink', false, 'http://google.com');" />
+   
+  <input type="button" value="image" onclick="document.execCommand('insertImage', false, 'http://lorempixel.com/40/20/sports/')" />
+   
+  <div contenteditable="true">lol wa </div>
+</div>
+
+</body>
+</html>
+
