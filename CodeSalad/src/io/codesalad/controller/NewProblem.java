@@ -116,20 +116,8 @@ public class NewProblem extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		//Sending a new page to view the problem
-		ProblemProcessor newProbProc = new ProblemProcessor();
-		Problem newProb = new Problem();
-		try {
-			newProb = newProbProc.getProblemData(pid);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("problem", newProb);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/problem.jsp");
+		request.setAttribute("pid", pid);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSalad/ViewProblem");
 		rd.forward(request, response);
 		
 		

@@ -32,7 +32,7 @@
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
-                           ${user.uname}|<a href="/CodeSalad/Logout">Logout</a>
+                           ${user.uname}|<a href="/CodeSalad/Web/index.jsp">Logout</a>
                            
                           
                         </ul>

@@ -91,8 +91,7 @@ public class LoginSignup extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("user", newUser);
-			RequestDispatcher newDispatcher = request.getRequestDispatcher("/Web/index.jsp");
-			newDispatcher.forward(request, response);
+			response.sendRedirect("/Web/index");
 
 		} else {
 			response.getWriter().println("fuck off please dear " + email);
