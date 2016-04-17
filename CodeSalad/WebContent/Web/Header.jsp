@@ -61,10 +61,10 @@
                         <li class="dropdown"><a href="#">Problems <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                             <li><a href="${path}/NewProblem.jsp">Add Problem</a></li>
-                                <li><a href="/CodeSalad/Problems?difficulty=B">Beginner</a></li>
-                                <li><a href="/CodeSalad/ProblemList">Easy</a></li>
-                                <li><a href="/CodeSalad/Problems?difficulty=M">Medium</a></li>
-                                <li><a href="/CodeSalad/Problems?difficulty=H">Hard</a></li>
+                                <li><a href="/CodeSalad/ProblemList?difficulty=B">Beginner</a></li>
+                                <li><a href="/CodeSalad/ProblemList?difficulty=E">Easy</a></li>
+                                <li><a href="/CodeSalad/ProblemList?difficulty=M">Medium</a></li>
+                                <li><a href="/CodeSalad/ProblemList?difficulty=H">Hard</a></li>
                                </ul>
                         </li>                    
                         <li class="dropdown"><a href="blog.html">Blog <i class="fa fa-angle-down"></i></a>

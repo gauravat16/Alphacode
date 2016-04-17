@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">Beginner</h1>
+                            <h1 class="title">${PObjs[0].difficulty}</h1>
                            
                         </div>
                      </div>
@@ -17,13 +17,17 @@
         </div>
    </section>
    
-   <c: forEach var="problem" items="PObjs" varStatus="index">
+  
+   <table border="1" style="width:50%">
+   <c:forEach var="problem" items="${PObjs}" varStatus="index">
    <tr>
-   <td>${problem.pid}</td>
+   <td><c:out value="${problem.pid}" /></td>
    <td>${problem.problemName}</td>
    <td>${problem.author}</td>
    <td>${problem.createdOn}</td>
    </tr>
+   </c:forEach>
+   </table>
     <footer id="footer">
         <div class="container">
             <div class="row">

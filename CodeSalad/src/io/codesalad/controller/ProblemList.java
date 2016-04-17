@@ -37,22 +37,14 @@ public class ProblemList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
 		String difficulty = request.getParameter("difficulty");
+		System.out.println(difficulty);
 		DatabaseManager newDBJob = new DatabaseManager();
 		ResultSet rd;
 		Problem newProblem = new Problem();
-		ArrayList<String> ProblemObjs = new ArrayList<>();
+		ArrayList<Problem> ProblemObjs = new ArrayList<>();
 
 		try {
 
@@ -61,10 +53,14 @@ public class ProblemList extends HttpServlet {
 
 				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'B'");
 				while (rd.next()) {
+					newProblem = new Problem();
+					
+					newProblem.difficulty="Beginner";
 					newProblem.pid=rd.getString("ProbId");
 					newProblem.problemName=rd.getString("Pname");
 					newProblem.author=rd.getString("CreatedBy");
 					newProblem.createdOn=rd.getString("CreatedOn");
+					ProblemObjs.add(newProblem);
 
 				}
 				break;
@@ -73,23 +69,34 @@ public class ProblemList extends HttpServlet {
 
 				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'E'");
 				while (rd.next()) {
+					newProblem = new Problem();
+					newProblem.difficulty="Easy";
 					newProblem.pid=rd.getString("ProbId");
 					newProblem.problemName=rd.getString("Pname");
 					newProblem.author=rd.getString("CreatedBy");
 					newProblem.createdOn=rd.getString("CreatedOn");
+					
+					ProblemObjs.add(newProblem);
+					
 
 				}
+				
 				break;
 
 			case "M":
 
 				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'M'");
 				while (rd.next()) {
+					newProblem = new Problem();
+					newProblem.difficulty="Medium";
 					newProblem.pid=rd.getString("ProbId");
 					newProblem.problemName=rd.getString("Pname");
 					newProblem.author=rd.getString("CreatedBy");
 					newProblem.createdOn=rd.getString("CreatedOn");
+					
 
+					ProblemObjs.add(newProblem);
+					
 				}
 				break;
 
@@ -97,10 +104,13 @@ public class ProblemList extends HttpServlet {
 
 				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'H'");
 				while (rd.next()) {
+					newProblem = new Problem();
+					newProblem.difficulty="Hard";
 					newProblem.pid=rd.getString("ProbId");
 					newProblem.problemName=rd.getString("Pname");
 					newProblem.author=rd.getString("CreatedBy");
 					newProblem.createdOn=rd.getString("CreatedOn");
+					ProblemObjs.add(newProblem);
 
 				}
 				break;
@@ -114,10 +124,28 @@ public class ProblemList extends HttpServlet {
 			// TODO: handle exception
 		}
 		request.setAttribute("PObjs", ProblemObjs);
+		for(Problem prob : ProblemObjs)
+		{
+			System.out.println(prob.pid+"\n");
+		}
 		
 
-		RequestDispatcher newDispatcher = request.getRequestDispatcher("/Web/Questions.jsp");
+		RequestDispatcher newDispatcher = getServletContext().getRequestDispatcher("/Web/Questions.jsp");
 		newDispatcher.forward(request, response);
+		
+		
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		
 
 	}
 
