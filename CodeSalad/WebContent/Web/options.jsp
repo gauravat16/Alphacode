@@ -12,9 +12,13 @@ textarea {
 count=1;
       var nameElement=3;
      function addText(name) {
+<<<<<<< HEAD
         
    if(count<7)
         {
+=======
+    	
+>>>>>>> refs/remotes/origin/master
      var element = document.createElement("textarea");
    
      var text = document.getElementById("testCases");
@@ -27,6 +31,25 @@ count=1;
      element.setAttribute("cols",40);
      element.setAttribute("rows",1);
     text.appendChild(element);
+<<<<<<< HEAD
+=======
+    text.innerHTML = text.innerHTML+"testcase";
+    
+    		 
+    var element1 = document.createElement("textarea");
+    
+    var text1 = document.getElementById("testCases");
+  
+
+    element1.setAttribute("name", nameElement);
+    nameElement++;
+    element1.setAttribute("cols",1);
+    element1.setAttribute("rows",2);
+
+   text1.appendChild(element1);
+   text1.innerHTML = text1.innerHTML+" value <br/>"  ;
+   		 
+>>>>>>> refs/remotes/origin/master
     
     
              
@@ -53,6 +76,7 @@ count=1;
 }
     </script>
 
+<<<<<<< HEAD
 
 <form method="post" action="/CodeSalad/NewProblem" id="main-contact-form">
      <div class="col-md-6 padding">
@@ -94,3 +118,13 @@ count=1;
     </form>    
                
        
+=======
+   
+    <input type="button" value="Text Area" onclick="addText('textarea')">
+       
+    <div id="testCases"> </div>
+    
+    
+    
+    
+>>>>>>> refs/remotes/origin/master
