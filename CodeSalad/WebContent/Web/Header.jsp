@@ -32,7 +32,7 @@
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
-                           ${user.uname}|<a href="/CodeSalad/Web/index.jsp">Logout</a>
+                           ${user.uname}|<a href="/CodeSalad/Logout">Logout</a>
                            
                           
                         </ul>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="/CodeSalad/HomeRefresh?user=${user}">Home</a></li>
+                        <li class="active"><a href="/CodeSalad/Web/index.jsp">Home</a></li>
                         <li class="dropdown"><a href="#">Problems <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                             <li><a href="${path}/NewProblem.jsp">Add Problem</a></li>

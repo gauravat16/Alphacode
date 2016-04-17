@@ -89,9 +89,9 @@ public class LoginSignup extends HttpServlet {
 			newUser.email = userValues.get(email);
 			newUser.email = userValues.get("progsFile");
 
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(false);
 			session.setAttribute("user", newUser);
-			response.sendRedirect("/Web/index");
+			response.sendRedirect("/CodeSalad/Web/index.jsp");
 
 		} else {
 			response.getWriter().println("fuck off please dear " + email);
