@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">Problem - ${prob.pname}</h1>
+                            <h1 class="title">Problem - ${problem.problemName}</h1>
                            </div>
                      </div>
                 </div>
@@ -16,11 +16,11 @@
         </div>
    </section>
    
-   <form action="/RunMatchCode" method="post">
+   <form action="/CodeSalad/RunMatchCode" method="post">
    <select name="lang">
-   <option value="Java">Java</option>
-   <option value="C">C</option>
-   <option value="C++">C++</option>
+   <option value="java">Java</option>
+   <option value="c">C</option>
+   <option value="cpp">C++</option>
    </select><br>
    <textarea rows="10" cols="30" placeholder="Enter the code" name="code"></textarea>
    <input type="submit" value="Submit"></input>

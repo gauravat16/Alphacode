@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import io.codesalad.model.CodeProcessor;
+import io.codesalad.model.DirectoryManager;
 import io.codesalad.model.Problem;
 import io.codesalad.model.User;
 
@@ -44,14 +45,22 @@ public class RunMatchCode extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		User newUser = (User) session.getAttribute("user");
-		Problem newProblem = (Problem) request.getAttribute("prob");
+		Problem newProblem = (Problem) session.getAttribute("problem");
 		String pid = newProblem.pid;
+		String Rawcode = request.getParameter("code");
+		String lang = request.getParameter("lang");
+		
+		//create files
+		
+		DirectoryManager newDirJob = new DirectoryManager();
+		newDirJob.HtmlToCode(Rawcode, newUser.email, pid, lang);
 		
 		//Run and match the code
 		
 		CodeProcessor newJob = new CodeProcessor();
-		int status = newJob.RunAndCompare(pid, newUser.uname);
-		
+		System.out.println(newUser.email);
+		newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
+		int status = newJob.RunAndCompare(pid, newUser.email);
 		System.out.println(status);
 		
 		

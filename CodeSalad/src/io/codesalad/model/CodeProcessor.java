@@ -13,26 +13,21 @@ public class CodeProcessor {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CodeProcessor(String Rawcode, String uname, int pid, String lang) throws ExecuteException, IOException {
-		DirectoryManager newJob = new DirectoryManager();
-		newJob.HtmlToCode(Rawcode, uname, pid, lang); // create .lang file
-		runCodeJava(Rawcode, uname, pid, lang); // runs java code
+	
 
-	}
-
-	int runCodeJava(String Rawcode, String uname, int pid, String lang) throws ExecuteException, IOException {
+public	int runCodeJava(String Rawcode, String uname, String pid, String lang) throws ExecuteException, IOException {
 
 		int status = 0;
-		String fileAddress = "Users/" + uname + "/" + pid + "." + lang;
+		String fileAddress = "/home/gaurav/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
 
-		String script = "#!/bin/bash  \n" + "javac " + fileAddress + "\n java -classpath Users/" + uname + " "
-				+ "Main > Users/" + uname + "/output.txt";
+		String script = "#!/bin/bash  \n" + "javac " + fileAddress ;
+		System.out.println(script);
 		Scriptinator newScript = new Scriptinator(script, "RunjavaCode"); // new
 																			// script
 																			// name-RunJavaCode
 																			// created
 
-		String line = "./Scripts/RunjavaCode.sh "; // run script
+		String line = "/home/gaurav/CodeSalad/Scripts/RunjavaCode.sh "; // run script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
 		status = executor.execute(command);
@@ -75,14 +70,17 @@ public class CodeProcessor {
 		fWriter.write(temp2);
 		fWriter.flush();
 		fWriter.close();
+		
+		
 
 		String address1 = "/home/gaurav/CodeSalad/Users/" + uname + "/output.txt";
 		String address2 = "/home/gaurav/CodeSalad/Problems/" + pid + "/testoutputs.txt";
 
-		String script = "#!/bin/bash \n echo " + temp1 + " | java -classpath /home/gaurav/CodeSalad/Users/" + uname + " Main  > Users/" + uname
+		String script = "#!/bin/bash \n echo " + temp1 + " | java -classpath /home/gaurav/CodeSalad/Users/" + uname + " Main  > /home/gaurav/CodeSalad/Users/" + uname
 				+ "/output.txt";
+		
 		Scriptinator newScript = new Scriptinator(script, "Compare");
-		String line = ".//home/gaurav/CodeSalad/Scripts/Compare.sh "; // run the script
+		String line = "/home/gaurav/CodeSalad/Scripts/Compare.sh "; // run the script
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
 		status = executor.execute(cmdLine);

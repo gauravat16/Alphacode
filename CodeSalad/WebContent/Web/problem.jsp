@@ -24,8 +24,9 @@
 </div>
 
  <div class="col-md-6 padding">
- 
- <form action="/CodeSalad/ShellSolution?pid="${problem.pid}">
+ ${problem.pid}
+ <a href="/CodeSalad/ShellSolution?pid=${problem.pid}">fsd</a>
+ <form action="">
  <input type="submit" value="submit"></input> 
  </form>
  

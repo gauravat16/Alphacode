@@ -56,7 +56,7 @@ public class DirectoryManager {
 		return status;
 	}
 
-	public int HtmlToCode(String Rawcode, String uname, int pid, String lang) throws IOException {
+	public int HtmlToCode(String Rawcode, String uname, String pid, String lang) throws IOException {
 		int status = 0;
 
 		File newScript = new File("/home/gaurav/CodeSalad/Users/" + uname + "/" + pid + "." + lang);

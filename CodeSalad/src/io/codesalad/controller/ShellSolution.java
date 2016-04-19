@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import io.codesalad.model.Problem;
 import io.codesalad.model.ProblemProcessor;
@@ -45,9 +46,9 @@ public class ShellSolution extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("prob", newProblem);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSala/RunMatchCode");
-		rd.forward(request, response);
+		HttpSession newSession = request.getSession(false);
+		newSession.setAttribute("problem", newProblem);
+		response.sendRedirect("/CodeSalad/Web/Solution.jsp");
 		
 	}
 
