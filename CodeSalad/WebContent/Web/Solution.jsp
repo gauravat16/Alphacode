@@ -8,30 +8,28 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">${problem.problemName}</h1>
-                            <p>Difficulty - ${problem.difficulty}</p>
-                           
-                        </div>
+                            <h1 class="title">Problem - ${prob.pname}</h1>
+                           </div>
                      </div>
                 </div>
             </div>
         </div>
    </section>
-    <div class="col-md-6 padding">
    
-   ${problem.problemText}
+   <form action="/RunMatchCode" method="post">
+   <select name="lang">
+   <option value="Java">Java</option>
+   <option value="C">C</option>
+   <option value="C++">C++</option>
+   </select><br>
+   <textarea rows="10" cols="30" placeholder="Enter the code" name="code"></textarea>
+   <input type="submit" value="Submit"></input>
+   
+   
+   
+   </form>
 
-</div>
-
- <div class="col-md-6 padding">
- 
- <form action="/CodeSalad/Web/Solution.jsp?pid="${problem.pid}">
- <input type="submit" value="submit"></input> 
- </form>
- 
- </div>
-
-
+  
 
     <footer id="footer">
         <div class="container">

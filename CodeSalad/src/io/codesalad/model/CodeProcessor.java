@@ -40,7 +40,7 @@ public class CodeProcessor {
 		return status;
 	}
 
-	static int RunAndCompare(int pid, String uname) throws ExecuteException, IOException {
+	public int RunAndCompare(String pid, String uname) throws ExecuteException, IOException {
 		int status = 0;
 		ArrayList<String> list = new ArrayList<>();
 
