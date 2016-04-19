@@ -116,7 +116,7 @@ public class NewProblem extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-pid = (String) request.getAttribute("pid");
+        
 		
 		
 		//Sending a new page to view the problem

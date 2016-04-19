@@ -17,9 +17,9 @@
             </div>
         </div>
    </section>
-   
+   <div style="margin-left: 80px; margin-right: 550px">
    ${problem.problemText}
-
+</div>
 
 
 

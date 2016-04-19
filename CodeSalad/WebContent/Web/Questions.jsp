@@ -17,17 +17,18 @@
         </div>
    </section>
    
-  
+   <div style="margin-left: 80px; margin-right: 550px">
    <table border="1" style="width:50%">
    <c:forEach var="problem" items="${PObjs}" varStatus="index">
    <tr>
    <td><c:out value="${problem.pid}" /></td>
-   <td><a href="/CodeSalad/ViewProblem?pid=${problem.pid}">${problem.problemName}</a>></td>
+   <td><a href="/CodeSalad/ViewProblem?pid=${problem.pid}">${problem.problemName}</a></td>
    <td>${problem.author}</td>
    <td>${problem.createdOn}</td>
    </tr>
    </c:forEach>
    </table>
+   </div>
     <footer id="footer">
         <div class="container">
             <div class="row">
