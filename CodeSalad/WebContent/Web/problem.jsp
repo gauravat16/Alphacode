@@ -25,7 +25,7 @@
 
  <div class="col-md-6 padding">
  
- <form action="/CodeSalad/Web/Solution.jsp?pid="${problem.pid}">
+ <form action="/CodeSalad/ShellSolution?pid="${problem.pid}">
  <input type="submit" value="submit"></input> 
  </form>
  
