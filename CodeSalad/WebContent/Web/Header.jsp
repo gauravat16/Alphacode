@@ -51,7 +51,7 @@
                     </button>
 
                     <a class="navbar-brand" href="index.html">
-                    	<a href="/CodeSalad/Web/index.jsp"><h1><img src="${path}/images/logo.png" alt="logo"></h1></a>
+                    	<a href="/CodeSalad/Web/index.jsp"><h1><img src="${path}/images/logocode.png" alt="logo"></h1></a>
                     </a>
                     
                 </div>

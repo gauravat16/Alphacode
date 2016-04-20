@@ -45,7 +45,7 @@ public class GetCode extends HttpServlet {
 		System.out.println(lang);
 		//CodeProcessor newJob = new CodeProcessor(code,"lol",4,lang);
 		DirectoryManager obj = new DirectoryManager();
-		obj.HtmlToCode(code, "lol", 4, lang);
+		//obj.HtmlToCode(Rawcode, uname, pid, lang);
 		
 		
 		

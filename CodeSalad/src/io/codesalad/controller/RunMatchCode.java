@@ -58,10 +58,14 @@ public class RunMatchCode extends HttpServlet {
 		//Run and match the code
 		
 		CodeProcessor newJob = new CodeProcessor();
-		System.out.println(newUser.email);
-		newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
-		int status = newJob.RunAndCompare(pid, newUser.email);
-		System.out.println(status);
+		//System.out.println(newUser.email);
+		int status = newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
+		if(status==1)
+		{
+			System.out.println("error");
+		}
+	    newJob.RunAndCompare(pid, newUser.email);
+		//System.out.println(status);
 		
 		
 	}

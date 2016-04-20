@@ -55,7 +55,7 @@ public class LoginSignup extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(password);
+		
 		Boolean result = false;
 
 		DatabaseManager newTask = new DatabaseManager();
@@ -89,12 +89,12 @@ public class LoginSignup extends HttpServlet {
 			newUser.email = email;
 			newUser.progsFile = userValues.get("progsFile");
 
-			HttpSession session = request.getSession(false);
+			HttpSession session = request.getSession();
 			session.setAttribute("user", newUser);
 			response.sendRedirect("/CodeSalad/Web/index.jsp");
 
 		} else {
-			response.getWriter().println("fuck off please dear " + email);
+			response.getWriter().println("you arent registered with us" + email);
 
 		}
 

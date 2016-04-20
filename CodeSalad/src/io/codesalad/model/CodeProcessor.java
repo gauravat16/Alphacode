@@ -17,11 +17,11 @@ public class CodeProcessor {
 
 public	int runCodeJava(String Rawcode, String uname, String pid, String lang) throws ExecuteException, IOException {
 
-		int status = 0;
+		int status=1;
 		String fileAddress = "/home/gaurav/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
 
-		String script = "#!/bin/bash  \n" + "javac " + fileAddress ;
-		System.out.println(script);
+		String script = "#!/bin/bash  \n" + "javac -Xstdout " +"/home/gaurav/CodeSalad/Users/"+uname+"/"+pid+"error.txt "+ fileAddress  ;
+		
 		Scriptinator newScript = new Scriptinator(script, "RunjavaCode"); // new
 																			// script
 																			// name-RunJavaCode
@@ -30,7 +30,13 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 		String line = "/home/gaurav/CodeSalad/Scripts/RunjavaCode.sh "; // run script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
-		status = executor.execute(command);
+		try {
+			status = executor.execute(command);
+		} catch (Exception e) {
+			
+			return status;
+		}
+	
 
 		return status;
 	}
@@ -112,14 +118,5 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 
 	}
 
-	public static void main(String[] args) throws ExecuteException, IOException {
-
-		// System.out.println("#!/bin/bash \n echo " + "temp1" + " | java
-		// -classpath Users/" + "uname" + " main > Users/" + "uname" +
-		// "/output.txt");
-
-		// RunAndCompare(44, "lol");
-
-	}
-
+	
 }
