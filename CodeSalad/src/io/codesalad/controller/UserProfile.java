@@ -53,7 +53,6 @@ public class UserProfile extends HttpServlet {
 			newUser.email = userDetails.get("email");
 			newUser.pic = userDetails.get("pic");
 			newSession.setAttribute("user",newUser );
-			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +60,9 @@ public class UserProfile extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("lol");
 		
+		response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 
 		
 		
