@@ -42,7 +42,7 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 	}
 
 	public int RunAndCompare(String pid, String uname) throws ExecuteException, IOException {
-		int status = 0;
+		int status = 1;
 		ArrayList<String> list = new ArrayList<>();
 
 		File testcases = new File("/home/gaurav/CodeSalad/Problems/" + pid + "/testcases.txt");
@@ -59,6 +59,7 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 
 				}
 				if (values.charAt(i) == '|') {
+					temp1 += " ";
 					track = i;
 					break;
 				}
@@ -85,12 +86,18 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 		String script = "#!/bin/bash \n echo " + temp1 + " | java -classpath /home/gaurav/CodeSalad/Users/" + uname + " Main  > /home/gaurav/CodeSalad/Users/" + uname
 				+ "/output.txt";
 		
+		
 		Scriptinator newScript = new Scriptinator(script, "Compare");
 		String line = "/home/gaurav/CodeSalad/Scripts/Compare.sh "; // run the script
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
+		try{
 		status = executor.execute(cmdLine);
-
+		}catch(Exception e)
+		{
+			return status;
+		}
+		
 		File f1 = new File(address1);
 		File f2 = new File(address2);
 		FileInputStream fIn1 = new FileInputStream(f1);
@@ -111,11 +118,25 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 		}
 
 		if (F1.equals(F2)) {
-			status = 1;
+			status = 0;
 		}
 
 		return status;
 
+	}
+	
+	public String errGen(String pid, String uname) throws IOException
+	{
+		File errorLog = new File("/home/gaurav/CodeSalad/Users/"+uname+"/"+pid+"error.txt");
+		FileInputStream fIn = new FileInputStream(errorLog);
+		BufferedReader bRead = new BufferedReader(new InputStreamReader(fIn));
+		String values;
+		String temp="";
+		while ((values = bRead.readLine()) != null) {
+			temp+=values+"\n";
+			
+		}
+		return temp;
 	}
 
 	

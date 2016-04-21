@@ -62,9 +62,27 @@ public class RunMatchCode extends HttpServlet {
 		int status = newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
 		if(status==1)
 		{
-			System.out.println("error");
+			String error = newJob.errGen(pid, newUser.email);
+			session.setAttribute("msg", error);
+			response.sendRedirect("/CodeSalad/Web/Result.jsp");
 		}
-	    newJob.RunAndCompare(pid, newUser.email);
+		
+		else
+		{
+			status =newJob.RunAndCompare(pid, newUser.email);
+			if(status==1)
+			{
+				String error = "Wrong Answer";
+				session.setAttribute("msg", error);
+				response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			}
+			else
+			{
+				session.setAttribute("msg", "Correct answer!");
+				response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			}
+		}
+	    
 		//System.out.println(status);
 		
 		

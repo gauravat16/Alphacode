@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -99,9 +102,9 @@ public class NewProblem extends HttpServlet {
 		newProcessor.saveProblem(code, pid, testCases);
 
 		DatabaseManager newDbjob = new DatabaseManager();
-		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		String time = sdf.format(cal.getTime());
+
+		
+		String time = LocalDate.now().toString();
 		
 		String query = "insert into CodeSalad.Problems (`Pname`,`CreatedBy`,`CreatedOn`,`MaxTime`,`MaxMemory`,`Difficulty`) values ('" + pname + "' ,  '" +user.uname+ " ' '" + "' , '" + time
 				+ "' , ' ' , ' ' , '" + plevel + "' )";

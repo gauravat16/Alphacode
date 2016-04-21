@@ -18,19 +18,16 @@
         </div>
    </section>
     <div class="col-md-6 padding">
+   <p>
    
+   ${msg}
+   
+   </p>
 
 
 </div>
 
- <div class="col-md-6 padding">
- ${problem.pid}
- <a href="/CodeSalad/ShellSolution?pid=${problem.pid}">fsd</a>
- <form action="">
- <input type="submit" value="submit"></input> 
- </form>
- 
- </div>
+
 
 
 
