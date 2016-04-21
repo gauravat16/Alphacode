@@ -19,7 +19,8 @@ public class DatabaseManager {
 
 	public void addUser(String name, String password, String email,String progslist) throws ClassNotFoundException, SQLException {
 		// adds user to database
-		String query = "insert into CodeSalad.Users values ('"+name+"','"+password+"','"+progslist+"','"+email+"')";
+		String query = "insert into CodeSalad.Users values ('"+name+"','"+password+"','"+email+"', '' )";
+		System.out.println(query);
 	    this.getDBConnection().execute(query);
 		
 		
@@ -57,7 +58,7 @@ public class DatabaseManager {
 		while (rs.next()) {
 			userData.put("userName", rs.getString("userName"));
 			userData.put("password", rs.getString("password"));
-			userData.put("progsFile", rs.getString("progsFile"));
+			userData.put("pic", rs.getString("pic"));
 			
 		}
 

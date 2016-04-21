@@ -32,8 +32,16 @@
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
-                           ${user.uname}|<a href="/CodeSalad/Logout">Logout</a>
-                           
+                        <c:choose>
+                        <c:when test="${user.uname==null}">
+                        Guest|<a href="/CodeSalad/Web/LoginMain/loginmain.html">Login</a>
+                        </c:when>
+                        <c:when test="${user.uname!=null}">
+                       <a href="/CodeSalad/UserProfile">  ${user.uname}</a>|<a href="/CodeSalad/Logout">Logout</a>
+                        </c:when>
+                    </c:choose>           
+                        
+                                          
                           
                         </ul>
                     </div> 

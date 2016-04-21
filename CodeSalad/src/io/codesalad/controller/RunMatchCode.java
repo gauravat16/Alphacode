@@ -1,6 +1,9 @@
 package io.codesalad.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import io.codesalad.model.CodeProcessor;
+import io.codesalad.model.DatabaseManager;
 import io.codesalad.model.DirectoryManager;
 import io.codesalad.model.Problem;
 import io.codesalad.model.User;
@@ -56,14 +60,22 @@ public class RunMatchCode extends HttpServlet {
 		newDirJob.HtmlToCode(Rawcode, newUser.email, pid, lang);
 		
 		//Run and match the code
+		DatabaseManager newDbJob = new DatabaseManager();
+		String time = LocalDate.now().toString();
+		String query;
 		
 		CodeProcessor newJob = new CodeProcessor();
 		//System.out.println(newUser.email);
 		int status = newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
+		try{
 		if(status==1)
 		{
+			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','CE','','','"+time+"','"+lang+"')";
+			newDbJob.getDBConnection().execute(query);
+
 			String error = newJob.errGen(pid, newUser.email);
 			session.setAttribute("msg", error);
+			
 			response.sendRedirect("/CodeSalad/Web/Result.jsp");
 		}
 		
@@ -72,18 +84,28 @@ public class RunMatchCode extends HttpServlet {
 			status =newJob.RunAndCompare(pid, newUser.email);
 			if(status==1)
 			{
+				query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','WA','','','"+time+"','"+lang+"')";
+				newDbJob.getDBConnection().execute(query);
+				
 				String error = "Wrong Answer";
 				session.setAttribute("msg", error);
 				response.sendRedirect("/CodeSalad/Web/Result.jsp");
 			}
 			else
 			{
+				query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','CA','','','"+time+"','"+lang+"')";
+				newDbJob.getDBConnection().execute(query);
+				
 				session.setAttribute("msg", "Correct answer!");
 				response.sendRedirect("/CodeSalad/Web/Result.jsp");
 			}
 		}
-	    
-		//System.out.println(status);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		
 		
 	}

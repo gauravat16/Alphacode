@@ -8,8 +8,8 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">${problem.problemName}</h1>
-                            <p>Difficulty - ${problem.difficulty}</p>
+                            <h1 class="title">Result</h1>
+                           
                            
                         </div>
                      </div>
@@ -17,9 +17,10 @@
             </div>
         </div>
    </section>
+     
+  
     <div class="col-md-6 padding">
    <p>
-   
    ${msg}
    
    </p>

@@ -124,10 +124,7 @@ public class ProblemList extends HttpServlet {
 			// TODO: handle exception
 		}
 		request.setAttribute("PObjs", ProblemObjs);
-		for(Problem prob : ProblemObjs)
-		{
-			System.out.println(prob.pid+"\n");
-		}
+		
 		
 
 		RequestDispatcher newDispatcher = getServletContext().getRequestDispatcher("/Web/Questions.jsp");

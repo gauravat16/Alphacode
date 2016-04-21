@@ -2,8 +2,8 @@ package io.codesalad.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,20 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import io.codesalad.model.DatabaseManager;
-import io.codesalad.model.DirectoryManager;
 import io.codesalad.model.User;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class UserProfile
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/UserProfile")
+public class UserProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public UserProfile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,6 +34,7 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -43,15 +43,17 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		DatabaseManager newJob = new DatabaseManager();
-		DirectoryManager newFolder = new DirectoryManager();
-		String address = newFolder.UserFolder(email);
+		HttpSession newSession = request.getSession(false);
+		User newUser = (User) newSession.getAttribute("user");
+		DatabaseManager newDbJob = new DatabaseManager();
+		HashMap<String, String> userDetails;
 		try {
-			newJob.addUser(name, password, email, address);
+			userDetails = newDbJob.getUserDetails(newUser.email);
+			newUser.uname = userDetails.get("userName");
+			newUser.email = userDetails.get("email");
+			newUser.pic = userDetails.get("pic");
+			newSession.setAttribute("user",newUser );
+			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,12 +61,16 @@ public class Register extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		User newUser = new User();
-		newUser.uname=name;
-	
-		HttpSession session = request.getSession();
-		session.setAttribute("user", newUser);
-		response.sendRedirect("/CodeSalad/Web/index.jsp");
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 

@@ -3,7 +3,7 @@ package io.codesalad.model;
 public class User {
 	public String uname="Guest";
 	public String email="";
-	public String progsFile="";
+	public String pic="";
 	public String getUname()
 	{
 		return uname;
@@ -14,9 +14,9 @@ public class User {
 		return email;
 	}
 	
-	public String getProgsFile()
+	public String getPic()
 	{
-		return progsFile;
+		return pic;
 	}
 	
 	

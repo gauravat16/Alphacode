@@ -87,7 +87,7 @@ public class LoginSignup extends HttpServlet {
 			User newUser = new User();
 			newUser.uname = userValues.get("userName");
 			newUser.email = email;
-			newUser.progsFile = userValues.get("progsFile");
+			newUser.pic = userValues.get("progsFile");
 
 			HttpSession session = request.getSession();
 			session.setAttribute("user", newUser);

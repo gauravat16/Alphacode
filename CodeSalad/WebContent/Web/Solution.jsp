@@ -16,6 +16,12 @@
         </div>
    </section>
    
+   
+    <c:choose>
+   <c:when test="${user.uname == null}">
+   You need to login to Submit a solution.
+   </c:when>
+   <c:when test="${user.uname != null}">
    <form action="/CodeSalad/RunMatchCode" method="post">
    <select name="lang">
    <option value="java">Java</option>
@@ -23,12 +29,17 @@
    <option value="cpp">C++</option>
    </select><br>
    <textarea rows="10" cols="30" placeholder="Enter the code" name="code"></textarea>
+  
    <input type="submit" value="Submit"></input>
    
    
    
    </form>
-
+   
+   </c:when>
+   </c:choose>
+   
+   
   
 
     <footer id="footer">

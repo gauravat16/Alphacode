@@ -85,6 +85,7 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 
 		String script = "#!/bin/bash \n echo " + temp1 + " | java -classpath /home/gaurav/CodeSalad/Users/" + uname + " Main  > /home/gaurav/CodeSalad/Users/" + uname
 				+ "/output.txt";
+		System.out.println(script);
 		
 		
 		Scriptinator newScript = new Scriptinator(script, "Compare");
@@ -136,8 +137,16 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 			temp+=values+"\n";
 			
 		}
+		/*String line = "cp /home/gaurav/CodeSalad/Users/"+uname+"/"+pid+"error.txt WebContent/Web/Errlog/error.txt" ; // run script
+		CommandLine command = CommandLine.parse(line);
+		DefaultExecutor executor = new DefaultExecutor();
+		executor.execute(command);*/
+		
 		return temp;
 	}
-
 	
+	public static void main(String[] args) throws IOException
+	{
+		
+	}
 }
