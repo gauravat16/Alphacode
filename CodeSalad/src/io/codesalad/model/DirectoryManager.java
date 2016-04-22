@@ -87,7 +87,7 @@ public class DirectoryManager {
 		return status;
 	}
 
-	public String getProfilePic(String uname, String picAddress) throws ExecuteException, IOException {
+	public static String getProfilePic(String uname, String picAddress) throws ExecuteException, IOException {
 		// gets last 2 of the picture extension
 		String last2 = Character.toString(picAddress.charAt(picAddress.length() - 2))
 				+ Character.toString(picAddress.charAt(picAddress.length() - 1));
@@ -124,7 +124,7 @@ public class DirectoryManager {
 	
 	public static void main(String[] args) throws ExecuteException, IOException
 	{
-		//getProfilePic("Mario@mushroom.com", "/home/gaurav/CodeSalad/Users/Mario@mushroom.com/MarioSMBW.png");
+		getProfilePic("Mario@mushroom.com", "/home/gaurav/CodeSalad/Users/Mario@mushroom.com/MarioSMBW.png");
 	}
 
 }

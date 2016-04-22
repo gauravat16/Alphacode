@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DatabaseManager {
@@ -17,18 +18,16 @@ public class DatabaseManager {
 
 	}
 
-	public void addUser(String name, String password, String email,String progslist) throws ClassNotFoundException, SQLException {
+	public void addUser(String name, String password, String email, String progslist)
+			throws ClassNotFoundException, SQLException {
 		// adds user to database
-		String query = "insert into CodeSalad.Users values ('"+name+"','"+password+"','"+email+"', '' )";
+		String query = "insert into CodeSalad.Users values ('" + name + "','" + password + "','" + email + "', '' )";
 		System.out.println(query);
-	    this.getDBConnection().execute(query);
-		
-		
+		this.getDBConnection().execute(query);
 
 	}
 
-	public String checkIfPresent(String email, String password)
-			throws ClassNotFoundException, SQLException {
+	public String checkIfPresent(String email, String password) throws ClassNotFoundException, SQLException {
 		// checks if user is present
 		String query = " select exists( select * from CodeSalad.Users where email='" + email + "' and password='"
 				+ password + "' ) as result ";
@@ -59,16 +58,33 @@ public class DatabaseManager {
 			userData.put("userName", rs.getString("userName"));
 			userData.put("password", rs.getString("password"));
 			userData.put("pic", rs.getString("pic"));
-			
+
 		}
 
 		return userData;
 
 	}
-	
-	
-	
-	
+
+	public ArrayList<Solution> getProblemsSolved(String email) throws ClassNotFoundException, SQLException {
+		String Query = "Select * from CodeSalad.Solutions where uname='" + email + "'";
+		ArrayList<Solution> list = new ArrayList<>();
+		ResultSet rs = new DatabaseManager().getDBConnection().executeQuery(Query);
+		while (rs.next()) {
+			Solution newSol = new Solution();
+			newSol.probid = rs.getString("ProbId");
+			newSol.status = rs.getString("Status");
+			newSol.execTime = rs.getString("ExecTime");
+			newSol.execMem = rs.getString("ExecMem");
+			newSol.submittedOn = rs.getString("SubmittedOn");
+			newSol.lang = rs.getString("LangUsed");
+			newSol.uname = rs.getString("Uname");
+			list.add(newSol);
+		}
+
+		return list;
+
+	}
+
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		String query = " select exists( select * from CodeSalad.Users where email='' and password='' )";

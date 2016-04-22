@@ -66,7 +66,7 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 
 			}
 			for (int j = track + 1; j < values.length(); j++) {
-				temp2 += values.charAt(j);
+				temp2 += values.charAt(j)+"\n";
 			}
 
 		}

@@ -1,7 +1,13 @@
 package io.codesalad.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -13,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import io.codesalad.model.DatabaseManager;
 import io.codesalad.model.DirectoryManager;
+import io.codesalad.model.Solution;
 import io.codesalad.model.User;
 
 /**
@@ -43,12 +50,20 @@ public class UserProfile extends HttpServlet {
 		DatabaseManager newDbJob = new DatabaseManager();
 		HashMap<String, String> userDetails;
 		String address="";
+		ArrayList<Solution> list = new ArrayList<>();
 		try {
 			userDetails = newDbJob.getUserDetails(newUser.email);
+			
+			//getting problems solved
+			list = newDbJob.getProblemsSolved(newUser.email);
+			
+			
 			newUser.uname = userDetails.get("userName");
 			newUser.email = userDetails.get("email");
 			newUser.pic = userDetails.get("pic");
+			System.out.println(newUser.pic);
 			
+			newSession.setAttribute("probSolved", list);
 			newSession.setAttribute("user", newUser);
 			
 		} catch (ClassNotFoundException e) {
@@ -58,6 +73,14 @@ public class UserProfile extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+			
+		
+		
+		
+	
+		
 		
 
 		response.sendRedirect("/CodeSalad/Web/Profile.jsp");

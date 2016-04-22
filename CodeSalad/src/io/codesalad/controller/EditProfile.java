@@ -95,10 +95,9 @@ public class EditProfile extends HttpServlet {
 	    
 	    DatabaseManager newDbJob = new DatabaseManager();
 	    try {
-			System.out.println("UPDATE CodeSalad.Users SET pic = '/CodeSalad/Web/images/profile/"+newUser.email+"."+extension+" WHERE `email` = '"+newUser.email+"'");
 
-			newDbJob.getDBConnection().execute("UPDATE CodeSalad.Users SET pic = '/CodeSalad/Web/images/profile/"+newUser.email+"."+extension+"' WHERE email = '"+newUser.email+"'");
-			newUser.pic="/CodeSalad/Web/images/profile/"+newUser.email+"."+extension;
+			newDbJob.getDBConnection().execute("UPDATE CodeSalad.Users SET pic = '/profile/"+newUser.email+"."+extension+"' WHERE email = '"+newUser.email+"'");
+			newUser.pic="/profile/"+newUser.email+"."+extension;
 			newSession.setAttribute("edituser", newUser);
 			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 		
