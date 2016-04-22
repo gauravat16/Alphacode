@@ -31,16 +31,20 @@
 					<c:when test="${user.pic==null}">
 						<img src="${path}/images/nopic.png" class="img-responsive"
 							alt="No profile pic">
+							
 					</c:when>
 					<c:otherwise>
+					${user.pic}
 						<img src="${user.pic}" class="img-responsive"
 							alt="Error Loading Profile pic">
 					</c:otherwise>
 				</c:choose>
-				<form action="">
+				<form action="/CodeSalad/EditProfile" enctype="multipart/form-data" method="post">
 				Upload Picture
 				<input type="file" name="pic">
+				<input type="submit">
 				</form>
+				
 
 			</div>
 			<div class="col-sm-8">

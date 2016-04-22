@@ -137,10 +137,7 @@ public	int runCodeJava(String Rawcode, String uname, String pid, String lang) th
 			temp+=values+"\n";
 			
 		}
-		/*String line = "cp /home/gaurav/CodeSalad/Users/"+uname+"/"+pid+"error.txt WebContent/Web/Errlog/error.txt" ; // run script
-		CommandLine command = CommandLine.parse(line);
-		DefaultExecutor executor = new DefaultExecutor();
-		executor.execute(command);*/
+		
 		
 		return temp;
 	}

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import io.codesalad.model.DatabaseManager;
+import io.codesalad.model.DirectoryManager;
 import io.codesalad.model.User;
 
 /**
@@ -20,39 +21,36 @@ import io.codesalad.model.User;
 @WebServlet("/UserProfile")
 public class UserProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserProfile() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	public UserProfile() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 		HttpSession newSession = request.getSession(false);
 		User newUser = (User) newSession.getAttribute("user");
 		DatabaseManager newDbJob = new DatabaseManager();
 		HashMap<String, String> userDetails;
+		String address="";
 		try {
 			userDetails = newDbJob.getUserDetails(newUser.email);
 			newUser.uname = userDetails.get("userName");
 			newUser.email = userDetails.get("email");
 			newUser.pic = userDetails.get("pic");
-			newSession.setAttribute("user",newUser );
+			
+			newSession.setAttribute("user", newUser);
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,19 +58,27 @@ public class UserProfile extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("lol");
 		
+
 		response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
+
 	}
 
-}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		
+		doGet(request, response);
+		
+		
+
+
+	}
+	}

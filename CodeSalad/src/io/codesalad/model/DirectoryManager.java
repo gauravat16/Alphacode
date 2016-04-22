@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
 
 public class DirectoryManager {
 
@@ -29,16 +30,16 @@ public class DirectoryManager {
 	}
 
 	public String UserFolder(String FolderName) throws IOException {
-		
+
 		String user = "gaurav";
 		String script = "#!/bin/bash  \n" + "mkdir /home/" + user + "/CodeSalad/Users/" + FolderName;
 
 		File newFolder = new File("/home/" + user + "/CodeSalad/Users/" + FolderName);
-		File newProglist = new File("/home/" + user + "/CodeSalad/Users/" + FolderName+"/proglist.txt");
+		File newProglist = new File("/home/" + user + "/CodeSalad/Users/" + FolderName + "/proglist.txt");
 		newFolder.mkdirs();
 		newProglist.createNewFile();
 
-		return "/home/" + user + "/CodeSalad/Users/" + FolderName +"/proglist.txt";
+		return "/home/" + user + "/CodeSalad/Users/" + FolderName + "/proglist.txt";
 	}
 
 	public int problemFolder(String FolderName) throws IOException {
@@ -86,6 +87,44 @@ public class DirectoryManager {
 		return status;
 	}
 
+	public String getProfilePic(String uname, String picAddress) throws ExecuteException, IOException {
+		// gets last 2 of the picture extension
+		String last2 = Character.toString(picAddress.charAt(picAddress.length() - 2))
+				+ Character.toString(picAddress.charAt(picAddress.length() - 1));
+		System.out.println(last2);
+		String extension = "";
+		switch (last2) {
+		case "ng":
+			extension = "png";
+			break;
+		case "eg":
+			extension = "jpeg";
+			break;
+
+		}
+
+		String line = "pwd";
+		System.out.println(line);// run
+																								// script
+		CommandLine command = CommandLine.parse(line);
+		DefaultExecutor executor = new DefaultExecutor();
+		executor.execute(command);
+		String sRootPath = new File("").getAbsolutePath();
+
+		return "WebContent/Web/images/" + uname + "." + extension;
+	}
+
+	public void delete(String address) throws ExecuteException, IOException {
+		String line = "rm"+address ; // run
+		// script
+		CommandLine command = CommandLine.parse(line);
+		DefaultExecutor executor = new DefaultExecutor();
+		executor.execute(command);
+	}
 	
+	public static void main(String[] args) throws ExecuteException, IOException
+	{
+		//getProfilePic("Mario@mushroom.com", "/home/gaurav/CodeSalad/Users/Mario@mushroom.com/MarioSMBW.png");
+	}
 
 }
