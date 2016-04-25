@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import io.codesalad.model.DatabaseManager;
 import io.codesalad.model.Problem;
+import io.codesalad.model.User;
 
 /**
  * Servlet implementation class Problems
@@ -37,100 +38,121 @@ public class ProblemList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
+
+		String userMail = request.getParameter("userMail");
 		String difficulty = request.getParameter("difficulty");
-		System.out.println(difficulty);
+		String isFromUser = request.getParameter("isFromUser");
 		DatabaseManager newDBJob = new DatabaseManager();
 		ResultSet rd;
 		Problem newProblem = new Problem();
 		ArrayList<Problem> ProblemObjs = new ArrayList<>();
 
-		try {
-
-			switch (difficulty) {
-			case "B":
-
-				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'B'");
+		if (isFromUser.equals("true")) {
+			try {
+				rd = newDBJob.getDBConnection()
+						.executeQuery("Select * from CodeSalad.Problems where CreatedBy = '" + userMail + "'");
+				System.out.println("Select * from CodeSalad.Problems where CreatedBy = '" + userMail + "'");
 				while (rd.next()) {
 					newProblem = new Problem();
-					
-					newProblem.difficulty="Beginner";
-					newProblem.pid=rd.getString("ProbId");
-					newProblem.problemName=rd.getString("Pname");
-					newProblem.author=rd.getString("CreatedBy");
-					newProblem.createdOn=rd.getString("CreatedOn");
+
+					newProblem.difficulty = "Beginner";
+					newProblem.pid = rd.getString("ProbId");
+					newProblem.problemName = rd.getString("Pname");
+					newProblem.author = rd.getString("CreatedBy");
+					newProblem.createdOn = rd.getString("CreatedOn");
 					ProblemObjs.add(newProblem);
 
 				}
-				break;
-
-			case "E":
-
-				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'E'");
-				while (rd.next()) {
-					newProblem = new Problem();
-					newProblem.difficulty="Easy";
-					newProblem.pid=rd.getString("ProbId");
-					newProblem.problemName=rd.getString("Pname");
-					newProblem.author=rd.getString("CreatedBy");
-					newProblem.createdOn=rd.getString("CreatedOn");
-					
-					ProblemObjs.add(newProblem);
-					
-
-				}
-				
-				break;
-
-			case "M":
-
-				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'M'");
-				while (rd.next()) {
-					newProblem = new Problem();
-					newProblem.difficulty="Medium";
-					newProblem.pid=rd.getString("ProbId");
-					newProblem.problemName=rd.getString("Pname");
-					newProblem.author=rd.getString("CreatedBy");
-					newProblem.createdOn=rd.getString("CreatedOn");
-					
-
-					ProblemObjs.add(newProblem);
-					
-				}
-				break;
-
-			case "H":
-
-				rd = newDBJob.getDBConnection().executeQuery("Select * from CodeSalad.Problems where Difficulty = 'H'");
-				while (rd.next()) {
-					newProblem = new Problem();
-					newProblem.difficulty="Hard";
-					newProblem.pid=rd.getString("ProbId");
-					newProblem.problemName=rd.getString("Pname");
-					newProblem.author=rd.getString("CreatedBy");
-					newProblem.createdOn=rd.getString("CreatedOn");
-					ProblemObjs.add(newProblem);
-
-				}
-				break;
-
-			default:
-				break;
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
+		else {
+			try {
 
-		catch (Exception e) {
-			// TODO: handle exception
+				switch (difficulty) {
+				case "B":
+
+					rd = newDBJob.getDBConnection()
+							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'B'");
+					while (rd.next()) {
+						newProblem = new Problem();
+
+						newProblem.difficulty = "Beginner";
+						newProblem.pid = rd.getString("ProbId");
+						newProblem.problemName = rd.getString("Pname");
+						newProblem.author = rd.getString("CreatedBy");
+						newProblem.createdOn = rd.getString("CreatedOn");
+						ProblemObjs.add(newProblem);
+
+					}
+					break;
+
+				case "E":
+
+					rd = newDBJob.getDBConnection()
+							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'E'");
+					while (rd.next()) {
+						newProblem = new Problem();
+						newProblem.difficulty = "Easy";
+						newProblem.pid = rd.getString("ProbId");
+						newProblem.problemName = rd.getString("Pname");
+						newProblem.author = rd.getString("CreatedBy");
+						newProblem.createdOn = rd.getString("CreatedOn");
+
+						ProblemObjs.add(newProblem);
+
+					}
+
+					break;
+
+				case "M":
+
+					rd = newDBJob.getDBConnection()
+							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'M'");
+					while (rd.next()) {
+						newProblem = new Problem();
+						newProblem.difficulty = "Medium";
+						newProblem.pid = rd.getString("ProbId");
+						newProblem.problemName = rd.getString("Pname");
+						newProblem.author = rd.getString("CreatedBy");
+						newProblem.createdOn = rd.getString("CreatedOn");
+
+						ProblemObjs.add(newProblem);
+
+					}
+					break;
+
+				case "H":
+
+					rd = newDBJob.getDBConnection()
+							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'H'");
+					while (rd.next()) {
+						newProblem = new Problem();
+						newProblem.difficulty = "Hard";
+						newProblem.pid = rd.getString("ProbId");
+						newProblem.problemName = rd.getString("Pname");
+						newProblem.author = rd.getString("CreatedBy");
+						newProblem.createdOn = rd.getString("CreatedOn");
+						ProblemObjs.add(newProblem);
+
+					}
+					break;
+
+				default:
+					break;
+				}
+			}
+
+			catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
+		
 		request.setAttribute("PObjs", ProblemObjs);
-		
-		
 
 		RequestDispatcher newDispatcher = getServletContext().getRequestDispatcher("/Web/Questions.jsp");
 		newDispatcher.forward(request, response);
-		
-		
 
 	}
 
@@ -142,7 +164,6 @@ public class ProblemList extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
 
 	}
 

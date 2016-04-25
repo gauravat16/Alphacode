@@ -22,40 +22,45 @@
 </section>
 <!--/#action-->
 
+
 <section id="portfolio-information" class="padding-top">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
 
 				<c:choose>
-					<c:when test="${user.pic==null}">
+					<c:when test="${profile.pic==null}">
 						<img src="${path}/images/nopic.png" class="img-responsive"
 							alt="No profile pic">
-							<form action="/CodeSalad/EditProfile" enctype="multipart/form-data"
-					method="post">
-					Upload Picture <input type="file" name="pic"> <input
-						type="submit">
-				</form>
+							
+				
 
 					</c:when>
 					<c:otherwise>
 					
-						<img src="${user.pic}" class="img-responsive"
+						<img src="${profile.pic}" class="img-responsive"
 							alt="Error Loading Profile pic" height="300px" width="300px">
-							<form action="/CodeSalad/EditProfile" enctype="multipart/form-data"
+							
+					</c:otherwise>
+				</c:choose>
+				
+				<c:choose>
+				<c:when test="${(isFromOtherUser==true) and (from != profile.email) }"></c:when>
+				<c:otherwise>
+				<form action="/CodeSalad/EditProfile" enctype="multipart/form-data"
 					method="post">
 					Upload new Picture <input type="file" name="pic"> <input
-						type="submit">
+						type="submit" value="Upload">
 				</form>
-					</c:otherwise>
+				</c:otherwise>
 				</c:choose>
 				
 
 
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-6">
 				<div class="project-name overflow">
-					<h2 class="bold">${user.uname}</h2>
+					<h2 class="bold">${profile.uname}</h2>
 					</div>
 				<div class="project-info overflow">
 					<h3>Problems Solved</h3>
@@ -81,6 +86,29 @@
 				</div>
 				
 			</div>
+			
+			<c:choose>
+				<c:when test="${(isFromOtherUser==true) and (from != profile.email) }"></c:when>
+				<c:otherwise>
+				<div class="col-sm-2">
+			<form action="/CodeSalad/Web/NewProblem.jsp">
+			<input type="submit" style="display: inline;" value="Add new problem">
+			</form>
+			<form action="/CodeSalad/NewProblem?isFromUser=true&userMail=${profile.email}" method="get">
+			<a href="/CodeSalad/ProblemList?isFromUser=true&userMail=${profile.email}"><input type="button" value="View your Problems"></a>
+			</form>
+			
+			
+			</div>
+				</c:otherwise>
+				</c:choose>
+			
+			
+			
+			
+			
+			
+			
 		</div>
 	</div>
 </section>

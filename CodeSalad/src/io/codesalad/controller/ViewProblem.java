@@ -1,7 +1,10 @@
 package io.codesalad.controller;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import io.codesalad.model.DatabaseManager;
 import io.codesalad.model.Problem;
 import io.codesalad.model.ProblemProcessor;
+import io.codesalad.model.Solution;
+import sun.security.pkcs11.Secmod.DbMode;
 
 /**
  * Servlet implementation class ViewProblem
@@ -50,8 +56,40 @@ String pid = (String) request.getParameter("pid");
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+	//gets all the people who attempted that problem
+				DatabaseManager newDbJob = new DatabaseManager();
+				Solution newSol ;
+				ArrayList<Solution> solList = new ArrayList<>();
+				HashMap<String, String> userDetails;
+				try {
+					ResultSet rs = newDbJob.getDBConnection().executeQuery("select * from CodeSalad.Solutions where ProbId = '"+pid+"'");
+					while(rs.next())
+					{	
+						newSol= new Solution();
+						newSol.execMem = rs.getString("ExecMem");
+						newSol.execTime = rs.getString("ExecTime");  
+						newSol.lang = rs.getString("LangUsed");
+						newSol.probid = rs.getString("ProbId");
+						newSol.status = rs.getString("Status");
+						newSol.submittedOn = rs.getString("SubmittedOn");
+						newSol.email = rs.getString("Uname");
+						userDetails=newDbJob.getUserDetails(rs.getString("Uname"));
+						newSol.uname=userDetails.get("userName") ;
+						solList.add(newSol);
+					
+					}
+					
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+				
 				HttpSession newSession =request.getSession(false);
 				newSession.setAttribute("problem", newProb);
+				newSession.setAttribute("pCoders", solList);
 				
 				
 				response.sendRedirect("/CodeSalad/Web/problem.jsp");

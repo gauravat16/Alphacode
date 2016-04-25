@@ -47,24 +47,82 @@ public class UserProfile extends HttpServlet {
 		
 		HttpSession newSession = request.getSession(false);
 		User newUser = (User) newSession.getAttribute("user");
+		User other = new User();
+		String email = request.getParameter("email");
+		String from = request.getParameter("from");
+
+		String isFromOtherUser = request.getParameter("isFromOtherUser");
 		DatabaseManager newDbJob = new DatabaseManager();
 		HashMap<String, String> userDetails;
 		String address="";
 		ArrayList<Solution> list = new ArrayList<>();
+		
+		if(isFromOtherUser.equals("true"))
+		{
+			
+			System.out.println("in this!");
+
+			
+			
+			try {
+				
+				userDetails = newDbJob.getUserDetails(email);
+				
+				//getting problems solved
+				list = newDbJob.getProblemsSolved(email);
+				
+				
+				newUser.uname = userDetails.get("userName");
+				newUser.email = userDetails.get("email");
+				newUser.pic = userDetails.get("pic");
+				
+				newSession.setAttribute("isFromOtherUser", "true");
+				newSession.setAttribute("from",from );
+				newSession.setAttribute("probSolved", list);
+				newSession.setAttribute("profile", newUser);
+				
+				userDetails = newDbJob.getUserDetails(from);
+				other.uname = userDetails.get("userName");
+				other.email = userDetails.get("email");
+				other.pic = userDetails.get("pic");
+				
+
+				
+				
+				
+				newSession.setAttribute("user", other);
+
+
+				response.sendRedirect("/CodeSalad/Web/Profile.jsp");
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		else{
+		
+		
+		
 		try {
 			userDetails = newDbJob.getUserDetails(newUser.email);
 			
 			//getting problems solved
 			list = newDbJob.getProblemsSolved(newUser.email);
-			
+			System.out.println(newUser.email);
 			
 			newUser.uname = userDetails.get("userName");
 			newUser.email = userDetails.get("email");
 			newUser.pic = userDetails.get("pic");
-			System.out.println(newUser.pic);
 			
 			newSession.setAttribute("probSolved", list);
-			newSession.setAttribute("user", newUser);
+			newSession.setAttribute("profile", newUser);
+			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -75,7 +133,7 @@ public class UserProfile extends HttpServlet {
 		}
 		
 		
-			
+		}
 		
 		
 		
@@ -83,7 +141,7 @@ public class UserProfile extends HttpServlet {
 		
 		
 
-		response.sendRedirect("/CodeSalad/Web/Profile.jsp");
+		
 
 	
 

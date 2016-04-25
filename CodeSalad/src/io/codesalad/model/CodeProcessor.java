@@ -96,7 +96,7 @@ public class CodeProcessor {
 	}
 	
 
-	public static int RunAndCompare(String pid, String uname, String lang) throws ExecuteException, IOException {
+	public int RunAndCompare(String pid, String uname, String lang) throws ExecuteException, IOException {
 		int status = 1;
 		ArrayList<String> list = new ArrayList<>();
 
@@ -215,9 +215,25 @@ public class CodeProcessor {
 
 		return temp;
 	}
+	
+	
+	public String getCode(String email,String pid, String lang) throws IOException
+	{
+		String code="";
+		String address="/home/gaurav/CodeSalad/Users/" + email + "/" + pid + "."+lang;
+		File f1 = new File(address);
+		FileInputStream fIn1 = new FileInputStream(f1);
+		BufferedReader bRead1 = new BufferedReader(new InputStreamReader(fIn1));
+		String in;
+		
+		while ((in = bRead1.readLine()) != null) {
+			code += in+"\n";
+		}
+		
+		return code;
+	}
 
 	public static void main(String[] args) throws IOException {
-		RunAndCompare("file", "lol", "c");
 		
 
 	}

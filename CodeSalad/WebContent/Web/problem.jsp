@@ -17,20 +17,64 @@
             </div>
         </div>
    </section>
-    <div class="col-md-6 padding" style="margin-left: 60px; text-align: justify;">
+    <div class="col-md-6 padding" style="margin-left: 60px; text-align: justify;  ">
    
    ${problem.problemText}
 
+
+
+ 
+ 
+
+ <a href="/CodeSalad/ShellSolution?pid=${problem.pid}" class="btn btn-sm btn-danger" id="LinkAsButton " style=" display:block;
+    margin: 0 90%; width: 60px">submit</a>
 </div>
 
- <div class="col-md-5 padding  " id="codeButton testCaseBtn">
- 
+<div class="col-md-4 padding" style="margin-left: 60px; text-align: justify;  ">
+ <div >
+   <div style="margin-left: 80px; margin-right: 550px;">
+   <table class="tableSection" >
+   <thead>
+   <tr>
+   <th><span class="text"> User </span></th>
+   
+   <th><span class="text"> Status </span></th>
+      <th><span class="text"> Code </span></th>
+   
+   <th><span class="text"> Time </span></th>
+   <th><span class="text"> Memory </span></th>
+   <th><span class="text"> Submitted on</span></th>
+   <th><span class="text"> Language used </span></th>
+   
+   
+  
+   </tr> 
+   </thead>
+   
 
- <a href="/CodeSalad/ShellSolution?pid=${problem.pid}" class="btn btn-sm btn-danger" id="LinkAsButton " style="margin: 70% 0% 0% -10%">submit</a>
- 
- </div>
- </div>
- </div>
+
+   <tbody>
+   <c:forEach var="sol" items="${pCoders}" varStatus="index">              
+
+   <tr>
+   <td><a href="/CodeSalad/UserProfile?isFromOtherUser=true&email=${sol.email}&from=${user.email}">${sol.uname}</a></td>
+    <td>${sol.status}</td>
+       <td><a href="/CodeSalad/GetCode?lang=${sol.lang}&pid=${sol.probid}&email=${sol.email}">${sol.uname}</a></td>
+    
+     <td>${sol.execTime}</td>
+      <td>${sol.execMem}</td>
+       <td>${sol.submittedOn}</td>
+        <td>${sol.lang}</td>
+       
+   </tr>
+   
+   </c:forEach>
+   </tbody>
+   </table>
+   </div> 
+   </div>
+
+</div>
  
 
 

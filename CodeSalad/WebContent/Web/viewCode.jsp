@@ -8,38 +8,30 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">Problem - ${problem.problemName}</h1>
-                           </div>
+                            <h1 class="title"></h1>
+                           
+                           
+                        </div>
                      </div>
                 </div>
             </div>
         </div>
    </section>
+     
+  
+    <div class="col-md-6 padding">
+   <p>
+  ${code }
    
-   <c:choose>
-   <c:when test="${user.uname == null}">
-   You need to login to Submit a solution.
-   </c:when>
-   <c:when test="${user.uname != null}">
-   <form action="/CodeSalad/RunMatchCode" method="post">
-   <div style="margin-left: 25.2%">
-   <select name="lang">
-   <option value="java">Java</option>
-   <option value="c">C</option>
-   <option value="cpp">C++</option>
-   </select><br>
-   </div>
-   <textarea rows="20" cols="81" placeholder="Enter the code" name="code" style="display:block; margin-left:auto;
-    margin-right:auto;"></textarea>
-   <input type="submit"  style="margin-left: 70.5%"value="Submit"></input>
-   
-   
-   
-   </form>
+   </p>
 
-   
-   </c:when>
-   </c:choose>
+
+</div>
+
+
+
+
+
     <footer id="footer">
         <div class="container">
             <div class="row">

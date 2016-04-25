@@ -1,6 +1,8 @@
 package io.codesalad.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +32,25 @@ public class GetCode extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String email = request.getParameter("email");
+		String lang = request.getParameter("lang");
+		String pid = request.getParameter("pid");
+		
+		CodeProcessor newProc = new CodeProcessor();
+		String code =newProc.getCode(email, pid, lang);
+		
+		request.setAttribute("code", code);
+		
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSalad/Web/viewCode.jsp");
+		rd.forward(request, response);
+		
+
+		
+		
+	
+	
+	
 	}
 
 	/**
@@ -39,13 +59,6 @@ public class GetCode extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String code = request.getParameter("code");
-		String lang = request.getParameter("lang");
-		//System.out.println(code);
-		System.out.println(lang);
-		//CodeProcessor newJob = new CodeProcessor(code,"lol",4,lang);
-		DirectoryManager obj = new DirectoryManager();
-		//obj.HtmlToCode(Rawcode, uname, pid, lang);
 		
 		
 		

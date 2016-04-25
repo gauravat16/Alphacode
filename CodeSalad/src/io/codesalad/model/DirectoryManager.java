@@ -122,6 +122,8 @@ public class DirectoryManager {
 		executor.execute(command);
 	}
 	
+	
+	
 	public static void main(String[] args) throws ExecuteException, IOException
 	{
 		getProfilePic("Mario@mushroom.com", "/home/gaurav/CodeSalad/Users/Mario@mushroom.com/MarioSMBW.png");

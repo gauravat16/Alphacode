@@ -3,6 +3,9 @@ package io.codesalad.model;
 public class Solution {
 
 	public String uname;
+	public String email;
+
+	
 	public String probid;
 	public String status;
 	public String execTime;
@@ -12,6 +15,10 @@ public class Solution {
 
 	public String getProbid() {
 		return probid;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 
 	public String getUname() {

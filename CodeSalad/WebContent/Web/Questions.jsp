@@ -19,23 +19,33 @@
 
 
    <div style="padding-top: 1cm">
-   <div style="margin-left: 80px; margin-right: 550px">
-   <table >
+   <div style="margin-left: 80px; margin-right: 550px;">
+   <table class="tableSection" >
+   <thead>
    <tr>
-   <th>Problem ID</th>
-   <th>Name</th>
-   <th>Author</th>
-   <th>Time</th>
+   <th><span class="text"> Problem ID </span></th>
+   <th><span class="text"> Name </span></th>
+   <th><span class="text"> Author </span></th>
+   <th><span class="text"> Time </span></th>
+  
+   </tr> 
+   </thead>
+   
 
-   </tr>
+
+   <tbody>
    <c:forEach var="problem" items="${PObjs}" varStatus="index">
+  
+
    <tr>
    <td ><c:out value="${problem.pid}" /></td>
    <td><a href="/CodeSalad/ViewProblem?pid=${problem.pid}">${problem.problemName}</a></td>
    <td>${problem.author}  </td>
    <td>${problem.createdOn} </td>
    </tr>
+   
    </c:forEach>
+   </tbody>
    </table>
    </div> 
    </div>

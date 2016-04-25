@@ -47,12 +47,35 @@
     transition: 300ms;
   }
  /* table css added here*/
+
+    table.tableSection {
+        display: table;
+        width: 100%;
+        
+
+    }
+    table.tableSection thead, table.tableSection tbody {
+        float: left;
+        width: 100%;
+    }
+    table.tableSection tbody {
+        overflow: auto;
+        height: 400px;
+
+    }
+
+
+
+
+
 table {
     border-collapse: collapse;
     width: 100%;
+
 }
 
 th, td {
+  width: 33%;
     text-align: left;
     padding: 8px;
 }
@@ -60,6 +83,7 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
+
     background-color: #900C3F;
     color: white;
 }
@@ -410,7 +434,6 @@ ul.sub-menu {
     width: 5em;       
     text-decoration: none; 
 }
-
 
 
 
@@ -2773,4 +2796,5 @@ span.stButton_gradient,
     float: left;
     position: relative;
     left: 35%;
+    width: 25%;
 }

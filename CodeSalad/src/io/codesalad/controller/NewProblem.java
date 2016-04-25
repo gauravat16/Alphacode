@@ -108,7 +108,7 @@ public class NewProblem extends HttpServlet {
 		
 		String time = LocalDate.now().toString();
 		
-		String query = "insert into CodeSalad.Problems (`Pname`,`CreatedBy`,`CreatedOn`,`MaxTime`,`MaxMemory`,`Difficulty`) values ('" + pname + "' ,  '" +user.uname+ " ' '" + "' , '" + time
+		String query = "insert into CodeSalad.Problems (`Pname`,`CreatedBy`,`CreatedOn`,`MaxTime`,`MaxMemory`,`Difficulty`) values ('" + pname + "' ,  '" +user.email+ " ' '" + "' , '" + time
 				+ "' , ' ' , ' ' , '" + plevel + "' )";
 		
 		try {

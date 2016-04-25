@@ -55,7 +55,7 @@
 										<li class="dropdown"><a href="#"> ${user.uname} <i
 												class="fa fa-angle-down"></i></a>
 											<ul role="menu" class="sub-menu">
-												<li><a href="/CodeSalad/UserProfile">Dashboard</a></li>
+												<li><a href="/CodeSalad/UserProfile?isFromOtherUser=false">Dashboard</a></li>
 												<li><a href="#">Prefrences</a></li>
 												<li><a href="/CodeSalad/Logout">Logout</a></li>
 
@@ -99,10 +99,10 @@
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu">
 								<li><a href="${path}/NewProblem.jsp">Add Problem</a></li>
-								<li><a href="/CodeSalad/ProblemList?difficulty=B">Beginner</a></li>
-								<li><a href="/CodeSalad/ProblemList?difficulty=E">Easy</a></li>
-								<li><a href="/CodeSalad/ProblemList?difficulty=M">Medium</a></li>
-								<li><a href="/CodeSalad/ProblemList?difficulty=H">Hard</a></li>
+								<li><a href="/CodeSalad/ProblemList?difficulty=B&isFromUser=false">Beginner</a></li>
+								<li><a href="/CodeSalad/ProblemList?difficulty=E&isFromUser=false">Easy</a></li>
+								<li><a href="/CodeSalad/ProblemList?difficulty=M&isFromUser=false">Medium</a></li>
+								<li><a href="/CodeSalad/ProblemList?difficulty=H&isFromUser=false">Hard</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="blog.html">Blog <i
 								class="fa fa-angle-down"></i></a></li>
