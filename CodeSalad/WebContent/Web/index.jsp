@@ -8,8 +8,14 @@
                 <div class="main-slider">
                     <div class="slide-text">
                         <h1>Code & Compete</h1>
-                        <p></p>
-                        <a href="contact.html" class="btn btn-common">SIGN UP</a>
+                        <c:choose>
+                        
+                        <c:when test="${user.uname==null}">
+                        <a href="/CodeSalad/Web/Register.jsp" class="btn btn-common">SIGN UP</a>
+                       
+                        </c:when>
+                       
+                        </c:choose>
                     </div>
                     <img src="${path}/images/home/slider/hill.png" class="slider-hill" alt="slider image">
                     <img src="${path}/images/home/slider/house.png" class="slider-house" alt="slider image">

@@ -69,7 +69,7 @@
                                 <input type="password" name="password" class="form-control" required="required" placeholder="Create Password">
                             </div>
                              <div class="form-group">
-                                <input type="passowrd" name="password" class="form-control" required="required" placeholder="Confirm Password">
+                                <input type="password" name="password" class="form-control" required="required" placeholder="Confirm Password">
                             </div>
                                                
                             <div class="form-group">

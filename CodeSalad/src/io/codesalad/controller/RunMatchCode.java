@@ -53,7 +53,7 @@ public class RunMatchCode extends HttpServlet {
 		String pid = newProblem.pid;
 		String Rawcode = request.getParameter("code");
 		String lang = request.getParameter("lang");
-		
+		System.out.println("lang");
 		//create files
 		
 		DirectoryManager newDirJob = new DirectoryManager();
@@ -66,7 +66,34 @@ public class RunMatchCode extends HttpServlet {
 		
 		CodeProcessor newJob = new CodeProcessor();
 		//System.out.println(newUser.email);
-		int status = newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
+		int status=1;
+		switch(lang)
+		{
+		case "java":
+			
+		{
+			status = newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
+			
+			break;
+		}
+		
+		case "c":
+		{
+			status = newJob.runCodeC(Rawcode, newUser.email, pid, lang);
+			break;
+		}
+		
+		case "cpp":
+		{
+			status = newJob.runCodeCpp(Rawcode, newUser.email, pid, lang);
+			break;
+		}
+		
+		
+		}
+		
+		
+		//int status = newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
 		try{
 		if(status==1)
 		{
@@ -81,7 +108,7 @@ public class RunMatchCode extends HttpServlet {
 		
 		else
 		{
-			status =newJob.RunAndCompare(pid, newUser.email);
+			status =newJob.RunAndCompare(pid, newUser.email,lang);
 			if(status==1)
 			{
 				query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','WA','','','"+time+"','"+lang+"')";

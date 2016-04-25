@@ -17,20 +17,21 @@
             </div>
         </div>
    </section>
-    <div class="col-md-6 padding">
+    <div class="col-md-6 padding" style="margin-left: 60px; text-align: justify;">
    
    ${problem.problemText}
 
 </div>
 
- <div class="col-md-6 padding">
- ${problem.pid}
- <a href="/CodeSalad/ShellSolution?pid=${problem.pid}">fsd</a>
- <form action="">
- <input type="submit" value="submit"></input> 
- </form>
+ <div class="col-md-5 padding  " id="codeButton testCaseBtn">
+ 
+
+ <a href="/CodeSalad/ShellSolution?pid=${problem.pid}" class="btn btn-sm btn-danger" id="LinkAsButton " style="margin: 70% 0% 0% -10%">submit</a>
  
  </div>
+ </div>
+ </div>
+ 
 
 
 

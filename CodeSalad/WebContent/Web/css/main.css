@@ -40,13 +40,29 @@
     outline-offset: 0;
   }
 
-  a {
+  a {                        
     -webkit-transition: 300ms;
     -moz-transition: 300ms;
     -o-transition: 300ms;
     transition: 300ms;
   }
+ /* table css added here*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #900C3F;
+    color: white;
+}
 
   ul {
     list-style: none;
@@ -379,6 +395,23 @@ ul.sub-menu {
     transform: scale(1);
   }
 }
+
+
+#LinkAsButton
+{
+  border-bottom: 1px solid #777777;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #333333;
+    border-top: 1px solid #000000;
+    color: #000000;
+    display: block;
+    height: 2.5em;
+    padding: 0 1em;
+    width: 5em;       
+    text-decoration: none; 
+}
+
+
 
 
 /*************************

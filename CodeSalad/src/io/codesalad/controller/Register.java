@@ -64,7 +64,7 @@ public class Register extends HttpServlet {
 	
 		HttpSession session = request.getSession();
 		session.setAttribute("user", newUser);
-		response.sendRedirect("/CodeSalad/Web/index.jsp");
+		response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 		
 	}
 

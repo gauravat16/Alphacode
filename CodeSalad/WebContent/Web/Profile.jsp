@@ -12,7 +12,7 @@
 			<div class="row">
 				<div class="action">
 					<div class="col-sm-12">
-						<h1 class="title">${user.uname}</h1>
+						<h1 class="title">Dashboard</h1>
 
 					</div>
 				</div>
@@ -41,10 +41,10 @@
 					<c:otherwise>
 					
 						<img src="${user.pic}" class="img-responsive"
-							alt="Error Loading Profile pic" height="200px" width="200px">
+							alt="Error Loading Profile pic" height="300px" width="300px">
 							<form action="/CodeSalad/EditProfile" enctype="multipart/form-data"
 					method="post">
-					New Picture <input type="file" name="pic"> <input
+					Upload new Picture <input type="file" name="pic"> <input
 						type="submit">
 				</form>
 					</c:otherwise>
@@ -79,114 +79,12 @@
 					</c:otherwise>
 					</c:choose>
 				</div>
-				<div class="skills overflow">
-					<h3>Skills:</h3>
-					<ul class="nav navbar-nav navbar-default">
-						<li><a href="#"><i class="fa fa-check-square"></i>Design</a></li>
-						<li><a href="#"><i class="fa fa-check-square"></i>HTML/CSS</a></li>
-						<li><a href="#"><i class="fa fa-check-square"></i>Javascript</a></li>
-						<li><a href="#"><i class="fa fa-check-square"></i>Backend</a></li>
-					</ul>
-				</div>
-				<div class="client overflow">
-					<h3>Client:</h3>
-					<ul class="nav navbar-nav navbar-default">
-						<li><a href="#"><i class="fa fa-bolt"></i>Okler Themes</a></li>
-					</ul>
-				</div>
-				<div class="live-preview">
-					<a href="#" class="btn btn-common uppercase">Live preview</a>
-				</div>
+				
 			</div>
 		</div>
 	</div>
 </section>
-<!--/#portfolio-information-->
 
-<section id="related-work" class="padding-top padding-bottom">
-	<div class="container">
-		<div class="row">
-			<h1 class="title text-center">Related Work</h1>
-			<div class="col-sm-3">
-				<div class="portfolio-wrapper">
-					<div class="portfolio-single">
-						<div class="portfolio-thumb">
-							<img src="${path}/images/portfolio/1.jpg" class="img-responsive"
-								alt="">
-						</div>
-						<div class="portfolio-view">
-							<ul class="nav nav-pills">
-								<li><a href="${path}/images/portfolio/1.jpg"
-									data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="portfolio-info ">
-						<h2>Sailing Vivamus</h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="portfolio-wrapper">
-					<div class="portfolio-single">
-						<div class="portfolio-thumb">
-							<img src="${path}/images/portfolio/2.jpg" class="img-responsive"
-								alt="">
-						</div>
-						<div class="portfolio-view">
-							<ul class="nav nav-pills">
-								<li><a href="${path}/images/portfolio/2.jpg"
-									data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="portfolio-info ">
-						<h2>Sailing Vivamus</h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="portfolio-wrapper">
-					<div class="portfolio-single">
-						<div class="portfolio-thumb">
-							<img src="${path}/images/portfolio/3.jpg" class="img-responsive"
-								alt="">
-						</div>
-						<div class="portfolio-view">
-							<ul class="nav nav-pills">
-								<li><a href="${path}/images/portfolio/3.jpg"
-									data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="portfolio-info ">
-						<h2>Sailing Vivamus</h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="portfolio-wrapper">
-					<div class="portfolio-single">
-						<div class="portfolio-thumb">
-							<img src="${path}/images/portfolio/4.jpg" class="img-responsive"
-								alt="">
-						</div>
-						<div class="portfolio-view">
-							<ul class="nav nav-pills">
-								<li><a href="${path}/images/portfolio/4.jpg"
-									data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="portfolio-info ">
-						<h2>Sailing Vivamus</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--/#related-work-->
 
 
 <footer id="footer">

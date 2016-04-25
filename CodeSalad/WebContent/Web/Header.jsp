@@ -35,47 +35,44 @@
 		<div class="container">
 			<div class="row">
 
-				
-					<div class="navbar navbar-inverse" role="banner">
-										<div class="container">
-										
-											<div class="collapse navbar-collapse">
-												<ul class="nav navbar-nav navbar-right">
 
-						
-							<c:choose>
-								<c:when test="${user.uname==null}">
+				<div class="navbar navbar-inverse" role="banner">
+					<div class="container">
+
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav navbar-right">
+
+
+								<c:choose>
+									<c:when test="${user.uname==null}">
                         Guest|<a
-										href="/CodeSalad/Web/LoginMain/loginmain.html">Login</a>
-								</c:when>
-								<c:when test="${user.uname!=null}">
-
-									
-
-													<li class="dropdown"><a href="#"> ${user.uname} <i
-															class="fa fa-angle-down"></i></a>
-														<ul role="menu" class="sub-menu">
-															<li><a href="/CodeSalad/UserProfile">View
-																	Profile</a></li>
-															<li><a href="#">Prefrences</a></li>
-															<li><a href="/CodeSalad/Logout">Logout</a></li>
-
-														</ul></li>
-
-
-												</ul>
-											</div>
-										</div>
-									</div>
-
-								</c:when>
-							</c:choose>
+											href="/CodeSalad/Web/LoginMain/loginmain.html">Login</a>
+									</c:when>
+									<c:when test="${user.uname!=null}">
 
 
 
-						
-					
-				
+										<li class="dropdown"><a href="#"> ${user.uname} <i
+												class="fa fa-angle-down"></i></a>
+											<ul role="menu" class="sub-menu">
+												<li><a href="/CodeSalad/UserProfile">Dashboard</a></li>
+												<li><a href="#">Prefrences</a></li>
+												<li><a href="/CodeSalad/Logout">Logout</a></li>
+
+											</ul></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				</c:when>
+				</c:choose>
+
+
+
+
+
+
 			</div>
 		</div>
 		<div class="navbar navbar-inverse" role="banner">

@@ -11,6 +11,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,6 +60,7 @@ public class NewProblem extends HttpServlet {
 		DatabaseManager newDb = new DatabaseManager();
 		String pid = "";
 		String plevel = "";
+		String isCompetition = request.getParameter("isCompetition");
 		try {
 			ResultSet rs = newDb.getDBConnection().executeQuery("SELECT max(ProbId) as id  FROM CodeSalad.Problems");
 			while (rs.next()) {
@@ -137,7 +139,11 @@ public class NewProblem extends HttpServlet {
 				HttpSession newSession =request.getSession(false);
 				newSession.setAttribute("problem", newProb);
 				
-				
+				if(isCompetition=="true")
+				{
+					request.setAttribute("pid", pid);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSalad/Competition");
+				}
 				response.sendRedirect("/CodeSalad/Web/problem.jsp");
 		
 		

@@ -16,19 +16,31 @@
             </div>
         </div>
    </section>
-   
+
+
+   <div style="padding-top: 1cm">
    <div style="margin-left: 80px; margin-right: 550px">
-   <table border="1" style="width:50%">
+   <table >
+   <tr>
+   <th>Problem ID</th>
+   <th>Name</th>
+   <th>Author</th>
+   <th>Time</th>
+
+   </tr>
    <c:forEach var="problem" items="${PObjs}" varStatus="index">
    <tr>
-   <td><c:out value="${problem.pid}" /></td>
+   <td ><c:out value="${problem.pid}" /></td>
    <td><a href="/CodeSalad/ViewProblem?pid=${problem.pid}">${problem.problemName}</a></td>
-   <td>${problem.author}</td>
-   <td>${problem.createdOn}</td>
+   <td>${problem.author}  </td>
+   <td>${problem.createdOn} </td>
    </tr>
    </c:forEach>
    </table>
+   </div> 
    </div>
+
+<div style="padding-top: 1cm;">
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -104,6 +116,7 @@
             </div>
         </div>
     </footer>
+    </div>
     <!--/#footer-->
 
     <script type="${path}/text/javascript" src="js/jquery.js"></script>

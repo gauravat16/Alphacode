@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">Add a Problem</h1>
+                            <h1 class="title">Result</h1>
+                           
                            
                         </div>
                      </div>
@@ -16,10 +17,23 @@
             </div>
         </div>
    </section>
+     
+  
+    <div class="col-md-6 padding">
+   <form action="/Web/newProblem.jsp?isCompetition=true" method="post" >  
    
+    <textarea name="compName" placeholder="Competion name"></textarea>
+   <textarea name="compInfo" placeholder="Details"></textarea>
+   <input type="submit"></input>
+   </form>
 
-    <!--/#page-breadcrumb-->
- <%@ include file="/Web/options.jsp" %>
+
+
+</div>
+
+
+
+
 
     <footer id="footer">
         <div class="container">
