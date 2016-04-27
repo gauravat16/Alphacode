@@ -136,15 +136,14 @@ public class NewProblem extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				HttpSession newSession =request.getSession(false);
-				newSession.setAttribute("problem", newProb);
+				
 				
 				if(isCompetition=="true")
 				{
 					request.setAttribute("pid", pid);
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSalad/Competition");
 				}
-				response.sendRedirect("/CodeSalad/Web/problem.jsp");
+				response.sendRedirect("/CodeSalad/ViewProblem?pid="+pid);
 		
 		
 		

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,6 +47,7 @@ public class ProblemList extends HttpServlet {
 		ResultSet rd;
 		Problem newProblem = new Problem();
 		ArrayList<Problem> ProblemObjs = new ArrayList<>();
+		HashMap<String, String> uDetails = new HashMap<>();
 
 		if (isFromUser.equals("true")) {
 			try {
@@ -81,7 +83,10 @@ public class ProblemList extends HttpServlet {
 						newProblem.difficulty = "Beginner";
 						newProblem.pid = rd.getString("ProbId");
 						newProblem.problemName = rd.getString("Pname");
-						newProblem.author = rd.getString("CreatedBy");
+						newProblem.authEmail = rd.getString("CreatedBy");
+						uDetails = newDBJob.getUserDetails(newProblem.authEmail);
+						newProblem.author =uDetails.get("userName");
+
 						newProblem.createdOn = rd.getString("CreatedOn");
 						ProblemObjs.add(newProblem);
 
@@ -97,7 +102,9 @@ public class ProblemList extends HttpServlet {
 						newProblem.difficulty = "Easy";
 						newProblem.pid = rd.getString("ProbId");
 						newProblem.problemName = rd.getString("Pname");
-						newProblem.author = rd.getString("CreatedBy");
+						newProblem.authEmail = rd.getString("CreatedBy");
+						uDetails = newDBJob.getUserDetails(newProblem.authEmail);
+						newProblem.author =uDetails.get("userName");
 						newProblem.createdOn = rd.getString("CreatedOn");
 
 						ProblemObjs.add(newProblem);
@@ -115,7 +122,9 @@ public class ProblemList extends HttpServlet {
 						newProblem.difficulty = "Medium";
 						newProblem.pid = rd.getString("ProbId");
 						newProblem.problemName = rd.getString("Pname");
-						newProblem.author = rd.getString("CreatedBy");
+						newProblem.authEmail = rd.getString("CreatedBy");
+						uDetails = newDBJob.getUserDetails(newProblem.authEmail);
+						newProblem.author =uDetails.get("userName");
 						newProblem.createdOn = rd.getString("CreatedOn");
 
 						ProblemObjs.add(newProblem);
@@ -132,7 +141,9 @@ public class ProblemList extends HttpServlet {
 						newProblem.difficulty = "Hard";
 						newProblem.pid = rd.getString("ProbId");
 						newProblem.problemName = rd.getString("Pname");
-						newProblem.author = rd.getString("CreatedBy");
+						newProblem.authEmail = rd.getString("CreatedBy");
+						uDetails = newDBJob.getUserDetails(newProblem.authEmail);
+						newProblem.author =uDetails.get("userName");
 						newProblem.createdOn = rd.getString("CreatedOn");
 						ProblemObjs.add(newProblem);
 

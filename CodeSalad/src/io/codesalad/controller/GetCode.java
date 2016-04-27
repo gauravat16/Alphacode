@@ -42,7 +42,7 @@ public class GetCode extends HttpServlet {
 		
 		request.setAttribute("code", code);
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSalad/Web/viewCode.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/viewCode.jsp");
 		rd.forward(request, response);
 		
 

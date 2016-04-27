@@ -13,6 +13,10 @@
 <link href="${path}/css/lightbox.css" rel="stylesheet">
 <link href="${path}/css/main.css" rel="stylesheet">
 <link href="${path}/css/responsive.css" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/monokai.css" rel="stylesheet" />
+    <script>hljs.initHighlightingOnLoad();</script>
+    
 
 <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
@@ -46,7 +50,7 @@
 								<c:choose>
 									<c:when test="${user.uname==null}">
                         Guest|<a
-											href="/CodeSalad/Web/LoginMain/loginmain.html">Login</a>
+											href="/CodeSalad/Web/LoginMain/loginmain.jsp">Login</a>
 									</c:when>
 									<c:when test="${user.uname!=null}">
 

@@ -2,13 +2,14 @@
 <html lang="en">
 <%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ include file = "/Web/Header.jsp" %>
+	
     <section id="page-breadcrumb">
         <div class="vertical-center sun">
              <div class="container">
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title"></h1>
+                            <h1 class="title">Code</h1>
                            
                            
                         </div>
@@ -19,11 +20,14 @@
    </section>
      
   
-    <div class="col-md-6 padding">
-   <p>
-  ${code }
-   
-   </p>
+    <div class="col-md-6 padding" style="margin-left: 10%">
+   <pre >
+   <code style="margin: -30px -10px -45px -10px;" >
+  ${code}
+  
+  	
+   </code>
+   </pre>
 
 
 </div>

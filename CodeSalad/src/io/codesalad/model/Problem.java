@@ -4,6 +4,7 @@ public class Problem {
 	
 
 	public String author;
+	public String authEmail;
 	public String pid;
 	public String problemText;
 	public String createdOn;
@@ -13,6 +14,11 @@ public class Problem {
 	public String getAuthor()
 	{
 		return author;
+	}
+	
+	public String getAuthEmail()
+	{
+		return authEmail;
 	}
 	
 	public String getProblemText()

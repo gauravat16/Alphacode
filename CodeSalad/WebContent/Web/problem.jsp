@@ -59,7 +59,7 @@
    <tr>
    <td><a href="/CodeSalad/UserProfile?isFromOtherUser=true&email=${sol.email}&from=${user.email}">${sol.uname}</a></td>
     <td>${sol.status}</td>
-       <td><a href="/CodeSalad/GetCode?lang=${sol.lang}&pid=${sol.probid}&email=${sol.email}">${sol.uname}</a></td>
+       <td><a href="/CodeSalad/GetCode?lang=${sol.lang}&pid=${sol.probid}&email=${sol.email}">View Code</a></td>
     
      <td>${sol.execTime}</td>
       <td>${sol.execMem}</td>

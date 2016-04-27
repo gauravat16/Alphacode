@@ -40,7 +40,7 @@
    <tr>
    <td ><c:out value="${problem.pid}" /></td>
    <td><a href="/CodeSalad/ViewProblem?pid=${problem.pid}">${problem.problemName}</a></td>
-   <td>${problem.author}  </td>
+   <td>${problem.author} </td>
    <td>${problem.createdOn} </td>
    </tr>
    

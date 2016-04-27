@@ -1,5 +1,6 @@
 package io.codesalad.model;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -65,19 +66,25 @@ public class DatabaseManager {
 
 	}
 
-	public ArrayList<Solution> getProblemsSolved(String email) throws ClassNotFoundException, SQLException {
+	public ArrayList<Solution> getProblemsSolved(String email) throws ClassNotFoundException, SQLException, IOException {
 		String Query = "Select * from CodeSalad.Solutions where uname='" + email + "'";
 		ArrayList<Solution> list = new ArrayList<>();
 		ResultSet rs = new DatabaseManager().getDBConnection().executeQuery(Query);
 		while (rs.next()) {
+			Problem newProb = new Problem();
+			ProblemProcessor newPProc = new ProblemProcessor();
+			
 			Solution newSol = new Solution();
 			newSol.probid = rs.getString("ProbId");
+			newProb = newPProc.getProblemData(newSol.probid);
+			newSol.problemName = newProb.problemName;
 			newSol.status = rs.getString("Status");
 			newSol.execTime = rs.getString("ExecTime");
 			newSol.execMem = rs.getString("ExecMem");
 			newSol.submittedOn = rs.getString("SubmittedOn");
 			newSol.lang = rs.getString("LangUsed");
 			newSol.uname = rs.getString("Uname");
+			
 			list.add(newSol);
 		}
 

@@ -227,7 +227,7 @@ public class CodeProcessor {
 		String in;
 		
 		while ((in = bRead1.readLine()) != null) {
-			code += in+"\n";
+			code += in+"<br>";
 		}
 		
 		return code;

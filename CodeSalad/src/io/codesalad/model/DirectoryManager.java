@@ -41,6 +41,18 @@ public class DirectoryManager {
 
 		return "/home/" + user + "/CodeSalad/Users/" + FolderName + "/proglist.txt";
 	}
+	
+	public String CompetitionFolder(String compId) throws IOException {
+
+		String user = "gaurav";
+		String script = "#!/bin/bash  \n" + "mkdir /home/" + user + "/CodeSalad/Competitions/" + compId;
+
+		File newFolder = new File("/home/" + user + "/CodeSalad/Competitions/" + compId);
+		newFolder.mkdirs();
+		
+
+		return newFolder.getAbsolutePath();
+	}
 
 	public int problemFolder(String FolderName) throws IOException {
 		int status = 0;
@@ -69,6 +81,19 @@ public class DirectoryManager {
 		Fwriter.close();
 
 		return status;
+	}
+	
+	public String saveProblem(String CompId, String info) throws IOException {
+
+		File newScript = new File("/home/gaurav/CodeSalad/Competitions/" + CompId + "/" + "info.txt");
+
+		newScript.createNewFile();
+		FileWriter Fwriter = new FileWriter(newScript);
+		Fwriter.write(info);
+		Fwriter.flush();
+		Fwriter.close();
+
+		return newScript.getAbsolutePath();
 	}
 
 	int NewProblem(String ProblemText, String ProblemName, String uname, String DateTime, String[] languages)

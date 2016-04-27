@@ -18,7 +18,6 @@ import io.codesalad.model.DatabaseManager;
 import io.codesalad.model.Problem;
 import io.codesalad.model.ProblemProcessor;
 import io.codesalad.model.Solution;
-import sun.security.pkcs11.Secmod.DbMode;
 
 /**
  * Servlet implementation class ViewProblem

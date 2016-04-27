@@ -28,7 +28,7 @@
    <option value="c">C</option>
    <option value="cpp">C++</option>
    </select><br>
-   </div>
+   </div>	
    <textarea rows="20" cols="81" placeholder="Enter the code" name="code" style="display:block; margin-left:auto;
     margin-right:auto;"></textarea>
    <input type="submit"  style="margin-left: 70.5%"value="Submit"></input>
