@@ -1,48 +1,92 @@
-
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
-<c:set var="path" value="${pageContext.request.contextPath}/Web/LoginMain"/>
 <html>
-		<head>
+<head>
+<meta charset="UTF-8">
+<title>AlphaCode|Login</title>
+<c:set var="path" value=" ${pageContext.request.contextPath}/Web" />
 
-		<title>CodeChow</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="${path}/assets/css/main.css" />
-		</head>
-	<body>
-		
-  
-		<!-- Header -->
-			<header >
-				<h1>CodeSalad</h1>
-				<p>You have been logged out</p>
-			</header>
 
-		<!-- Signup Form -->
-			<form id="signup-form" method="post" action="/CodeSalad/login">
-				<input type="email" name="email" id="email" placeholder="Email Address" /><br>
-				<input type="password" name="password" id="Password" placeholder="password" />
-				<input type="submit" value="Log In" />
+
+<link rel="stylesheet" href="${path}/LoginMain/css/style.css">
+
+
+<script src="checks.js" type="${path}/LoginMain/text/javascript"></script>
+
+
+</head>
+
+
+
+<body onload="document.registration.userid.focus();">
+
+	<div class="wrapper">
+		<div class="container">
+			<h1>Welcome</h1>
+			
+			<form class="form" method="post" action="/CodeSalad/login">
+<c:choose>
+<c:when test = "${isNotRegistered==true}">
+
+<h3 style="color: red;">Check your email or password.</h3>
+
+</c:when>
+<c:when test="${isLoggedout==true}">
+<h3 style="color: green;">You have been logged out</h3>
+</c:when>
+</c:choose>
+
+				<input type="email" placeholder="Email" name="email" id="email">
+				<input type="password" placeholder="Password" name="password"
+					id="Password">
+				<button type="submit" id="login-button">Login</button>
+				<p style="margin-right: 33%;">
+					<a href="/CodeSalad/Web/Register.jsp">Sign Up!</a>
+				</p>
+
 			</form>
 
-	
-		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</footer>
 
-		<!-- Scripts -->
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script  src="${path}/assets/js/main.js"></script>
 
-	</body>
+
+
+
+
+
+
+
+
+		</div>
+
+		<ul class="bg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<div style="padding: 0% 2%;">
+				<font size="36" style>&alpha;code</font>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+		</ul>
+	</div>
+
+
+
+
+
+</body>
 </html>

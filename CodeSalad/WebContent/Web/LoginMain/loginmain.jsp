@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>AlphaCode|Login</title>
+<c:set var="path" value=" ${pageContext.request.contextPath}/Web" />
 
 
 
+<link rel="stylesheet" href="${path}/LoginMain/css/style.css">
 
-<link rel="stylesheet" href="css/style.css">
 
-<script src="checks.js" type="text/javascript"></script>
+<script src="checks.js" type="${path}/LoginMain/text/javascript"></script>
 
 
 </head>
+
+
 
 <body onload="document.registration.userid.focus();">
 
@@ -22,14 +25,21 @@
 			<h1>Welcome</h1>
 			
 			<form class="form" method="post" action="/CodeSalad/login">
+<c:choose>
+<c:when test = "${isNotRegistered==true}">
+<h3 style="color: red;">Check your email or password.</h3><br>
+</c:when>
+<c:when test="${isLoggedout==true}"><h3 style="    font-weight: bold;">You have been logged out</h3><br>
+</c:when>
 
+</c:choose>
 
 				<input type="email" placeholder="Email" name="email" id="email">
 				<input type="password" placeholder="Password" name="password"
 					id="Password">
 				<button type="submit" id="login-button">Login</button>
 				<p style="margin-right: 33%;">
-					<a href="/CodeSalad/Web/Register.jsp">Sign Up!</a>
+					<a href="/CodeSalad/Web/Register.jsp"  style="font-weight: bold;">Sign Up!</a>
 				</p>
 
 			</form>

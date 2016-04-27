@@ -96,7 +96,7 @@ public class LoginSignup extends HttpServlet {
 		} else {
 			
 			request.setAttribute("isNotRegistered", "true");
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSalad/Web/LoginMain/loginmain.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/LoginMain/loginmain.jsp");
 			rd.forward(request, response);
 			
 

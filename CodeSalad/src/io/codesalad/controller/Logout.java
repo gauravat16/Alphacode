@@ -30,9 +30,10 @@ public class Logout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(false);
 		session.invalidate();
-		RequestDispatcher rd = request.getRequestDispatcher("/Web/LoginMain/logout.jsp");
+		request.setAttribute("isLoggedout", "true");
+		RequestDispatcher rd = request.getRequestDispatcher("/Web/LoginMain/loginmain.jsp");
 		rd.forward(request, response);
 	}
 
