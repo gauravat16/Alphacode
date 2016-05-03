@@ -12,9 +12,8 @@
     <servlet-name>LoginSignup</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/CodeSalad/Web/error.jsp</location>
-	</error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/CodeSalad/Web/error.jsp</location>
+  </error-page>
 </web-app>

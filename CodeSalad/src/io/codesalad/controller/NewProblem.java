@@ -60,7 +60,8 @@ public class NewProblem extends HttpServlet {
 		DatabaseManager newDb = new DatabaseManager();
 		String pid = "";
 		String plevel = "";
-		String isCompetition = request.getParameter("isCompetition");
+		String isfromComp = request.getParameter("isfromComp");
+		String compId = request.getParameter("compId");
 		try {
 			ResultSet rs = newDb.getDBConnection().executeQuery("SELECT max(ProbId) as id  FROM CodeSalad.Problems");
 			while (rs.next()) {
@@ -138,12 +139,16 @@ public class NewProblem extends HttpServlet {
 				}
 				
 				
-				if(isCompetition=="true")
+				if(isfromComp.equals("true"))
 				{
-					request.setAttribute("pid", pid);
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/CodeSalad/Competition");
+					
+					response.sendRedirect("/CodeSalad/ViewCompetition?pid="+pid+"&compId="+compId);
+
+					
 				}
+				else{
 				response.sendRedirect("/CodeSalad/ViewProblem?pid="+pid);
+				}
 		
 		
 		

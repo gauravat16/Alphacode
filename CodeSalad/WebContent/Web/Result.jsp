@@ -20,10 +20,45 @@
      
   
     <div class="col-md-6 padding">
-   <p>
-   ${msg}
+    
+    <c:choose>
+    <c:when test="${status==101}">
+        <div class="alert alert-danger fade in" style="margin-left: 15%">
+                            <h4>You got an error!</h4>
+                            <p>${msg}</p>
+                        </div>
+    </c:when>
+    <c:when test="${status==102}">
+    <div class="alert alert-danger fade in" style="margin-left: 15%">
+                            <h4>You got an error!</h4>
+                            <p>${msg}</p>
+                        </div>
+    </c:when>
+    <c:when test="${status==103}">
+               <div class="alert alert-success fade in" style="margin-left: 15%">
+               <h4>${msg }</h4>
+               <p>You passed all the testcases!</p>
+                        </div>
+                    </div>
+    
+    </c:when>
+    <c:when test="${status==104}">
+     <div class="alert alert-warning fade in" style="margin-left: 15%">
+                            <h4>${msg}</h4>
+                            <p>Looks like you failed some testcases.</p>
+                        </div>
+                    </div>
    
-   </p>
+    </c:when>
+    
+    
+    
+    
+    </c:choose>
+   
+   
+ 
+   
 
 
 </div>

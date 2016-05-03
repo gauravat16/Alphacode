@@ -3,8 +3,10 @@ package io.codesalad.controller;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +40,7 @@ public class Competition extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
@@ -49,49 +51,83 @@ public class Competition extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		HttpSession newSession = request.getSession(false);
-		User newUser = (User) newSession.getAttribute("user");
-		String compname = request.getParameter("compName");
-		String info = request.getParameter("compInfo");
-
-		DatabaseManager newDbjob = new DatabaseManager();
-		String time = LocalDate.now().toString();
-		String compId=null ;
+		String newComp = request.getParameter("newComp");
+		Boolean isfromProb = (Boolean) request.getAttribute("isfromProb");
+		String addProb = request.getParameter("addProb");
+		String cid = request.getParameter("id");
 		
-		try {
-			ResultSet rs = newDbjob.getDBConnection().executeQuery("SELECT max(compId) as id  FROM CodeSalad.Competitions");
-			while (rs.next()) {
-				compId = rs.getString("id");
+		if (addProb.equals("true") && addProb != null) {
+			request.setAttribute("isfromComp","true" );
+			request.setAttribute("compId", cid);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/NewProblem.jsp");
+			rd.forward(request, response);
+
+			
+
+		} 		
+		
+		
+
+		if (newComp.equals("true")) {
+			HttpSession newSession = request.getSession(false);
+			User newUser = (User) newSession.getAttribute("user");
+			String compname = request.getParameter("compName");
+			String info = request.getParameter("compInfo");
+			String compOn = request.getParameter("compOn");
+			String compDuration = request.getParameter("compDuration");
+
+			DatabaseManager newDbjob = new DatabaseManager();
+			Statement stm;
+			String time = LocalDate.now().toString();
+			String compId = null;
+
+			try {
+				stm = newDbjob.getDBConnection();
+				ResultSet rs = stm.executeQuery("SELECT max(compId) as id  FROM CodeSalad.Competitions");
+				while (rs.next()) {
+					compId = rs.getString("id");
+				}
+
+				stm.close();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			int id = Integer.parseInt(compId);
+			id++;
+			compId = Integer.toString(id);
+			new DirectoryManager().CompetitionFolder(compId); // create
+																// competiton
+																// folder
+			String address = new DirectoryManager().saveProblem(compId, info);
+
+			String query = "insert into CodeSalad.Competitions (`compName`,`compDate`,`compAuthor`,`CompFileLocation`,`CompCreation` , `CompDuration`) values ('"
+					+ compname + "' ,  '" + compOn + " ' '" + "' , '" + newUser.email + "' , '" + address + "' ,'"
+					+ time + "' , '" + compDuration + "')";
+
+			try {
+
+				stm = newDbjob.getDBConnection();
+				newDbjob.getDBConnection().execute(query);
+				stm.close();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			
+
+				response.sendRedirect("/CodeSalad/ViewCompetition?compId=" + compId);
+			
+
 		}
-
-		int id = Integer.parseInt(compId);
-		id++;
-		compId=Integer.toString(id);
-		new DirectoryManager().CompetitionFolder(compId); //create competiton folder
-		String address = new DirectoryManager().saveProblem(compId, info);
-		
-
-		String query = "insert into CodeSalad.Competitions (`compName`,`compDate`,`compAuthor`,`CompFileLocation`) values ('"
-				+ compname + "' ,  '" + time + " ' '" + "' , '" + newUser.email + "' , '"+address+"')";
-
-		try {
-			newDbjob.getDBConnection().execute(query);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		
 
 	}
 

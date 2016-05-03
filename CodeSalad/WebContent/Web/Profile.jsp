@@ -13,6 +13,9 @@
 				<div class="action">
 					<div class="col-sm-12">
 						<h1 class="title">Dashboard</h1>
+						
+						
+						
 
 					</div>
 				</div>
@@ -21,13 +24,53 @@
 	</div>
 </section>
 <!--/#action-->
+ <script type="text/javascript">
+
+var TSort_Data = new Array ('tableSection', 's', 's','i','i','d','s');
+var TSort_Initial = "4D";
+tsRegister();
+
+</script>
 
 
-<section id="portfolio-information" class="padding-top">
+
+<section id="portfolio-information" >
+
 	<div class="container">
 		<div class="row">
-		<div class="project-name overflow">
-					<h1 class="bold">${profile.uname}</h1>
+		
+		
+			<c:choose>
+				<c:when
+					test="${(isFromOtherUser==true) and (from != profile.email) }">
+					
+					<div class="collapse navbar-collapse" style="margin-top: 130px;">
+					</div>
+					
+					</c:when>
+					<c:otherwise>
+					<header id="header">
+					<div class="navbar navbar-inverse" role="banner">
+			
+			<div class="collapse navbar-collapse" style="margin-top: -130px;">
+					<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown" style="width: 150px"><a href="#"><b style="font-size: 13px">Things to do</b> <i
+								class="fa fa-angle-down"></i></a>
+							<ul role="menu" class="sub-menu" style="width: 150px">
+								<li><a href="${path}/NewProblem.jsp">Add Problem</a></li>
+								<li><a
+								href="/CodeSalad/ProblemList?isFromUser=true&userMail=${profile.email}">Your problems</a></li>
+							</ul></li>
+			</ul>
+			</div>
+			</div>
+			</header>
+					</c:otherwise>
+				
+			</c:choose>
+		
+		
+		<div class="project-name overflow" style=" margin-bottom: -100px;">
 				</div>
 			<div class="col-sm-4" style="margin-top: 2%;">
 
@@ -41,8 +84,9 @@
 					</c:when>
 					<c:otherwise>
 
-						<img src="${profile.pic}" class="img-responsive"
+						<img id="roundImage" src="${profile.pic}" class="img-responsive"
 							alt="Error Loading Profile pic" height="300px" width="300px">
+							
 
 					</c:otherwise>
 				</c:choose>
@@ -62,7 +106,8 @@
 
 
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-8">
+			
 				
 				<div class="project-info overflow">
 					<h3>Problems Solved</h3>
@@ -75,7 +120,7 @@
 
 							<div>
 								<div style=" margin-right: ;">
-									<table class="tableSection">
+									<table class="tableSection" id="tableSection">
 										<thead>
 											<tr>
 												<th><span class="text"> Problem</span></th>
@@ -114,27 +159,6 @@
 
 			</div>
 
-			<c:choose>
-				<c:when
-					test="${(isFromOtherUser==true) and (from != profile.email) }"></c:when>
-				<c:otherwise>
-					<div class="col-sm-2">
-						<form action="/CodeSalad/Web/NewProblem.jsp">
-							<input type="submit" style="display: inline;"
-								value="Add new problem">
-						</form>
-						<form
-							action="/CodeSalad/NewProblem?isFromUser=true&userMail=${profile.email}"
-							method="get">
-							<a
-								href="/CodeSalad/ProblemList?isFromUser=true&userMail=${profile.email}"><input
-								type="button" value="View your Problems"></a>
-						</form>
-
-
-					</div>
-				</c:otherwise>
-			</c:choose>
 
 
 

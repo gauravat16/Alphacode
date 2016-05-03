@@ -1,15 +1,8 @@
-/*
-  Theme Name: Triangle
-  Theme Uri: http://designscrazed.org/
-  Author: Allie
-  Author Uri: http://designscrazed.org/
-  Description: Creative Site Template
-  Version: 1.1
-  */
 
   @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
   @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
   @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+   
 
   body {
     background: #fff;
@@ -24,6 +17,8 @@
     height: 100%;
   }
 
+
+ 
 
   a{
     color:#C03035;
@@ -59,10 +54,22 @@
         width: 100%;
     }
     table.tableSection tbody {
+    
+    
         overflow: auto;
         height: 400px;
 
     }
+    
+     table.tableSection tbody a{
+        color : #C03035;
+
+    }
+    
+     table.tableSection a {
+        color: white;
+    }
+    
 
 
 
@@ -74,15 +81,19 @@ table {
 
 }
 
-th, td {
-  width: 33%;
+td {
+  width: 10%;
+
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
 
-th {
+th {width: 10%;
+  
+    text-align: left;
+    padding: 8px;
 
     background-color: #262727;
     color: white;
@@ -208,10 +219,14 @@ th {
 #header{
   margin-bottom: 0;
   padding: 30px 0 60px 0;
+  
+  
 }
 
 #header .navbar-inverse .container{
   position: relative;
+  
+   
 }
 
 .search{
@@ -303,7 +318,7 @@ th {
 #header .navbar-brand{
   padding: 0;
   margin-left: 0;
-}
+  }
 
 #header .navbar-brand h1{
   padding: 0;
@@ -318,6 +333,7 @@ th {
   color: #000;
   font-size: 12px;
   padding: 20px;
+
   text-transform: uppercase;
   font-weight: 300;
 }
@@ -342,6 +358,8 @@ th {
 ul.sub-menu {
   display: none;
   list-style: none;
+
+
   padding: 0;
   margin: 0;
 }
@@ -351,12 +369,13 @@ ul.sub-menu {
   padding: 5px 0;
   font-size: 13px;
   display: block;
+  
   text-transform: capitalize;
 }
 
 #header .navbar-nav li ul.sub-menu li .active{
   background: #00aeef;
-  color: #fff;
+  color: #fff;width: 5px;
   position: relative;
 }
 
@@ -365,6 +384,7 @@ ul.sub-menu {
   font-size: 56px;
   top: -13px;
   color: #0884d5;
+
 }
 
 #header .navbar-nav li ul.sub-menu li .active .fa-angle-right{
@@ -383,6 +403,7 @@ ul.sub-menu {
 
 .fa-angle-down{
   padding-left: 5px; 
+   width: 5px;
 }
 
 .scaleIn {
@@ -436,6 +457,27 @@ ul.sub-menu {
 }
 
 
+
+/* round Image*/
+#roundImage{
+display: inline-block;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#HeaderImage{
+display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 
 /*************************
 *******Footer******
@@ -624,7 +666,7 @@ ul.sub-menu {
 #home-slider .slider-house {
   position: absolute;
   right: 110px;
-  bottom: -30px;
+  bottom: 0px;
 }
 
 .animate-in .slider-house {
@@ -635,7 +677,7 @@ ul.sub-menu {
 #home-slider .slider-sun {
   position: absolute;
   right: 365px;
-  bottom: 100px;
+  bottom: 10px;
 }
 
 .animate-in .slider-sun {
@@ -646,7 +688,7 @@ ul.sub-menu {
 #home-slider .slider-birds1 {
   position: absolute;
   right: 470px;
-  bottom: 75px;
+  bottom: 20px;
 }
 
 .animate-in .slider-birds1 {

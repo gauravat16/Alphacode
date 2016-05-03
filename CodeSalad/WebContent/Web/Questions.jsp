@@ -16,11 +16,20 @@
             </div>
         </div>
    </section>
+   
 
+<script type="text/javascript">
+
+var TSort_Data = new Array ('tableSection', 'i', 's', 's','d');
+var TSort_Initial = "3D";
+tsRegister();
+
+</script>
 
    <div style="padding-top: 1cm">
    <div style="margin-left: 80px; margin-right: 550px;">
-   <table class="tableSection" >
+   
+   <table class="tableSection" id ="tableSection">
    <thead>
    <tr>
    <th><span class="text"> Problem ID </span></th>

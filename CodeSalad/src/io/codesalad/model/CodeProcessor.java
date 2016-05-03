@@ -33,6 +33,7 @@ public class CodeProcessor {
 		try {
 			status = executor.execute(command);
 		} catch (Exception e) {
+			status =101; //Compiling error
 
 			return status;
 		}
@@ -47,7 +48,7 @@ public class CodeProcessor {
 		String fileAddress = "/home/gaurav/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
 
 		String script = "#!/bin/bash  \n" + "(cd /home/gaurav/CodeSalad/Users/" + uname + "/ && gcc " + fileAddress+" 2> /home/gaurav/CodeSalad/Users/"+uname+"/"+pid+"error.txt )";
-		System.out.println(script);
+		
 
 		Scriptinator newScript = new Scriptinator(script, uname+"RunCCode"); // new
 																			// script
@@ -61,7 +62,8 @@ public class CodeProcessor {
 		try {
 			status = executor.execute(command);
 		} catch (Exception e) {
-
+			
+			status =101; //Compiling error
 			return status;
 		}
 
@@ -74,7 +76,7 @@ public class CodeProcessor {
 		String fileAddress = "/home/gaurav/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
 
 		String script = "#!/bin/bash  \n" + "(cd /home/gaurav/CodeSalad/Users/" + uname + "/ && g++ " + fileAddress+" 2> /home/gaurav/CodeSalad/Users/"+uname+"/"+pid+"error.txt )";
-		System.out.println(script);
+	
 
 		Scriptinator newScript = new Scriptinator(script, uname+"RunCCode"); // new
 																			// script
@@ -88,6 +90,7 @@ public class CodeProcessor {
 		try {
 			status = executor.execute(command);
 		} catch (Exception e) {
+			status =101; //Compiling error
 
 			return status;
 		}
@@ -170,7 +173,9 @@ public class CodeProcessor {
 		try {
 			status = executor.execute(cmdLine);
 		} catch (Exception e) {
+			status =102; //Runtime error
 			return status;
+			
 		}
 
 		File f1 = new File(address1);
@@ -193,9 +198,9 @@ public class CodeProcessor {
 		}
 
 		if (F1.equals(F2)) {
-			status = 0;
+			status = 103;  //Right Answer
 		} else {
-			status = 1;
+			status = 104; //Wrong Ans
 		}
 
 		return status;
@@ -209,12 +214,29 @@ public class CodeProcessor {
 		String values;
 		String temp = "";
 		while ((values = bRead.readLine()) != null) {
-			temp += values + "\n";
+			temp = errParser(temp);
+			temp += values + " <br>";
 
 		}
 
 		return temp;
 	}
+	
+	public String errParser(String line)
+	{
+		
+		int index =line.indexOf(":");
+		if(index != -1)
+		{
+		
+		line =line.substring(index+1);
+		}
+
+		return line;
+		
+	}
+	
+	
 	
 	
 	public String getCode(String email,String pid, String lang) throws IOException
@@ -227,7 +249,7 @@ public class CodeProcessor {
 		String in;
 		
 		while ((in = bRead1.readLine()) != null) {
-			code += in+"<br>";
+			code += in+"\n";
 		}
 		
 		return code;

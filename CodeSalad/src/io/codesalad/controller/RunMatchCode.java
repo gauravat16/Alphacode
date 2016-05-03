@@ -91,41 +91,66 @@ public class RunMatchCode extends HttpServlet {
 		
 		
 		}
-		
-		
-		//int status = newJob.runCodeJava(Rawcode, newUser.email, pid, lang);
 		try{
-		if(status==1)
+		
+		if(status==101)
 		{
 			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','CE','','','"+time+"','"+lang+"')";
 			newDbJob.getDBConnection().execute(query);
 
 			String error = newJob.errGen(pid, newUser.email);
 			session.setAttribute("msg", error);
-			
+			session.setAttribute("status", status);
+
 			response.sendRedirect("/CodeSalad/Web/Result.jsp");
 		}
-		
-		else
-		{
+		else {
 			status =newJob.RunAndCompare(pid, newUser.email,lang);
-			if(status==1)
-			{
-				query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','WA','','','"+time+"','"+lang+"')";
-				newDbJob.getDBConnection().execute(query);
-				
-				String error = "Wrong Answer";
-				session.setAttribute("msg", error);
-				response.sendRedirect("/CodeSalad/Web/Result.jsp");
-			}
-			else
-			{
-				query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','CA','','','"+time+"','"+lang+"')";
-				newDbJob.getDBConnection().execute(query);
-				
-				session.setAttribute("msg", "Correct answer!");
-				response.sendRedirect("/CodeSalad/Web/Result.jsp");
-			}
+
+		}
+		System.out.println(status);
+		
+		switch(status)
+		{
+		case 102:
+		{
+			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','RE','','','"+time+"','"+lang+"')";
+			newDbJob.getDBConnection().execute(query);
+			
+			String error = "Runtime Error";
+			session.setAttribute("status", status);
+
+			session.setAttribute("msg", error);
+			response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			break;
+		}
+		case 103:
+			
+		{
+			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','CA','','','"+time+"','"+lang+"')";
+			newDbJob.getDBConnection().execute(query);
+			session.setAttribute("status", status);
+
+			session.setAttribute("msg", "Correct answer!");
+			response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			break;
+		}
+		
+		case 104:
+		{
+			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','WA','','','"+time+"','"+lang+"')";
+			newDbJob.getDBConnection().execute(query);
+			
+			session.setAttribute("msg", "Wrong answer!");
+			session.setAttribute("status", status);
+
+			response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			break;
+		}
+	
+		
+		
+		
 		}
 		}
 		catch(Exception e)
@@ -133,6 +158,10 @@ public class RunMatchCode extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
+		
+		
+	
 		
 		
 	}

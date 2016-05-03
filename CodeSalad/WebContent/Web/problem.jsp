@@ -16,6 +16,16 @@
                 </div>
             </div>
         </div>
+        
+        <script type="text/javascript">
+
+var TSort_Data = new Array ('tableSection', 's', 's', '','i','i','d','s');
+var TSort_Initial = "5D";
+tsRegister();
+
+</script>
+        
+        
    </section>
     <div class="col-md-6 padding" style="margin-left: 60px; text-align: justify;  ">
    
@@ -33,7 +43,7 @@
 <div class="col-md-4 padding" style="margin-left: 60px; text-align: justify;  ">
  <div >
    <div style="margin-left: 80px; margin-right: 550px;">
-   <table class="tableSection" >
+   <table class="tableSection" id="tableSection">
    <thead>
    <tr>
    <th><span class="text"> User </span></th>

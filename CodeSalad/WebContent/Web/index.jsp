@@ -17,11 +17,10 @@
                        
                         </c:choose>
                     </div>
-                    <img src="${path}/images/home/slider/hill.png" class="slider-hill" alt="slider image">
-                    <img src="${path}/images/home/slider/house.png" class="slider-house" alt="slider image">
-                    <img src="${path}/images/home/slider/sun.png" class="slider-sun" alt="slider image">
-                    <img src="${path}/images/home/slider/birds1.png" class="slider-birds1" alt="slider image">
-                    <img src="${path}/images/home/slider/birds2.png" class="slider-birds2" alt="slider image">
+                    <img src="${path}/images/home/slider/Java_logo.png" height="250px" width="250px"class="slider-hill" alt="slider image">
+                    <img src="${path}/images/home/slider/C.png" height="350px" width="350px" class="slider-house" alt="slider image">
+                    <img src="${path}/images/home/slider/Python.png" height="200px" width="200px" class="slider-sun" alt="slider image">
+                    
                 </div>
             </div>
         </div>
@@ -38,7 +37,7 @@
                             <img src="${path}/images/home/icon1.png" alt="">
                         </div>
                         <h2>Problems</h2>
-                        <p>Solve problems from peers and with increasing difficulty. </p>
+                        <p>Sharpen your programming skills with challenges from peers. </p>
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -47,7 +46,7 @@
                             <img src="${path}/images/home/icon2.png" alt="">
                         </div>
                         <h2>Competitions</h2>
-                        <p>Participate in competitions all year round.</p>
+                        <p>Solve challenges in online workshops. </p>
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
