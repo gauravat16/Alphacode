@@ -42,6 +42,7 @@ public class ProblemList extends HttpServlet {
 
 		String userMail = request.getParameter("userMail");
 		String difficulty = request.getParameter("difficulty");
+		String totitle = "";
 		String isFromUser = request.getParameter("isFromUser");
 		DatabaseManager newDBJob = new DatabaseManager();
 		ResultSet rd;
@@ -74,6 +75,7 @@ public class ProblemList extends HttpServlet {
 
 				switch (difficulty) {
 				case "B":
+					totitle="Beginner";
 
 					rd = newDBJob.getDBConnection()
 							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'B'");
@@ -94,6 +96,7 @@ public class ProblemList extends HttpServlet {
 					break;
 
 				case "E":
+					totitle="Easy";
 
 					rd = newDBJob.getDBConnection()
 							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'E'");
@@ -114,6 +117,7 @@ public class ProblemList extends HttpServlet {
 					break;
 
 				case "M":
+					totitle="Medium";
 
 					rd = newDBJob.getDBConnection()
 							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'M'");
@@ -134,6 +138,7 @@ public class ProblemList extends HttpServlet {
 
 				case "H":
 
+					totitle="Hard";
 					rd = newDBJob.getDBConnection()
 							.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'H'");
 					while (rd.next()) {
@@ -161,6 +166,7 @@ public class ProblemList extends HttpServlet {
 		}
 		
 		request.setAttribute("PObjs", ProblemObjs);
+		request.setAttribute("title", totitle);
 
 		RequestDispatcher newDispatcher = getServletContext().getRequestDispatcher("/Web/Questions.jsp");
 		newDispatcher.forward(request, response);

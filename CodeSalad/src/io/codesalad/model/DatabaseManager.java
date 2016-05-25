@@ -3,6 +3,7 @@ package io.codesalad.model;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
@@ -157,15 +158,32 @@ public class DatabaseManager {
 		return newComp;
 
 	}
+	
+	public String getCompetitionText(String compId) throws IOException
+	{
+		File readComp = new File("/home/gaurav/CodeSalad/Competitions/" + compId + "/info.txt");
+		// System.out.println("/home/gaurav/CodeSalad/Problems/" + pid +
+		// "/problem.txt");
+		FileInputStream in = new FileInputStream(readComp);
+		BufferedReader bRead = new BufferedReader(new InputStreamReader(in));
+		String data = "";
+		String inp ="";
+		StringBuffer stringBuffer = new StringBuffer();
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		while ((inp= bRead.readLine()) != null) {
+			data+=inp+"<br>";
+
+		}
+		
+		return data;
+	}
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 		// TODO Auto-generated method stub
-		String query = " select exists( select * from CodeSalad.Users where email='' and password='' )";
-		System.out.println(query);
+	
 
-		// DatabaseManager obj = new DatabaseManager();
-		// obj.checkIfPresent("fddf", "gauravsati19@gmail.com","raceison");
-
+		DatabaseManager obj = new DatabaseManager();
+		
 	}
 
 }

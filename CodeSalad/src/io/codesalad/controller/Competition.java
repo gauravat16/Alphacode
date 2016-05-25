@@ -55,18 +55,14 @@ public class Competition extends HttpServlet {
 		Boolean isfromProb = (Boolean) request.getAttribute("isfromProb");
 		String addProb = request.getParameter("addProb");
 		String cid = request.getParameter("id");
-		
+
 		if (addProb.equals("true") && addProb != null) {
-			request.setAttribute("isfromComp","true" );
+			request.setAttribute("isfromComp", "true");
 			request.setAttribute("compId", cid);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/NewProblem.jsp");
 			rd.forward(request, response);
 
-			
-
-		} 		
-		
-		
+		}
 
 		if (newComp.equals("true")) {
 			HttpSession newSession = request.getSession(false);
@@ -122,10 +118,7 @@ public class Competition extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			
-
-				response.sendRedirect("/CodeSalad/ViewCompetition?compId=" + compId);
-			
+			response.sendRedirect("/CodeSalad/ViewCompetition?compId=" + compId);
 
 		}
 

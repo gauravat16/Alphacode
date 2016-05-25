@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Competition {
 	
 	
-	String compName, compUsers, compDate, compAuthor, CompFileLocation, CompPId , compText,CompCreation,CompDuration,compId;
-	ArrayList<String> userList , probList;
+	public String compName, compUsers, compDate, compAuthor, CompFileLocation, CompPId , compText,CompCreation,CompDuration,compId;
+	public ArrayList<String> userList , probList;
 
 	public String getCompName()
 	{
@@ -67,5 +67,7 @@ public class Competition {
 	{
 		return compId;
 	}
+	
+	
 	
 }

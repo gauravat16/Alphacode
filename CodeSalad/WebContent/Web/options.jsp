@@ -29,7 +29,6 @@ textarea {
 
 			var text1 = document.getElementById("testCases");
 
-			text1.innerHTML = text1.innerHTML + " ";
 
 			element1.setAttribute("name", nameElement);
 			element1.setAttribute("placeholder", 'Value');

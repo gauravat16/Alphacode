@@ -111,8 +111,8 @@
    
                 <div class="col-sm-12">
                     <div class="copyright-text text-center">
-                        <p>&copy; Your Company 2016. All Rights Reserved.</p>
-                        <p>Crafted by <a target="_blank" href="http://designscrazed.org/"></a></p>
+                        <p>&copy; AlphaCode 2016</p>
+                       
                     </div>
                 </div>
                    

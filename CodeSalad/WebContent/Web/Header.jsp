@@ -1,3 +1,6 @@
+<%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
+
+
 <head>
 
 
@@ -6,7 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Home | Triangle</title>
+<title>
+<c:choose>
+<c:when test="${param.header ==	1}">
+${param.title}
+</c:when>
+<c:otherwise>
+${title}
+</c:otherwise>
+</c:choose>
+
+
+
+</title>
 <link href="${path}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${path}/css/font-awesome.min.css" rel="stylesheet">
 <link href="${path}/css/animate.min.css" rel="stylesheet">
@@ -28,7 +43,7 @@
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
     <![endif]-->
-<link rel="shortcut icon" href="images/ico/favicon.ico">
+<link rel="shortcut icon" href="/CodeSalad/Web/images/alphalogo.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="${path}/images/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
@@ -63,7 +78,7 @@
 						<li class="dropdown"><a href="#">Problems <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu" style="width:150px;">
-								<li><a href="${path}/NewProblem.jsp">Add Problem</a></li>
+								<li><a href="${path}/NewProblem.jsp?title=New Problem&header=1">Add Problem</a></li>
 								<li><a
 									href="/CodeSalad/ProblemList?difficulty=B&isFromUser=false">Beginner</a></li>
 								<li><a
@@ -80,6 +95,8 @@
 								class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu" style="width:150px;">
 								<li><a href="${path}/newCompetition.jsp">New Competition</a></li>
+								<li><a href="/CodeSalad/CompetitionList?email=header">All Competitions</a></li>
+								
 								
 							</ul>
 								

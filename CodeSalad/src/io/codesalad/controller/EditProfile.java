@@ -8,7 +8,9 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -56,6 +58,10 @@ public class EditProfile extends HttpServlet {
 		HttpSession newSession = request.getSession(false);
 		User newUser = (User) newSession.getAttribute("user");
 		Part filePart = request.getPart("pic"); 
+		if(filePart.getSize()<=500000)
+		{
+			
+		
 		
 		String fileName = filePart.getSubmittedFileName();
 		System.out.println(fileName);
@@ -96,10 +102,12 @@ public class EditProfile extends HttpServlet {
 	    DatabaseManager newDbJob = new DatabaseManager();
 	    try {
 
-			newDbJob.getDBConnection().execute("UPDATE CodeSalad.Users SET pic = '/profile/"+newUser.email+"."+extension+"' WHERE email = '"+newUser.email+"'");
+			Statement stm = newDbJob.getDBConnection();
+			stm.execute("UPDATE CodeSalad.Users SET pic = '/profile/"+newUser.email+"."+extension+"' WHERE email = '"+newUser.email+"'");
 			newUser.pic="/profile/"+newUser.email+"."+extension;
 			newSession.setAttribute("edituser", newUser);
 			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
+			stm.close();
 		
 	    
 	    
@@ -115,8 +123,19 @@ public class EditProfile extends HttpServlet {
 		
 	}
 	
+		else{
+			
+			request.setAttribute("sizeExceeded", "Upload File under 500KB");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/Profile.jsp");
+			rd.forward(request, response);
+			
+			
+			
+		}
 
-
+	}
+	
+	
 
 
 }
