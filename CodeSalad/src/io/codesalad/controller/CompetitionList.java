@@ -1,7 +1,9 @@
 package io.codesalad.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -42,59 +44,132 @@ public class CompetitionList extends HttpServlet {
 		try{
 		switch (email) {
 		case "header":
-			DatabaseManager newDbjob = new DatabaseManager();
-			Statement stm = newDbjob.getDBConnection();
-			ResultSet competions = stm.executeQuery("select * from CodeSalad.Competitions"); 
-			while(competions.next())
-			{
-				Competition newComp = new Competition();
+			
+		
+			Connection conn = null;
+			Statement stm = null;
+			ResultSet competions = null;
 
-				System.out.println("in header");
-				newComp.CompPId = competions.getString("CompPId");
-				System.out.println(newComp.CompPId);
-				newComp.compId = competions.getString("compId"); 
-				newComp.compName = competions.getString("compName");
-				newComp.compDate=competions.getString("compDate");
-				newComp.compAuthor=competions.getString("compAuthor");
-				newComp.CompCreation=competions.getString("CompCreation");
-				newComp.CompDuration=competions.getString("CompDuration");
-				newComp.compText = newDbjob.getCompetitionText(newComp.compId);
-				System.out.println(newComp.compName);
-				complist.add(newComp);
-						
+			try {
+				conn = new DatabaseManager().getDBConnection();
+				stm = conn.createStatement();
+				competions = stm.executeQuery("select * from CodeSalad.Competitions");
+
+				while(competions.next())
+				{
+					Competition newComp = new Competition();
+
+					System.out.println("in header");
+					newComp.CompPId = competions.getString("CompPId");
+					System.out.println(newComp.CompPId);
+					newComp.compId = competions.getString("compId"); 
+					newComp.compName = competions.getString("compName");
+					newComp.compDate=competions.getString("compDate");
+					newComp.compAuthor=competions.getString("compAuthor");
+					newComp.CompCreation=competions.getString("CompCreation");
+					newComp.CompDuration=competions.getString("CompDuration");
+					newComp.compText = new DatabaseManager().getCompetitionText(newComp.compId);
+					
+					complist.add(newComp);
+							
 
 
-				
+					
+				}
+
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+
+				try {
+					competions.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
-			stm.close();
+			
+			
+			
+			
 			
 			break;
 
 		default:
 			
-			DatabaseManager newDbjob1 = new DatabaseManager();
-			Statement stm1 = newDbjob1.getDBConnection();
-			ResultSet competions1 = stm1.executeQuery("select * from CodeSalad.Competitions where CompAuthor='"+email+"'"); 
-			while(competions1.next())
-			{
-				Competition newComp = new Competition();
-				newComp.CompPId = competions1.getString("CompPId");
-				newComp.compId = competions1.getString("compId");
-				newComp.compName = competions1.getString("compName");
-				newComp.compDate=competions1.getString("compDate");
-				newComp.compAuthor=competions1.getString("compAuthor");
-				newComp.CompCreation=competions1.getString("CompCreation");
-				newComp.CompDuration=competions1.getString("CompDuration");
-				newComp.compText = newDbjob1.getCompetitionText(newComp.compId);
-				complist.add(newComp);
-
-
-
-
-				
-			}
-			stm1.close();
 			
+		
+			
+			Connection conn1 = null;
+			Statement stm1 = null;
+			ResultSet competions1 = null;
+
+			try {
+				conn1 = new DatabaseManager().getDBConnection();
+				stm1 = conn1.createStatement();
+				competions1 = stm1.executeQuery("select * from CodeSalad.Competitions where CompAuthor='"+email+"'");
+				while(competions1.next())
+				{
+					Competition newComp = new Competition();
+					newComp.CompPId = competions1.getString("CompPId");
+					newComp.compId = competions1.getString("compId");
+					newComp.compName = competions1.getString("compName");
+					newComp.compDate=competions1.getString("compDate");
+					newComp.compAuthor=competions1.getString("compAuthor");
+					newComp.CompCreation=competions1.getString("CompCreation");
+					newComp.CompDuration=competions1.getString("CompDuration");
+					newComp.compText = new DatabaseManager().getCompetitionText(newComp.compId);
+					complist.add(newComp);
+				
+				}
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+
+				try {
+					competions1.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				try {
+					stm1.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					conn1.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
 			
 			
 			break;
@@ -105,10 +180,7 @@ public class CompetitionList extends HttpServlet {
 		{
 			e.printStackTrace();
 		}
-	for(Competition e: complist)
-	{
-		System.out.println(e.compAuthor);
-	}
+	
 	request.setAttribute("competition", complist);
 	request.setAttribute("title", "Competitions");
 	RequestDispatcher rd = getServletContext().getRequestDispatcher("/Web/competitions.jsp");

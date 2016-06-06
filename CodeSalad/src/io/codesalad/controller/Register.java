@@ -1,7 +1,10 @@
 package io.codesalad.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,15 +53,13 @@ public class Register extends HttpServlet {
 		DatabaseManager newJob = new DatabaseManager();
 		DirectoryManager newFolder = new DirectoryManager();
 		String address = newFolder.UserFolder(email);
-		try {
-			newJob.addUser(name, password, email, address);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		newJob.addUser(name, password, email, address);
+		
+		
+		
+		
+		
+		
 		User newUser = new User();
 		newUser.uname=name;
 	

@@ -28,7 +28,7 @@ tsRegister();
         
         
    </section>
-    <div class="col-md-6 padding" style="margin-left: 60px; text-align: justify;  ">
+    <div class="col-md-6 padding" style="margin-left: 7%; text-align: justify;  ">
    
    ${problem.problemText}
 
@@ -43,11 +43,11 @@ tsRegister();
 
 <div class="col-md-4 padding" style="margin-left: 60px; text-align: justify;  ">
  <div >
-   <div style="margin-left: 80px; margin-right: 550px;">
+   <div>
    <table class="tableSection" id="tableSection">
    <thead>
    <tr>
-   <th><span class="text"> User </span></th>
+   <th><span class="text"> User Name </span></th>
    
    <th><span class="text"> Status </span></th>
       <th><span class="text"> Code </span></th>
@@ -72,8 +72,8 @@ tsRegister();
     <td>${sol.status}</td>
        <td><a href="/CodeSalad/GetCode?lang=${sol.lang}&pid=${sol.probid}&email=${sol.email}">View Code</a></td>
     
-     <td>${sol.execTime}</td>
-      <td>${sol.execMem}</td>
+     <td>${sol.execTime}55</td>
+      <td>${sol.execMem}55</td>
        <td>${sol.submittedOn}</td>
         <td>${sol.lang}</td>
        

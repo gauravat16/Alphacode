@@ -60,30 +60,14 @@ public class LoginSignup extends HttpServlet {
 
 		DatabaseManager newTask = new DatabaseManager();
 
-		try {
-			if (newTask.checkIfPresent(email, password).equals("1")) {
-				result = true;
-			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (newTask.checkIfPresent(email, password).equals("1")) {
+			result = true;
 		}
 
 		if (result == true) {
 			DatabaseManager newobj = new DatabaseManager();
 			HashMap<String, String> userValues = new HashMap<>();
-			try {
-				userValues = newobj.getUserDetails(email);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			userValues = newobj.getUserDetails(email);
 			User newUser = new User();
 			newUser.uname = userValues.get("userName");
 			newUser.email = email;

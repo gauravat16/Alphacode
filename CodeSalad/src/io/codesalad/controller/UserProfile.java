@@ -64,44 +64,34 @@ public class UserProfile extends HttpServlet {
 
 			
 			
-			try {
-				
-				userDetails = newDbJob.getUserDetails(email);
-				
-				//getting problems solved
-				list = newDbJob.getProblemsSolved(email);
-				
-				
-				newUser.uname = userDetails.get("userName");
-				newUser.email = userDetails.get("email");
-				newUser.pic = userDetails.get("pic");
-				
-				newSession.setAttribute("isFromOtherUser", "true");
-				newSession.setAttribute("from",from );
-				newSession.setAttribute("probSolved", list);
-				newSession.setAttribute("profile", newUser);
-				
-				userDetails = newDbJob.getUserDetails(from);
-				other.uname = userDetails.get("userName");
-				other.email = userDetails.get("email");
-				other.pic = userDetails.get("pic");
-				
+			userDetails = newDbJob.getUserDetails(email);
+			
+			//getting problems solved
+			list = newDbJob.getProblemsSolved(email);
+			
+			
+			newUser.uname = userDetails.get("userName");
+			newUser.email = userDetails.get("email");
+			newUser.pic = userDetails.get("pic");
+			
+			newSession.setAttribute("isFromOtherUser", "true");
+			newSession.setAttribute("from",from );
+			newSession.setAttribute("probSolved", list);
+			newSession.setAttribute("profile", newUser);
+			
+			userDetails = newDbJob.getUserDetails(from);
+			other.uname = userDetails.get("userName");
+			other.email = userDetails.get("email");
+			other.pic = userDetails.get("pic");
+			
 
-				
-				
-				
-				newSession.setAttribute("user", other);
+			
+			
+			
+			newSession.setAttribute("user", other);
 
 
-				response.sendRedirect("/CodeSalad/Web/Profile.jsp");
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 			
 			
 		}
@@ -109,28 +99,19 @@ public class UserProfile extends HttpServlet {
 		
 		
 		
-		try {
-			userDetails = newDbJob.getUserDetails(newUser.email);
-			
-			//getting problems solved
-			list = newDbJob.getProblemsSolved(newUser.email);
-			System.out.println(newUser.email);
-			
-			newUser.uname = userDetails.get("userName");
-			newUser.email = userDetails.get("email");
-			newUser.pic = userDetails.get("pic");
-			
-			newSession.setAttribute("probSolved", list);
-			newSession.setAttribute("profile", newUser);
-			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		userDetails = newDbJob.getUserDetails(newUser.email);
+		
+		//getting problems solved
+		list = newDbJob.getProblemsSolved(newUser.email);
+		System.out.println(newUser.email);
+		
+		newUser.uname = userDetails.get("userName");
+		newUser.email = userDetails.get("email");
+		newUser.pic = userDetails.get("pic");
+		
+		newSession.setAttribute("probSolved", list);
+		newSession.setAttribute("profile", newUser);
+		response.sendRedirect("/CodeSalad/Web/Profile.jsp");
 		
 		
 		}

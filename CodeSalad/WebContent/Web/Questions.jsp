@@ -29,7 +29,7 @@ tsRegister();
    <div style="padding-top: 1cm">
    <div style="margin-left: 80px; margin-right: 550px;">
    
-   <table class="tableSection" id ="tableSection">
+   <table class="tableSection" >
    <thead>
    <tr>
    <th><span class="text"> Problem ID </span></th>

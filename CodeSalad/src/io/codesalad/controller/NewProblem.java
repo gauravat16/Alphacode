@@ -1,6 +1,7 @@
 package io.codesalad.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import io.codesalad.model.Competition;
 import io.codesalad.model.DatabaseManager;
 import io.codesalad.model.Problem;
 import io.codesalad.model.ProblemProcessor;
@@ -60,26 +62,53 @@ public class NewProblem extends HttpServlet {
 		doGet(request, response);
 		String testCases = "";
 		DatabaseManager newDb = new DatabaseManager();
-		
+
 		String pid = "";
 		String plevel = "";
 		String isfromComp = request.getParameter("isfromComp");
 		String compId = request.getParameter("compId");
+
+		Connection conn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+
 		try {
-			Statement  stm1 = newDb.getDBConnection();
-			ResultSet rs = stm1.executeQuery("SELECT max(ProbId) as id  FROM CodeSalad.Problems");
+			conn = new DatabaseManager().getDBConnection();
+			stm = conn.createStatement();
+			rs = stm.executeQuery("SELECT max(ProbId) as id  FROM CodeSalad.Problems");
 			while (rs.next()) {
 				pid = rs.getString("id");
-				
+
 			}
-			
-			stm1.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			try {
+				rs.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
 		int id = Integer.parseInt(pid);
@@ -108,33 +137,51 @@ public class NewProblem extends HttpServlet {
 		newProcessor.saveProblem(code, pid, testCases);
 
 		DatabaseManager newDbjob = new DatabaseManager();
-		
 
 		String time = LocalDate.now().toString();
-		Statement stm2;
 
 		switch (isfromComp) {
-		
-		
+
 		case "true":
 			String query = "insert into CodeSalad.Problems (`Pname`,`CreatedBy`,`CreatedOn`,`MaxTime`,`MaxMemory`,`Difficulty`,`FromComp`) values ('"
 					+ pname + "' ,  '" + user.email + " ' '" + "' , '" + time + "' , ' ' , ' ' , '" + plevel + "' , 1"
 					+ " )";
-			String query2 = "update CodeSalad.Competitions set CompPId=CONCAT(CompPId,'"+pid+",') where compId='"+compId+"'";
+			String query2 = "update CodeSalad.Competitions set CompPId=CONCAT(CompPId,'" + pid + ",') where compId='"
+					+ compId + "'";
+
+			Connection conn1 = null;
+			Statement stm1 = null;
+			Statement stm2 = null;
 
 			try {
-				
-				stm2 = newDbjob.getDBConnection();
-				stm2.execute(query);
+				conn1 = new DatabaseManager().getDBConnection();
+				stm1 = conn1.createStatement();
+				stm1.execute(query);
+				stm2 = conn1.createStatement();
 				stm2.execute(query2);
 
-				stm2.close();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+
+				try {
+					stm1.close();
+					stm2.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					conn1.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 
 			break;
@@ -144,16 +191,35 @@ public class NewProblem extends HttpServlet {
 					+ pname + "' ,  '" + user.email + " ' '" + "' , '" + time + "' , ' ' , ' ' , '" + plevel + "' , 0"
 					+ " )";
 
+			Connection conn2 = null;
+			Statement stm4 = null;
+
 			try {
-				stm2 = newDbjob.getDBConnection();
-				stm2.execute(query);
-				stm2.close();
+				conn2 = new DatabaseManager().getDBConnection();
+				stm4 = conn2.createStatement();
+				stm4.execute(query);
+
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+
+				try {
+					stm4.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					conn2.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 
 			break;
@@ -171,9 +237,8 @@ public class NewProblem extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if (isfromComp.equals("true")) {
 
+		if (isfromComp.equals("true")) {
 
 			response.sendRedirect("/CodeSalad/ViewCompetition?pid=" + pid + "&compId=" + compId);
 

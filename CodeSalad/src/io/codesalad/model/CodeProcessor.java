@@ -6,6 +6,7 @@ import java.io.*;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
+import org.apache.commons.exec.ExecuteWatchdog;
 
 public class CodeProcessor {
 
@@ -30,6 +31,8 @@ public class CodeProcessor {
 																		// script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
+		ExecuteWatchdog watchdog = new ExecuteWatchdog(5000);
+		executor.setWatchdog(watchdog);
 		try {
 			status = executor.execute(command);
 		} catch (Exception e) {
@@ -59,6 +62,8 @@ public class CodeProcessor {
 																		// script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
+		ExecuteWatchdog watchdog = new ExecuteWatchdog(5000);
+		executor.setWatchdog(watchdog);
 		try {
 			status = executor.execute(command);
 		} catch (Exception e) {
@@ -87,6 +92,8 @@ public class CodeProcessor {
 																		// script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
+		ExecuteWatchdog watchdog = new ExecuteWatchdog(5000);
+		executor.setWatchdog(watchdog);
 		try {
 			status = executor.execute(command);
 		} catch (Exception e) {
@@ -170,6 +177,8 @@ public class CodeProcessor {
 																	// script
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
+		ExecuteWatchdog watchdog = new ExecuteWatchdog(5000);
+		executor.setWatchdog(watchdog);
 		try {
 			status = executor.execute(cmdLine);
 		} catch (Exception e) {

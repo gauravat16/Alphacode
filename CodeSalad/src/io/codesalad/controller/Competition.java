@@ -1,6 +1,7 @@
 package io.codesalad.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -72,25 +73,50 @@ public class Competition extends HttpServlet {
 			String compOn = request.getParameter("compOn");
 			String compDuration = request.getParameter("compDuration");
 
-			DatabaseManager newDbjob = new DatabaseManager();
-			Statement stm;
 			String time = LocalDate.now().toString();
 			String compId = null;
 
+			Connection conn = null;
+			Statement stm = null;
+			ResultSet rs = null;
+
 			try {
-				stm = newDbjob.getDBConnection();
-				ResultSet rs = stm.executeQuery("SELECT max(compId) as id  FROM CodeSalad.Competitions");
+				conn = new DatabaseManager().getDBConnection();
+				stm = conn.createStatement();
+				rs = stm.executeQuery("SELECT max(compId) as id  FROM CodeSalad.Competitions");
+
 				while (rs.next()) {
 					compId = rs.getString("id");
 				}
 
-				stm.close();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 
 			int id = Integer.parseInt(compId);
@@ -106,16 +132,38 @@ public class Competition extends HttpServlet {
 					+ time + "' , '" + compDuration + "')";
 
 			try {
+				conn = new DatabaseManager().getDBConnection();
+				stm = conn.createStatement();
+				stm.execute(query);
 
-				stm = newDbjob.getDBConnection();
-				newDbjob.getDBConnection().execute(query);
-				stm.close();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 
 			response.sendRedirect("/CodeSalad/ViewCompetition?compId=" + compId);
