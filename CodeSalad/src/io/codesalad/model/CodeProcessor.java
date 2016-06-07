@@ -1,6 +1,8 @@
 package io.codesalad.model;
 
 import java.util.ArrayList;
+
+
 import java.io.*;
 
 import org.apache.commons.exec.CommandLine;
@@ -9,9 +11,37 @@ import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.exec.ExecuteWatchdog;
 
 public class CodeProcessor {
+	
+	public String uAccName;
+	
+
+	
 
 	public CodeProcessor() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public String[] getConfig()
+	{
+		String[] data = new String[20];
+		try {
+			
+			BufferedReader bRead = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("Configuration.txt")));
+			String in;
+			int counter = 0;
+			while ((in = bRead.readLine()) != null) {
+				
+				data[counter] += in;
+				counter++;
+				
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return data;
 	}
 
 	public int runCodeJava(String Rawcode, String uname, String pid, String lang) throws ExecuteException, IOException {
@@ -266,6 +296,8 @@ public class CodeProcessor {
 
 	public static void main(String[] args) throws IOException {
 		
+		
+		new CodeProcessor().getConfig();
 
 	}
 }
