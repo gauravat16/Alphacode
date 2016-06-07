@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import io.codesalad.model.CodeProcessor;
 import io.codesalad.model.DatabaseManager;
 import io.codesalad.model.User;
 
@@ -93,7 +94,7 @@ public class EditProfile extends HttpServlet {
 			}
 
 			InputStream fileContent = filePart.getInputStream();
-			File file = new File("/home/gaurav/CodeSalad/profile/" + newUser.email + "." + extension);
+			File file = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/profile/" + newUser.email + "." + extension);
 
 			try (InputStream input = filePart.getInputStream()) {
 				Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);

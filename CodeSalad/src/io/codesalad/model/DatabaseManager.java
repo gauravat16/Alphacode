@@ -376,9 +376,8 @@ public class DatabaseManager {
 
 		}
 
-		File readComp = new File("/home/gaurav/CodeSalad/Competitions/" + compId + "/info.txt");
-		// System.out.println("/home/gaurav/CodeSalad/Problems/" + pid +
-		// "/problem.txt");
+		File readComp = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + compId + "/info.txt");
+		
 		FileInputStream in = new FileInputStream(readComp);
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(in));
 		String data = "";
@@ -397,9 +396,8 @@ public class DatabaseManager {
 	}
 
 	public String getCompetitionText(String compId) throws IOException {
-		File readComp = new File("/home/gaurav/CodeSalad/Competitions/" + compId + "/info.txt");
-		// System.out.println("/home/gaurav/CodeSalad/Problems/" + pid +
-		// "/problem.txt");
+		File readComp = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + compId + "/info.txt");
+		
 		FileInputStream in = new FileInputStream(readComp);
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(in));
 		String data = "";

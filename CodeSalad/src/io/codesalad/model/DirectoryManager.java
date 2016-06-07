@@ -9,6 +9,8 @@ import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
 
 public class DirectoryManager {
+	
+	private String user = new CodeProcessor().getConfig()[0];
 
 	public DirectoryManager() {
 		// TODO Auto-generated constructor stub
@@ -31,7 +33,7 @@ public class DirectoryManager {
 
 	public String UserFolder(String FolderName) throws IOException {
 
-		String user = "gaurav";
+		
 		String script = "#!/bin/bash  \n" + "mkdir /home/" + user + "/CodeSalad/Users/" + FolderName;
 
 		File newFolder = new File("/home/" + user + "/CodeSalad/Users/" + FolderName);
@@ -44,7 +46,7 @@ public class DirectoryManager {
 	
 	public String CompetitionFolder(String compId) throws IOException {
 
-		String user = "gaurav";
+		
 		String script = "#!/bin/bash  \n" + "mkdir /home/" + user + "/CodeSalad/Competitions/" + compId;
 
 		File newFolder = new File("/home/" + user + "/CodeSalad/Competitions/" + compId);
@@ -72,7 +74,7 @@ public class DirectoryManager {
 	public int HtmlToCode(String Rawcode, String uname, String pid, String lang) throws IOException {
 		int status = 0;
 
-		File newScript = new File("/home/gaurav/CodeSalad/Users/" + uname + "/" + pid + "." + lang);
+		File newScript = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "." + lang);
 
 		newScript.createNewFile();
 		FileWriter Fwriter = new FileWriter(newScript);
@@ -85,7 +87,7 @@ public class DirectoryManager {
 	
 	public String saveProblem(String CompId, String info) throws IOException {
 
-		File newScript = new File("/home/gaurav/CodeSalad/Competitions/" + CompId + "/" + "info.txt");
+		File newScript = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + CompId + "/" + "info.txt");
 
 		newScript.createNewFile();
 		FileWriter Fwriter = new FileWriter(newScript);
@@ -101,7 +103,7 @@ public class DirectoryManager {
 		int status = 0;
 		int pid = 0; // get recent pid from database
 
-		File newProblem = new File("/home/gaurav/CodeSalad/Problems/" + pid + "/" + ProblemName + ".txt");
+		File newProblem = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/" + ProblemName + ".txt");
 
 		newProblem.createNewFile();
 		FileWriter Fwriter = new FileWriter(newProblem);
@@ -116,7 +118,7 @@ public class DirectoryManager {
 		// gets last 2 of the picture extension
 		String last2 = Character.toString(picAddress.charAt(picAddress.length() - 2))
 				+ Character.toString(picAddress.charAt(picAddress.length() - 1));
-		System.out.println(last2);
+	
 		String extension = "";
 		switch (last2) {
 		case "ng":
@@ -151,7 +153,6 @@ public class DirectoryManager {
 	
 	public static void main(String[] args) throws ExecuteException, IOException
 	{
-		getProfilePic("Mario@mushroom.com", "/home/gaurav/CodeSalad/Users/Mario@mushroom.com/MarioSMBW.png");
 	}
 
 }
