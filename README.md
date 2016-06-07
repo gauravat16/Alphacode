@@ -19,6 +19,7 @@ Installation :
                  b. Open Installation-files Folder from Source Code
                  c. chmod u+x MakeDir.sh
                  d. Copy Sample data to CodeSalad Folder you just created.
+                 
              Importing Project-     
                1. Import the alphacodeV1[beta].sql Database.
                2. Import the AlphaCodeV1[beta].war into Tomcat8 installation.
