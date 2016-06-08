@@ -24,7 +24,7 @@ Installation :
                1. Import the alphacodeV1[beta].sql Database.
                2. Import the AlphaCodeV1[beta].war into Tomcat8 installation.
                3. Go the the Tomcat installation and goto tomcat/webapps/CodeSalad/WEB-INF/Configuration.txt
-               4. Change the username 'gaurav' to the name of the user of your linux OS .
+               4. Change the username 'gaurav' to the name of the user of your linux OS . [command- whoami in terminal]
                5. Edit Severs.xml of tomcat8 and add this
                   <Context docBase="/home/<your linux username>/CodeSalad/profile" path="/profile" reloadable="true"/></Host>
                   eg: <Context docBase="/home/gaurav/CodeSalad/profile" path="/profile" reloadable="true"/></Host>
