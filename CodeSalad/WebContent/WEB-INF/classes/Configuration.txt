@@ -1,1 +1,3 @@
 Username=gaurav
+MySqlUserName=root
+MySqlPassword=raceison10

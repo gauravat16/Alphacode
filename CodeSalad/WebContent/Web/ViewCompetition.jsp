@@ -75,7 +75,7 @@ ${enrolled }
 		<c:forEach var="problem" items="${plist}" varStatus="index">
 
 			<div class="tab-pane fade active in" id="tab${index}-item${index}">
-				<p>${ }</p>
+				<p></p>
 			</div>
 		</c:forEach>
 	</div>

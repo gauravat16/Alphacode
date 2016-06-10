@@ -3,7 +3,6 @@ package io.codesalad.model;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
@@ -12,14 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class DatabaseManager {
 
 	public Connection getDBConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CodeSalad", "root", "raceison10");
+		System.out.println(new CodeProcessor().getConfig()[1]);
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CodeSalad", new CodeProcessor().getConfig()[1], new CodeProcessor().getConfig()[2]);
 
 		return conn;
 
@@ -402,8 +401,6 @@ public class DatabaseManager {
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(in));
 		String data = "";
 		String inp = "";
-		StringBuffer stringBuffer = new StringBuffer();
-
 		while ((inp = bRead.readLine()) != null) {
 			data += inp + "<br>";
 
@@ -415,7 +412,6 @@ public class DatabaseManager {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 		// TODO Auto-generated method stub
 
-		DatabaseManager obj = new DatabaseManager();
 
 	}
 
