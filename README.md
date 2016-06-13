@@ -4,6 +4,8 @@ Welcome to Alphacode!
 
 Alphacode is an online judge with support for C,C++ & java. with possible additions for newer languages(Star it for updates).
 
+![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(9).png)
+
 Installation :
              
              Pre Requisites-
