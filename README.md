@@ -4,7 +4,7 @@ Welcome to Alphacode!
 
 Alphacode is an online judge with support for C,C++ & java. with possible additions for newer languages(Star it for updates).
 
-![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(11).png)
+![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/CodeSalad/WebContent/Web/images/alphalogo.png)Code
 
 Installation :
              
@@ -33,7 +33,16 @@ Installation :
                   <Context docBase="/home/<your linux username>/CodeSalad/profile" path="/profile" reloadable="true"/>
                   eg: <Context docBase="/home/gaurav/CodeSalad/profile" path="/profile" reloadable="true"/>
                   before </Host> Tag.
-             
+                  
+Screenshots:
+
+            ![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(12).png)
+            ![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(8).png)
+            ![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(13).png)
+            ![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(14).png)
+            ![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(15).png)
+            ![alt tag](https://github.com/gauravat16/CodeSalad/blob/master/Screenshots/Screenshot%20(16).png)
+           
                 
              
              
