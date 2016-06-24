@@ -14,7 +14,7 @@ public class CodeProcessor {
 	
 
 	public CodeProcessor() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public String[] getConfig() {

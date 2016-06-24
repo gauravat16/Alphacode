@@ -17,7 +17,6 @@ public class DatabaseManager {
 
 	public Connection getDBConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		System.out.println(new CodeProcessor().getConfig()[1]);
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CodeSalad", new CodeProcessor().getConfig()[1], new CodeProcessor().getConfig()[2]);
 
 		return conn;

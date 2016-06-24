@@ -3,71 +3,57 @@ package io.codesalad.model;
 import java.util.ArrayList;
 
 public class Competition {
-	
-	
-	public String compName, compUsers, compDate, compAuthor, CompFileLocation, CompPId , compText,CompCreation,CompDuration,compId;
-	public ArrayList<String> userList , probList;
 
-	public String getCompName()
-	{
+	public String compName, compUsers, compDate, compAuthor, CompFileLocation, CompPId, compText, CompCreation,
+			CompDuration, compId;
+	public ArrayList<String> userList, probList;
+
+	public String getCompName() {
 		return compName;
 	}
-	
-	public String getCompUsers()
-	{
+
+	public String getCompUsers() {
 		return compUsers;
 	}
-	
-	public String getCompDate()
-	{
+
+	public String getCompDate() {
 		return compDate;
 	}
-	
-	public String getCompAuthor()
-	{
+
+	public String getCompAuthor() {
 		return compAuthor;
 	}
-	
-	public String getCompFileLocation()
-	{
+
+	public String getCompFileLocation() {
 		return CompFileLocation;
 	}
-	
-	public String getCompPId()
-	{
+
+	public String getCompPId() {
 		return CompPId;
 	}
-	
-	public String getCompText()
-	{
+
+	public String getCompText() {
 		return compText;
 	}
 
-	public String getCompCreation()
-	{
+	public String getCompCreation() {
 		return CompCreation;
 	}
-	
-	public ArrayList<String> getUserList()
-	{
-		return userList ;
+
+	public ArrayList<String> getUserList() {
+		return userList;
 	}
-	
-	public ArrayList<String> getProbList()
-	{
-		return probList ;
+
+	public ArrayList<String> getProbList() {
+		return probList;
 	}
-	
-	public String getCompDuration()
-	{
+
+	public String getCompDuration() {
 		return CompDuration;
 	}
-	
-	public String getCompId()
-	{
+
+	public String getCompId() {
 		return compId;
 	}
-	
-	
-	
+
 }
