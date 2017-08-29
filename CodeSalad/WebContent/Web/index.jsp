@@ -13,7 +13,7 @@
                         <c:choose>
                         
                         <c:when test="${user.uname==null}">
-                        <a href="/CodeSalad/Web/Register.jsp" class="btn btn-common">SIGN UP</a>
+                        <a href="/Web/Register.jsp" class="btn btn-common">SIGN UP</a>
                        
                         </c:when>
                        

@@ -53,7 +53,7 @@ public class CompetitionList extends HttpServlet {
 			try {
 				conn = new DatabaseManager().getDBConnection();
 				stm = conn.createStatement();
-				competions = stm.executeQuery("select * from CodeSalad.Competitions");
+				competions = stm.executeQuery("select * from \"Competitions\"");
 
 				while(competions.next())
 				{
@@ -125,7 +125,7 @@ public class CompetitionList extends HttpServlet {
 			try {
 				conn1 = new DatabaseManager().getDBConnection();
 				stm1 = conn1.createStatement();
-				competions1 = stm1.executeQuery("select * from CodeSalad.Competitions where CompAuthor='"+email+"'");
+				competions1 = stm1.executeQuery("select * from \"Competitions\" where CompAuthor='"+email+"'");
 				while(competions1.next())
 				{
 					Competition newComp = new Competition();

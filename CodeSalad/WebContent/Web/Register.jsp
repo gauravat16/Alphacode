@@ -83,7 +83,7 @@
       
                     <div  class="contact-form bottom" >
                        
-                        <form id="main-contact-form" name="contact-form" method="post" action="/CodeSalad/Register">
+                        <form id="main-contact-form" name="contact-form" method="post" action="/Register">
                             
                             <br>
                             <div  class="form-group">

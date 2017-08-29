@@ -29,7 +29,7 @@
 	</div>
 </section>
 <form method="post"
-	action="/CodeSalad/Competition?addProb=true&newComp=false&id=${comp.compId}">
+	action="/Competition?addProb=true&newComp=false&id=${comp.compId}">
 	<c:choose>
 		<c:when test="${comp.compAuthor == user.email}">
 			<input type="submit" class="btn btn-sm btn-primary"
@@ -40,7 +40,7 @@
 </form>
 ${enrolled }
 <form method="post"
-	action="/CodeSalad/Enroll?compid=${comp.compId}&email=${user.email}">
+	action="/Enroll?compid=${comp.compId}&email=${user.email}">
 
 	<c:choose>
 		<c:when test="${enrolled==0}">

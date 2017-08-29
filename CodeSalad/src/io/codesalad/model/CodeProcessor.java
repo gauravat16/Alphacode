@@ -11,10 +11,8 @@ import org.apache.commons.exec.ExecuteWatchdog;
 
 public class CodeProcessor {
 
-	
-
 	public CodeProcessor() {
-	
+
 	}
 
 	public String[] getConfig() {
@@ -27,8 +25,12 @@ public class CodeProcessor {
 			int counter = 0;
 
 			while ((in = bRead.readLine()) != null) {
+				String[]  val = in.split("=");
+				if(val.length==2){
+					data[counter] = val[1] ;
 
-				data[counter] = in.split("=")[1];
+				}
+
 
 				counter++;
 
@@ -44,17 +46,17 @@ public class CodeProcessor {
 	public int runCodeJava(String Rawcode, String uname, String pid, String lang) throws ExecuteException, IOException {
 
 		int status = 1;
-		String fileAddress = "/home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
+		String fileAddress =  getConfig()[0] + "/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
 
-		String script = "#!/bin/bash  \n" + "javac -Xstdout " + "/home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid
-				+ "error.txt " + fileAddress;
+		String script = "#!/bin/bash  \n" + "javac -Xstdout " +  getConfig()[0] + "/CodeSalad/Users/" + uname
+				+ "/" + pid + "error.txt " + fileAddress;
 
 		Scriptinator newScript = new Scriptinator(script, uname + "RunjavaCode"); // new
 		// script
 		// name-RunJavaCode
 		// created
 
-		String line = "/home/"+getConfig()[0]+"/CodeSalad/Scripts/" + uname + "RunjavaCode.sh "; // run
+		String line =  getConfig()[0] + "/CodeSalad/Scripts/" + uname + "RunjavaCode.sh "; // run
 		// script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
@@ -74,17 +76,17 @@ public class CodeProcessor {
 	public int runCodeC(String Rawcode, String uname, String pid, String lang) throws ExecuteException, IOException {
 
 		int status = 1;
-		String fileAddress = "/home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
+		String fileAddress =  getConfig()[0] + "/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
 
-		String script = "#!/bin/bash  \n" + "(cd /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/ && gcc " + fileAddress
-				+ " 2> /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "error.txt )";
+		String script = "#!/bin/bash  \n" + "(cd "+getConfig()[0] + "/CodeSalad/Users/" + uname + "/ && gcc "
+				+ fileAddress + " 2> " + getConfig()[0] + "/CodeSalad/Users/" + uname + "/" + pid + "error.txt )";
 
 		Scriptinator newScript = new Scriptinator(script, uname + "RunCCode"); // new
 																				// script
 																				// name-RunJavaCode
 																				// created
 
-		String line = "/home/"+getConfig()[0]+"/CodeSalad/Scripts/" + uname + "RunCCode.sh "; // run
+		String line =  getConfig()[0] + "/CodeSalad/Scripts/" + uname + "RunCCode.sh "; // run
 		// script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
@@ -104,17 +106,17 @@ public class CodeProcessor {
 	public int runCodeCpp(String Rawcode, String uname, String pid, String lang) throws ExecuteException, IOException {
 
 		int status = 1;
-		String fileAddress = "/home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
+		String fileAddress =  getConfig()[0] + "/CodeSalad/Users/" + uname + "/" + pid + "." + lang;
 
-		String script = "#!/bin/bash  \n" + "(cd /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/ && g++ " + fileAddress
-				+ " 2> /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "error.txt )";
+		String script = "#!/bin/bash  \n" + "(cd " + getConfig()[0] + "/CodeSalad/Users/" + uname + "/ && g++ "
+				+ fileAddress + " 2> " + getConfig()[0] + "/CodeSalad/Users/" + uname + "/" + pid + "error.txt )";
 
 		Scriptinator newScript = new Scriptinator(script, uname + "RunCCode"); // new
 																				// script
 																				// name-RunJavaCode
 																				// created
 
-		String line = "/home/"+getConfig()[0]+"/CodeSalad/Scripts/" + uname + "RunCCode.sh "; // run
+		String line =  getConfig()[0] + "/CodeSalad/Scripts/" + uname + "RunCCode.sh "; // run
 		// script
 		CommandLine command = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
@@ -135,7 +137,7 @@ public class CodeProcessor {
 		int status = 1;
 		ArrayList<String> list = new ArrayList<>();
 
-		File testcases = new File("/home/"+getConfig()[0]+"/CodeSalad/Problems/" + pid + "/testcases.txt");
+		File testcases = new File( getConfig()[0] + "/CodeSalad/Problems/" + pid + "/testcases.txt");
 		FileInputStream fIn = new FileInputStream(testcases);
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(fIn));
 		String values;
@@ -162,44 +164,44 @@ public class CodeProcessor {
 
 		}
 
-		File testoutputs = new File("/home/"+getConfig()[0]+"/CodeSalad/Problems/" + pid + "/testoutputs.txt");
+		File testoutputs = new File( getConfig()[0] + "/CodeSalad/Problems/" + pid + "/testoutputs.txt");
 		testoutputs.createNewFile();
 		FileWriter fWriter = new FileWriter(testoutputs);
 		fWriter.write(temp2);
 		fWriter.flush();
 		fWriter.close();
 
-		String address1 = "/home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/output.txt";
-		String address2 = "/home/"+getConfig()[0]+"/CodeSalad/Problems/" + pid + "/testoutputs.txt";
+		String address1 =  getConfig()[0] + "/CodeSalad/Users/" + uname + "/output.txt";
+		String address2 =  getConfig()[0] + "/CodeSalad/Problems/" + pid + "/testoutputs.txt";
 		String script = "";
 
 		switch (lang) {
 		case "java": {
-			script = "#!/bin/bash \n echo " + temp1 + " | java -classpath /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname
-					+ " Main  > /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/output.txt";
+			script = "#!/bin/bash \n echo " + temp1 + " | java -classpath " + getConfig()[0] + "/CodeSalad/Users/"
+					+ uname + " Main  > " + getConfig()[0] + "/CodeSalad/Users/" + uname + "/output.txt";
 			break;
 		}
 
 		case "c": {
-			script = "#!/bin/bash \n echo " + temp1 + " | (cd /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname
-					+ " && exec /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/a.out > /home/"+getConfig()[0]+"/CodeSalad/Users/"
-					+ uname + "/output.txt)";
+			script = "#!/bin/bash \n echo " + temp1 + " | (cd " + getConfig()[0] + "/CodeSalad/Users/" + uname
+					+ " && exec " + getConfig()[0] + "/CodeSalad/Users/" + uname + "/a.out > "
+					+ getConfig()[0] + "/CodeSalad/Users/" + uname + "/output.txt)";
 
 			break;
 		}
 
 		case "cpp":
-			script = "#!/bin/bash \n echo " + temp1 + " | (cd /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname
-					+ " && exec /home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/a.out > /home/"+getConfig()[0]+"/CodeSalad/Users/"
-					+ uname + "/output.txt)";
+			script = "#!/bin/bash \n echo " + temp1 + " | (cd " + getConfig()[0] + "/CodeSalad/Users/" + uname
+					+ " && exec " + getConfig()[0] + "/CodeSalad/Users/" + uname + "/a.out > "
+					+ getConfig()[0] + "/CodeSalad/Users/" + uname + "/output.txt)";
 
 			break;
 
 		}
 
 		Scriptinator newScript = new Scriptinator(script, uname + "Compare");
-		String line = "/home/"+getConfig()[0]+"/CodeSalad/Scripts/" + uname + "Compare.sh "; // run
-																					// the
+		String line =  getConfig()[0] + "/CodeSalad/Scripts/" + uname + "Compare.sh "; // run
+		// the
 		// script
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
@@ -243,7 +245,7 @@ public class CodeProcessor {
 	}
 
 	public String errGen(String pid, String uname) throws IOException {
-		File errorLog = new File("/home/"+getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "error.txt");
+		File errorLog = new File( getConfig()[0] + "/CodeSalad/Users/" + uname + "/" + pid + "error.txt");
 		FileInputStream fIn = new FileInputStream(errorLog);
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(fIn));
 		String values;
@@ -271,7 +273,7 @@ public class CodeProcessor {
 
 	public String getCode(String email, String pid, String lang) throws IOException {
 		String code = "";
-		String address = "/home/"+getConfig()[0]+"/CodeSalad/Users/" + email + "/" + pid + "." + lang;
+		String address =  getConfig()[0] + "/CodeSalad/Users/" + email + "/" + pid + "." + lang;
 		File f1 = new File(address);
 		FileInputStream fIn1 = new FileInputStream(f1);
 		BufferedReader bRead1 = new BufferedReader(new InputStreamReader(fIn1));
@@ -285,8 +287,6 @@ public class CodeProcessor {
 	}
 
 	public static void main(String[] args) throws IOException {
-
-	
 
 	}
 }

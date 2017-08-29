@@ -8,7 +8,7 @@
 			<div class="col-sm-12" style="padding-top: 5%">
 			
 				<div class="copyright-text text-center">
-				<img src="/CodeSalad/Web/images/home/under.png" class="img-responsive inline"
+				<img src="/Web/images/home/under.png" class="img-responsive inline"
 					alt="">
 					<p>&copy; AlphaCode 2016</p>
 					

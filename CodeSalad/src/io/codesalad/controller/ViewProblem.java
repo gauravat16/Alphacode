@@ -72,7 +72,7 @@ String pid = (String) request.getParameter("pid");
 				try {
 					conn = new DatabaseManager().getDBConnection();
 					stm = conn.createStatement();
-					rs = stm.executeQuery("select * from CodeSalad.Solutions where ProbId = '"+pid+"'");
+					rs = stm.executeQuery("select * from \"Solutions\" where \"Solutions\".\"ProbId\" = '"+pid+"'");
 					while(rs.next())
 					{	
 						newSol= new Solution();
@@ -129,7 +129,7 @@ String pid = (String) request.getParameter("pid");
 				newSession.setAttribute("pCoders", solList);
 				
 				
-				response.sendRedirect("/CodeSalad/Web/problem.jsp");
+				response.sendRedirect("/Web/problem.jsp");
 		
 	
 	}

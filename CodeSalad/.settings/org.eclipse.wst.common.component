@@ -2,7 +2,7 @@
     <wb-module deploy-name="CodeSalad">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="CodeSalad"/>
         <property name="java-output-path" value="/CodeSalad/build/classes"/>
+        <property name="context-root" value="/"/>
     </wb-module>
 </project-modules>

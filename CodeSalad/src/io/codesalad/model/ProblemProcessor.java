@@ -24,15 +24,15 @@ public class ProblemProcessor {
 	}
 
 	public void saveProblem(String ProblemText, String pid, String Testcases) throws IOException {
-		File probFolder = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/");
+		File probFolder = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/");
 		probFolder.mkdirs();
-		File newProblem = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/problem.txt");
+		File newProblem = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/problem.txt");
 		newProblem.createNewFile();
 		FileWriter fWriter = new FileWriter(newProblem);
 		fWriter.write(ProblemText);
 		fWriter.flush();
 
-		newProblem = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/testcases.txt");
+		newProblem = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/testcases.txt");
 		newProblem.createNewFile();
 		fWriter = new FileWriter(newProblem);
 		fWriter.write(Testcases);
@@ -60,7 +60,7 @@ public class ProblemProcessor {
 			stm = conn.createStatement();
 			
 			
-			String query = "Select * from CodeSalad.Problems where ProbId = '"+pid+"'";
+			String query = "Select * from \"Problems\" where \"Problems\".\"ProbId\" = '"+pid+"'";
 			 rs = stm.executeQuery(query);
 			while(rs.next())
 			{
@@ -109,7 +109,7 @@ public class ProblemProcessor {
 		
 		
 		
-		File readProb = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/problem.txt");
+		File readProb = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/problem.txt");
 		//System.out.println("/home/gaurav/CodeSalad/Problems/" + pid + "/problem.txt");
 		FileInputStream in = new FileInputStream(readProb);
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(in));

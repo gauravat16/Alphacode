@@ -16,16 +16,17 @@ import java.util.HashMap;
 public class DatabaseManager {
 
 	public Connection getDBConnection() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CodeSalad", new CodeProcessor().getConfig()[1], new CodeProcessor().getConfig()[2]);
-
+		Class.forName("org.postgresql.Driver");
+		String URL = "postgres://siscyzfttbwxtu:44b702ffba4b04ab2ea70083eecb24332e8fb42756ffdca3cca608673357a27f@ec2-50-17-217-166.compute-1.amazonaws.com:5432/d686i75644sj3s";
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://ec2-50-17-217-166.compute-1.amazonaws.com:5432/d686i75644sj3s", new CodeProcessor().getConfig()[1], new CodeProcessor().getConfig()[2]);
+		
 		return conn;
 
 	}
 
 	public void addUser(String name, String password, String email, String progslist) {
 		// adds user to database
-		String query = "insert into CodeSalad.Users values ('" + name + "','" + password + "','" + email
+		String query = "insert into \"Users\" values ('" + name + "','" + password + "','" + email
 				+ "' , '/CodeSalad/Web/images/nopic.png' )";
 		Connection conn = null;
 		Statement stm = null;
@@ -60,7 +61,7 @@ public class DatabaseManager {
 
 	public String checkIfPresent(String email, String password) {
 		// checks if user is present
-		String query = " select exists( select * from CodeSalad.Users where email='" + email + "' and password='"
+		String query = " select exists( select * from \"Users\" where email='" + email + "' and password='"
 				+ password + "' ) as result ";
 
 		String val = "";
@@ -130,7 +131,7 @@ public class DatabaseManager {
 		try {
 			conn = getDBConnection();
 			stm = conn.createStatement();
-			rs = stm.executeQuery("select * from CodeSalad.Users where email='" + email + "'");
+			rs = stm.executeQuery("select * from \"Users\" where \"Users\".\"email\"='" + email + "'");
 			while (rs.next()) {
 				userData.put("userName", rs.getString("userName"));
 				userData.put("password", rs.getString("password"));
@@ -183,7 +184,7 @@ public class DatabaseManager {
 		try {
 			conn = getDBConnection();
 			stm = conn.createStatement();
-			rs = stm.executeQuery("select * from CodeSalad.Users where email='" + email + "'");
+			rs = stm.executeQuery("select * from \"Users\" where email='" + email + "'");
 			while (rs.next()) {
 
 				user.email = rs.getString("userName");
@@ -237,7 +238,7 @@ public class DatabaseManager {
 		try {
 			conn = getDBConnection();
 			stm = conn.createStatement();
-			rs = stm.executeQuery("Select * from CodeSalad.Solutions where uname='" + email + "'");
+			rs = stm.executeQuery("Select * from \"Solutions\" where \"Solutions\".\"Uname\"='" + email + "'");
 			while (rs.next()) {
 				Problem newProb = new Problem();
 				ProblemProcessor newPProc = new ProblemProcessor();
@@ -299,7 +300,7 @@ public class DatabaseManager {
 		try {
 			conn = getDBConnection();
 			stm = conn.createStatement();
-			rs = stm.executeQuery("Select * from CodeSalad.Competitions where compId = '" + compId + "'");
+			rs = stm.executeQuery("Select * from \"Competitions\" where compId = '" + compId + "'");
 			while (rs.next()) {
 				newComp.CompPId = rs.getString("CompPId");
 				newComp.compName = rs.getString("compName");
@@ -374,7 +375,7 @@ public class DatabaseManager {
 
 		}
 
-		File readComp = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + compId + "/info.txt");
+		File readComp = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + compId + "/info.txt");
 		
 		FileInputStream in = new FileInputStream(readComp);
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(in));
@@ -394,7 +395,7 @@ public class DatabaseManager {
 	}
 
 	public String getCompetitionText(String compId) throws IOException {
-		File readComp = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + compId + "/info.txt");
+		File readComp = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + compId + "/info.txt");
 		
 		FileInputStream in = new FileInputStream(readComp);
 		BufferedReader bRead = new BufferedReader(new InputStreamReader(in));
@@ -409,8 +410,10 @@ public class DatabaseManager {
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
-		// TODO Auto-generated method stub
-
+		String query = "insert into \"Problems\" (Pname,CreatedBy,CreatedOn,MaxTime,MaxMemory,Difficulty,FromComp) values ('"
+				+ "pname" + "' ,  '" + "user.email" +"' , '" + "time" + "' , ' ' , ' ' , '" + "plevel" + "' , 0"
+				+ " )";
+		System.out.println( query );
 
 	}
 

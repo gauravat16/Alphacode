@@ -36,7 +36,7 @@
                             </div>
                             <h2>PAGE NOT FOUND</h2>
                             <p>The page you are looking for might have been removed, had its name changed.</p>
-                            <a href="/CodeSalad/Web/index.jsp" class="btn btn-error">RETURN TO THE HOMEPAGE</a>
+                            <a href="/Web/index.jsp" class="btn btn-error">RETURN TO THE HOMEPAGE</a>
                             <div class="social-link">
                                 <span><a href="#"><i class="fa fa-facebook"></i></a></span>
                                 <span><a href="#"><i class="fa fa-twitter"></i></a></span>

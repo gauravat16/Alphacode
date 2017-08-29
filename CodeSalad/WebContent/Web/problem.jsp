@@ -37,7 +37,7 @@ tsRegister();
  
  
 
- <a href="/CodeSalad/ShellSolution?pid=${problem.pid}" class="btn btn-sm btn-danger" id="LinkAsButton " style=" display:block;
+ <a href="/ShellSolution?pid=${problem.pid}" class="btn btn-sm btn-danger" id="LinkAsButton " style=" display:block;
     margin: 0 90%; width: 60px">submit</a>
 </div>
 
@@ -68,9 +68,9 @@ tsRegister();
    <c:forEach var="sol" items="${pCoders}" varStatus="index">              
 
    <tr>
-   <td><a href="/CodeSalad/UserProfile?isFromOtherUser=true&email=${sol.email}&from=${user.email}">${sol.uname}</a></td>
+   <td><a href="/UserProfile?isFromOtherUser=true&email=${sol.email}&from=${user.email}">${sol.uname}</a></td>
     <td>${sol.status}</td>
-       <td><a href="/CodeSalad/GetCode?lang=${sol.lang}&pid=${sol.probid}&email=${sol.email}">View Code</a></td>
+       <td><a href="/GetCode?lang=${sol.lang}&pid=${sol.probid}&email=${sol.email}">View Code</a></td>
     
      <td>${sol.execTime}55</td>
       <td>${sol.execMem}55</td>

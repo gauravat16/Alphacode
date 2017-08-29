@@ -22,14 +22,14 @@ public class Scriptinator {
 	{
 		int status =0;
 		
-		File newScript = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Scripts/"+ScriptName+".sh"); // Script file created
+		File newScript = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Scripts/"+ScriptName+".sh"); // Script file created
 		newScript.createNewFile();
 		FileWriter Fwriter = new FileWriter(newScript);
 		Fwriter.write(script);
 		Fwriter.flush();
 		Fwriter.close();
 
-		String line = "chmod -R u+x /home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Scripts"; // Changing executable permissions
+		String line = "chmod -R u+x "+new CodeProcessor().getConfig()[0]+"/CodeSalad/Scripts"; // Changing executable permissions
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
 		status = executor.execute(cmdLine);

@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import io.codesalad.model.Competition;
 import io.codesalad.model.DatabaseManager;
@@ -75,7 +74,7 @@ public class NewProblem extends HttpServlet {
 		try {
 			conn = new DatabaseManager().getDBConnection();
 			stm = conn.createStatement();
-			rs = stm.executeQuery("SELECT max(ProbId) as id  FROM CodeSalad.Problems");
+			rs = stm.executeQuery("SELECT max(\"Problems\".\"ProbId\") as id  FROM \"Problems\"");
 			while (rs.next()) {
 				pid = rs.getString("id");
 
@@ -143,10 +142,10 @@ public class NewProblem extends HttpServlet {
 		switch (isfromComp) {
 
 		case "true":
-			String query = "insert into CodeSalad.Problems (`Pname`,`CreatedBy`,`CreatedOn`,`MaxTime`,`MaxMemory`,`Difficulty`,`FromComp`) values ('"
+			String query = "insert into \"Problems\" (Pname,CreatedBy,CreatedOn,MaxTime,MaxMemory,Difficulty,FromComp) values ('"
 					+ pname + "' ,  '" + user.email + " ' '" + "' , '" + time + "' , ' ' , ' ' , '" + plevel + "' , 1"
 					+ " )";
-			String query2 = "update CodeSalad.Competitions set CompPId=CONCAT(CompPId,'" + pid + ",') where compId='"
+			String query2 = "update \"Competitions\" set CompPId=CONCAT(CompPId,'" + pid + ",') where \"Competitions\".compId='"
 					+ compId + "'";
 
 			Connection conn1 = null;
@@ -187,8 +186,8 @@ public class NewProblem extends HttpServlet {
 			break;
 
 		default:
-			query = "insert into CodeSalad.Problems (`Pname`,`CreatedBy`,`CreatedOn`,`MaxTime`,`MaxMemory`,`Difficulty`,`FromComp`) values ('"
-					+ pname + "' ,  '" + user.email + " ' '" + "' , '" + time + "' , ' ' , ' ' , '" + plevel + "' , 0"
+			query = "insert into \"Problems\" (Pname,CreatedBy,CreatedOn,MaxTime,MaxMemory,Difficulty,FromComp) values ('"
+					+ pname + "' ,  '" + user.email +"' , '" + time + "' , ' ' , ' ' , '" + plevel + "' , 0"
 					+ " )";
 
 			Connection conn2 = null;
@@ -240,10 +239,10 @@ public class NewProblem extends HttpServlet {
 
 		if (isfromComp.equals("true")) {
 
-			response.sendRedirect("/CodeSalad/ViewCompetition?pid=" + pid + "&compId=" + compId);
+			response.sendRedirect("/ViewCompetition?pid=" + pid + "&compId=" + compId);
 
 		} else {
-			response.sendRedirect("/CodeSalad/ViewProblem?pid=" + pid);
+			response.sendRedirect("/ViewProblem?pid=" + pid);
 		}
 
 	}

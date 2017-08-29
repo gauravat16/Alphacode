@@ -58,7 +58,7 @@ public class Enroll extends HttpServlet {
 			conn = new DatabaseManager().getDBConnection();
 			stm = conn.createStatement();
 			
-			stm.execute("update CodeSalad.Competitions set compUsers=CONCAT(ifnull(compUsers,''),'"+uemail+",') where compId='"+CompId+"'");
+			stm.execute("update \"Competitions\" set compUsers=CONCAT(ifnull(compUsers,''),'"+uemail+",') where compId='"+CompId+"'");
 
 			
 

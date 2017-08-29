@@ -94,7 +94,7 @@ public class EditProfile extends HttpServlet {
 			}
 
 			InputStream fileContent = filePart.getInputStream();
-			File file = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/profile/" + newUser.email + "." + extension);
+			File file = new File(new CodeProcessor().getConfig()[0]+"/profile/" + newUser.email + "." + extension);
 
 			try (InputStream input = filePart.getInputStream()) {
 				Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -106,7 +106,7 @@ public class EditProfile extends HttpServlet {
 			try {
 				conn = new DatabaseManager().getDBConnection();
 				stm = conn.createStatement();
-				stm.execute("UPDATE CodeSalad.Users SET pic = '/profile/" + newUser.email + "." + extension
+				stm.execute("UPDATE \"Users\" SET pic = '/profile/" + newUser.email + "." + extension
 						+ "' WHERE email = '" + newUser.email + "'");
 
 			} catch (ClassNotFoundException e) {
@@ -136,7 +136,7 @@ public class EditProfile extends HttpServlet {
 
 			newUser.pic = "/profile/" + newUser.email + "." + extension;
 			newSession.setAttribute("edituser", newUser);
-			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
+			response.sendRedirect("/Web/Profile.jsp");
 
 		}
 

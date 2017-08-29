@@ -35,7 +35,7 @@
 		data-wow-delay="300ms">
 		<div class="feature-inner">
 			
-			<a href="/CodeSalad/ViewCompetition?compId=${comp.compId}&pid=">
+			<a href="/ViewCompetition?compId=${comp.compId}&pid=">
 				<h4 style="text-transform: uppercase;">${comp.compName}</h4>
 			</a>
 			<p></p>

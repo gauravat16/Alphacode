@@ -62,7 +62,7 @@ public class ProblemList extends HttpServlet {
 				conn = new DatabaseManager().getDBConnection();
 				stm = conn.createStatement();
 
-				rs = stm.executeQuery("Select * from CodeSalad.Problems where CreatedBy = '" + userMail + "'");
+				rs = stm.executeQuery("Select * from \"Problems\" where \"Problems\".\"CreatedBy\" = '" + userMail + "'");
 				while (rs.next()) {
 					newProblem = new Problem();
 
@@ -119,7 +119,7 @@ public class ProblemList extends HttpServlet {
 					try {
 						conn = new DatabaseManager().getDBConnection();
 						stm = conn.createStatement();
-						rs = stm.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'B'");
+						rs = stm.executeQuery("Select * from \"Problems\" where \"Problems\".\"Difficulty\" = 'B'");
 						while (rs.next()) {
 							newProblem = new Problem();
 
@@ -181,7 +181,7 @@ public class ProblemList extends HttpServlet {
 						conn1 = new DatabaseManager().getDBConnection();
 						stm1 = conn1.createStatement();
 						
-						rs =stm1.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'E'");
+						rs =stm1.executeQuery("Select * from \"Problems\" where \"Problems\".\"Difficulty\" = 'E'");
 						while (rs.next()) {
 							newProblem = new Problem();
 							newProblem.difficulty = "Easy";
@@ -244,7 +244,7 @@ public class ProblemList extends HttpServlet {
 					try {
 						conn11 = new DatabaseManager().getDBConnection();
 						stm11 = conn11.createStatement();
-						rs11 = stm11.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'M'");
+						rs11 = stm11.executeQuery("Select * from \"Problems\" where \"Problems\".\"Difficulty\" = 'M'");
 						while (rs11.next()) {
 							newProblem = new Problem();
 							newProblem.difficulty = "Medium";
@@ -313,7 +313,7 @@ public class ProblemList extends HttpServlet {
 					try {
 						conn111 = new DatabaseManager().getDBConnection();
 						stm111 = conn111.createStatement();
-						rs = stm111.executeQuery("Select * from CodeSalad.Problems where Difficulty = 'H'");
+						rs = stm111.executeQuery("Select * from \"Problems\" where \"Problems\".\"Difficulty\" = 'H'");
 						while (rs.next()) {
 							newProblem = new Problem();
 							newProblem.difficulty = "Hard";

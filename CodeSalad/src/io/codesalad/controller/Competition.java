@@ -84,7 +84,7 @@ public class Competition extends HttpServlet {
 			try {
 				conn = new DatabaseManager().getDBConnection();
 				stm = conn.createStatement();
-				rs = stm.executeQuery("SELECT max(compId) as id  FROM CodeSalad.Competitions");
+				rs = stm.executeQuery("SELECT max(compId) as id  FROM \"Competitions\"");
 
 				while (rs.next()) {
 					compId = rs.getString("id");
@@ -128,7 +128,7 @@ public class Competition extends HttpServlet {
 																// folder
 			String address = new DirectoryManager().saveProblem(compId, info);
 
-			String query = "insert into CodeSalad.Competitions (`compName`,`compDate`,`compAuthor`,`CompFileLocation`,`CompCreation` , `CompDuration`) values ('"
+			String query = "insert into \"Competitions\" (`compName`,`compDate`,`compAuthor`,`CompFileLocation`,`CompCreation` , `CompDuration`) values ('"
 					+ compname + "' ,  '" + compOn + " ' '" + "' , '" + newUser.email + "' , '" + address + "' ,'"
 					+ time + "' , '" + compDuration + "')";
 
@@ -167,7 +167,7 @@ public class Competition extends HttpServlet {
 
 			}
 
-			response.sendRedirect("/CodeSalad/ViewCompetition?compId=" + compId);
+			response.sendRedirect("/ViewCompetition?compId=" + compId);
 
 		}
 

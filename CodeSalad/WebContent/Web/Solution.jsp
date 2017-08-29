@@ -22,7 +22,7 @@
    You need to login to Submit a solution.
    </c:when>
    <c:when test="${user.uname != null}">
-   <form action="/CodeSalad/RunMatchCode" method="post">
+   <form action="/RunMatchCode" method="post">
    <div style="position: relative;padding-bottom: 0.01%">
    <select name="lang">
    <option value="java">Java</option>

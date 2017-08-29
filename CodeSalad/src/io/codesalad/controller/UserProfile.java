@@ -91,7 +91,7 @@ public class UserProfile extends HttpServlet {
 			newSession.setAttribute("user", other);
 
 
-			response.sendRedirect("/CodeSalad/Web/Profile.jsp");
+			response.sendRedirect("/Web/Profile.jsp");
 			
 			
 		}
@@ -111,7 +111,7 @@ public class UserProfile extends HttpServlet {
 		
 		newSession.setAttribute("probSolved", list);
 		newSession.setAttribute("profile", newUser);
-		response.sendRedirect("/CodeSalad/Web/Profile.jsp");
+		response.sendRedirect("/Web/Profile.jsp");
 		
 		
 		}

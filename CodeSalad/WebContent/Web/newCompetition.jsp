@@ -21,7 +21,7 @@
 
 
 
-<form action="/CodeSalad/Competition?newComp=true&addProb=false" method="post">
+<form action="/Competition?newComp=true&addProb=false" method="post">
 
 
 

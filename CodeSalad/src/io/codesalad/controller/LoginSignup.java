@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import com.mysql.jdbc.DatabaseMetaData;
 import com.mysql.jdbc.ResultSet;
@@ -22,7 +21,7 @@ import io.codesalad.model.User;
 /**
  * Servlet implementation class LoginSignup
  */
-// @WebServlet("/LoginSignup")
+ @WebServlet("/LoginSignup")
 public class LoginSignup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -60,7 +59,7 @@ public class LoginSignup extends HttpServlet {
 
 		DatabaseManager newTask = new DatabaseManager();
 
-		if (newTask.checkIfPresent(email, password).equals("1")) {
+		if (newTask.checkIfPresent(email, password).equals("t")) {
 			result = true;
 		}
 
@@ -75,7 +74,7 @@ public class LoginSignup extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("user", newUser);
-			response.sendRedirect("/CodeSalad/Web/index.jsp");
+			response.sendRedirect("/Web/index.jsp");
 
 		} else {
 			

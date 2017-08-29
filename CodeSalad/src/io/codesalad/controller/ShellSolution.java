@@ -48,7 +48,7 @@ public class ShellSolution extends HttpServlet {
 		}
 		HttpSession newSession = request.getSession(false);
 		newSession.setAttribute("problem", newProblem);
-		response.sendRedirect("/CodeSalad/Web/Solution.jsp");
+		response.sendRedirect("/Web/Solution.jsp");
 		
 	}
 

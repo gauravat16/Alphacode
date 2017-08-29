@@ -162,7 +162,7 @@
                     <c:forEach var="solution" items="${probSolved}" varStatus="index">
                         <tr>
                             <td><c:out value="${index.index}" /></td>
-                            <td><a href="/CodeSalad/ViewProblem?pid=${solution.probid}">${solution.probid}</a></td>
+                            <td><a href="/ViewProblem?pid=${solution.probid}">${solution.probid}</a></td>
                             <td>${solution.status}</td>
                             <td>${solution.submittedOn}</td>
                             <td>${solution.lang}</td>

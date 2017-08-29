@@ -98,7 +98,7 @@ public class RunMatchCode extends HttpServlet {
 		
 		if(status==101)
 		{
-			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','CE','','','"+time+"','"+lang+"')";
+			query  ="insert into \"Solutions\" values ('"+newUser.email+"','"+pid+"','CE','','','"+time+"','"+lang+"')";
 			
 			
 			
@@ -144,7 +144,7 @@ public class RunMatchCode extends HttpServlet {
 			session.setAttribute("msg", error);
 			session.setAttribute("status", status);
 
-			response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			response.sendRedirect("/Web/Result.jsp");
 		}
 		else {
 			status =newJob.RunAndCompare(pid, newUser.email,lang);
@@ -156,7 +156,7 @@ public class RunMatchCode extends HttpServlet {
 		{
 		case 102:
 		{
-			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','RE','','','"+time+"','"+lang+"')";
+			query  ="insert into \"Solutions\" values ('"+newUser.email+"','"+pid+"','RE','','','"+time+"','"+lang+"')";
 			
 			
 			
@@ -204,13 +204,13 @@ public class RunMatchCode extends HttpServlet {
 			session.setAttribute("status", status);
 
 			session.setAttribute("msg", error);
-			response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			response.sendRedirect("/Web/Result.jsp");
 			break;
 		}
 		case 103:
 			
 		{
-			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','CA','','','"+time+"','"+lang+"')";
+			query  ="insert into \"Solutions\" values ('"+newUser.email+"','"+pid+"','CA','','','"+time+"','"+lang+"')";
 		
 			
 			Connection conn = null;
@@ -256,13 +256,13 @@ public class RunMatchCode extends HttpServlet {
 			session.setAttribute("status", status);
 
 			session.setAttribute("msg", "Correct answer!");
-			response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			response.sendRedirect("/Web/Result.jsp");
 			break;
 		}
 		
 		case 104:
 		{
-			query  ="insert into CodeSalad.Solutions values ('"+newUser.email+"','"+pid+"','WA','','','"+time+"','"+lang+"')";
+			query  ="insert into \"Solutions\" values ('"+newUser.email+"','"+pid+"','WA','','','"+time+"','"+lang+"')";
 			
 			Connection conn = null;
 			Statement stm = null;
@@ -306,7 +306,7 @@ public class RunMatchCode extends HttpServlet {
 			session.setAttribute("msg", "Wrong answer!");
 			session.setAttribute("status", status);
 
-			response.sendRedirect("/CodeSalad/Web/Result.jsp");
+			response.sendRedirect("/Web/Result.jsp");
 			break;
 		}
 	

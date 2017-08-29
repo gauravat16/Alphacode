@@ -36,12 +36,12 @@ public class DirectoryManager {
 		
 		String script = "#!/bin/bash  \n" + "mkdir /home/" + user + "/CodeSalad/Users/" + FolderName;
 
-		File newFolder = new File("/home/" + user + "/CodeSalad/Users/" + FolderName);
-		File newProglist = new File("/home/" + user + "/CodeSalad/Users/" + FolderName + "/proglist.txt");
+		File newFolder = new File( user + "/CodeSalad/Users/" + FolderName);
+		File newProglist = new File( user + "/CodeSalad/Users/" + FolderName + "/proglist.txt");
 		newFolder.mkdirs();
 		newProglist.createNewFile();
 
-		return "/home/" + user + "/CodeSalad/Users/" + FolderName + "/proglist.txt";
+		return  user + "/CodeSalad/Users/" + FolderName + "/proglist.txt";
 	}
 	
 	public String CompetitionFolder(String compId) throws IOException {
@@ -49,7 +49,7 @@ public class DirectoryManager {
 		
 		String script = "#!/bin/bash  \n" + "mkdir /home/" + user + "/CodeSalad/Competitions/" + compId;
 
-		File newFolder = new File("/home/" + user + "/CodeSalad/Competitions/" + compId);
+		File newFolder = new File( user + "/CodeSalad/Competitions/" + compId);
 		newFolder.mkdirs();
 		
 
@@ -74,7 +74,7 @@ public class DirectoryManager {
 	public int HtmlToCode(String Rawcode, String uname, String pid, String lang) throws IOException {
 		int status = 0;
 
-		File newScript = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "." + lang);
+		File newScript = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Users/" + uname + "/" + pid + "." + lang);
 
 		newScript.createNewFile();
 		FileWriter Fwriter = new FileWriter(newScript);
@@ -87,7 +87,7 @@ public class DirectoryManager {
 	
 	public String saveProblem(String CompId, String info) throws IOException {
 
-		File newScript = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + CompId + "/" + "info.txt");
+		File newScript = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Competitions/" + CompId + "/" + "info.txt");
 
 		newScript.createNewFile();
 		FileWriter Fwriter = new FileWriter(newScript);
@@ -103,7 +103,7 @@ public class DirectoryManager {
 		int status = 0;
 		int pid = 0; // get recent pid from database
 
-		File newProblem = new File("/home/"+new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/" + ProblemName + ".txt");
+		File newProblem = new File(new CodeProcessor().getConfig()[0]+"/CodeSalad/Problems/" + pid + "/" + ProblemName + ".txt");
 
 		newProblem.createNewFile();
 		FileWriter Fwriter = new FileWriter(newProblem);

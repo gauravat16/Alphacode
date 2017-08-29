@@ -69,7 +69,7 @@ public class ConfigListener implements ServletContextListener, ServletContextAtt
 		try {
 
 			BufferedReader bRead1 = new BufferedReader(
-					new InputStreamReader(event.getServletContext().getResourceAsStream("/WEB-INF/Configuration.txt")));
+					new InputStreamReader(event.getServletContext().getResourceAsStream("/WEB-INF/classes/Configuration.txt")));
 			String in;
 			int counter = 0;
 			while ((in = bRead1.readLine()) != null) {

@@ -57,7 +57,7 @@ ${compId}
    <c:otherwise>
    <c:choose>
    <c:when test="${isfromComp==true}" >
-	<form method="post" action="/CodeSalad/NewProblem?isfromComp=true&compId=${compId}"
+	<form method="post" action="/NewProblem?isfromComp=true&compId=${compId}"
 	id="main-contact-form">
 	
 	<div class="col-md-6 " style="margin-top: 2%; " >
@@ -100,7 +100,7 @@ ${compId}
 
 </form>
 	</c:when>
-	<c:otherwise><form method="post" action="/CodeSalad/NewProblem?isfromComp=false"
+	<c:otherwise><form method="post" action="/NewProblem?isfromComp=false"
 	id="main-contact-form">
 	<div class="col-md-6 " style="margin-top: 2%; " >
 

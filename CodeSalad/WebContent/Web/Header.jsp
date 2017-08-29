@@ -43,7 +43,7 @@ ${title}
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
     <![endif]-->
-<link rel="shortcut icon" href="/CodeSalad/Web/images/alphalogo.png">
+<link rel="shortcut icon" href="/Web/images/alphalogo.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="${path}/images/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
@@ -66,7 +66,7 @@ ${title}
 					
 
 					 <a
-						href="/CodeSalad/Web/index.jsp">
+						href="/Web/index.jsp">
 							<h1 style="font-size: 60px; margin-top : -8px;">	&alpha;code</h1>
 							</a>
 					
@@ -74,19 +74,19 @@ ${title}
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right" >
-						<li class="active"><a href="/CodeSalad/Web/index.jsp">Home</a></li>
+						<li class="active"><a href="/Web/index.jsp">Home</a></li>
 						<li class="dropdown"><a href="#">Problems <i
 								class="fa fa-angle-down"></i></a>
 							<ul role="menu" class="sub-menu" style="width:150px;">
 								<li><a href="${path}/NewProblem.jsp?title=New Problem&header=1">Add Problem</a></li>
 								<li><a
-									href="/CodeSalad/ProblemList?difficulty=B&isFromUser=false">Beginner</a></li>
+									href="/ProblemList?difficulty=B&isFromUser=false">Beginner</a></li>
 								<li><a
-									href="/CodeSalad/ProblemList?difficulty=E&isFromUser=false">Easy</a></li>
+									href="/ProblemList?difficulty=E&isFromUser=false">Easy</a></li>
 								<li><a
-									href="/CodeSalad/ProblemList?difficulty=M&isFromUser=false">Medium</a></li>
+									href="/ProblemList?difficulty=M&isFromUser=false">Medium</a></li>
 								<li><a
-									href="/CodeSalad/ProblemList?difficulty=H&isFromUser=false">Hard</a></li>
+									href="/ProblemList?difficulty=H&isFromUser=false">Hard</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="blog.html">Blog <i
 								class="fa fa-angle-down"></i></a></li>
@@ -95,7 +95,7 @@ ${title}
 								class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu" style="width:150px;">
 								<li><a href="${path}/newCompetition.jsp">New Competition</a></li>
-								<li><a href="/CodeSalad/CompetitionList?email=header">All Competitions</a></li>
+								<li><a href="/CompetitionList?email=header">All Competitions</a></li>
 								
 								
 							</ul>
@@ -113,7 +113,7 @@ ${title}
 							
 									<c:when test="${user.uname==null}">
 									<li class="dropdown">
-                     <a href="/CodeSalad/Web/LoginMain/loginmain.jsp" style="margin-top: 0px"> Guest|Login</a>
+                     <a href="/Web/LoginMain/loginmain.jsp" style="margin-top: 0px"> Guest|Login</a>
 									</li>
 									</c:when>
 									
@@ -146,9 +146,9 @@ ${title}
 							
 											<ul role="menu" class="sub-menu" style="width: 90%">
 												<li><a
-													href="/CodeSalad/UserProfile?isFromOtherUser=false">Dashboard</a></li>
+													href="/UserProfile?isFromOtherUser=false">Dashboard</a></li>
 												<li><a href="#">Prefrences</a></li>
-												<li><a href="/CodeSalad/Logout">Logout</a></li>
+												<li><a href="/Logout">Logout</a></li>
 
 											</ul></li>
 

@@ -62,7 +62,7 @@ tsRegister();
 							<ul role="menu" class="sub-menu" style="width: 150px">
 								<li><a href="${path}/NewProblem.jsp">Add Problem</a></li>
 								<li><a
-								href="/CodeSalad/ProblemList?isFromUser=true&userMail=${profile.email}">Your problems</a></li>
+								href="/ProblemList?isFromUser=true&userMail=${profile.email}">Your problems</a></li>
 							</ul></li>
 			</ul>
 			</div>
@@ -100,7 +100,7 @@ tsRegister();
 					<c:when
 						test="${(isFromOtherUser==true) and (from != profile.email) }"></c:when>
 					<c:otherwise>
-						<form action="/CodeSalad/EditProfile"
+						<form action="/EditProfile"
 							enctype="multipart/form-data" method="post">
 								Upload new Picture <input type="file" name="pic"> <input
 								type="submit" value="Upload">
@@ -146,7 +146,7 @@ tsRegister();
 												varStatus="index">
 												<tr>
 													<td><a
-														href="/CodeSalad/ViewProblem?pid=${solution.probid}">${solution.problemName}</a></td>
+														href="/ViewProblem?pid=${solution.probid}">${solution.problemName}</a></td>
 													<td>${solution.status}</td>
 													<td>${solution.execTime}</td>
 													<td>${solution.execMem }</td>

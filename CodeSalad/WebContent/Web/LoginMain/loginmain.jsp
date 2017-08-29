@@ -24,7 +24,7 @@
 		<div class="container">
 			<h1>Welcome</h1>
 			
-			<form class="form" method="post" action="/CodeSalad/login">
+			<form class="form" method="post" action="/login">
 <c:choose>
 <c:when test = "${isNotRegistered==true}">
 <h3 style="color: red;">Check your email or password.</h3><br>
@@ -39,7 +39,7 @@
 					id="Password">
 				<button type="submit" id="login-button">Login</button>
 				<p style="margin-right: 33%;">
-					<a href="/CodeSalad/Web/Register.jsp"  style="font-weight: bold;">Sign Up!</a>
+					<a href="/Web/Register.jsp"  style="font-weight: bold;">Sign Up!</a>
 				</p>
 
 			</form>
