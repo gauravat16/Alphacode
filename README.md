@@ -1,4 +1,4 @@
-# Alphacode(previously Codesalad)
+# Senior year project - Alphacode
 
   Welcome to Alphacode!   
 
